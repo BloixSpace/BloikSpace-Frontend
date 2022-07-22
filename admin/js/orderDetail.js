@@ -159,7 +159,7 @@ window.onload = function () {
                 if (res5.receipt_time != undefined) {
                     document.getElementById("receiptTime").innerHTML = "收货时间：" + res5.receipt_time
                 }
-                document.getElementById("commodityPic").innerHTML = `<img src=${domain + res5.commodity_pic} style="width: 200px;height:200px;border-radius: 0px;">`
+                document.getElementById("commodityPic").innerHTML = `<img src=${domain + res5.commodity_pic.split(",")[0]} style="width: 200px;height:200px;border-radius: 0px;">`
             }
         }
     }

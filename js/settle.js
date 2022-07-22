@@ -60,11 +60,11 @@ var settleBtn = document.getElementById('settle');
 tel.onblur = function(){
     if (tel.value =="") {
         tel.value = "您未输入手机号码";
-        tel.style.color = red;
+        tel.style.color = "red";
     }
     else if(!num.test(tel.value)){
         tel.value = "请输入正确的手机号码";
-        tel.style.color = red;
+        tel.style.color = "red";
     }
     return false;
 }

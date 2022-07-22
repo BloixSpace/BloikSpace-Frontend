@@ -1,0 +1,83 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+/* 左侧导航栏 */
+.leftBox{
+    position: fixed;
+    display: inline-block;
+    width: 12%;
+    height: 100vh;
+    background-color: hsl(223, 86%, 72%);
+}
+
+.leftImg{
+    text-align: center;
+    display: block;
+    width: 120px;
+    height: 120px;
+    background-color: #fff;
+    border-radius: 60px;
+    margin: 20px auto;
+}
+
+.leftNav{
+    cursor: pointer;
+    text-align: center;
+    line-height: 50px;
+    display: block;
+    height: 50px;
+    color: #fff;
+    font-size: larger;
+}
+
+.ani{
+    transition: all 0.2s;
+}
+
+.leftNav:hover{
+    background-color: hsl(223, 72%, 58%);
+    font-size: large;
+    text-shadow: #fff 0 4px 4px;
+}
+
+.rightBox{
+    float: right;
+    vertical-align: top;
+    display: inline-block;
+    width: 88%;
+}
+
+/* 顶部 */
+.top{
+    width: 100%;
+    display: inline-block;
+    height: 60px;
+    vertical-align: top;
+    background-color: hsl(223, 79%, 89%);
+    box-shadow: hsl(223, 86%, 72%) 2px 4px 4px;
+    line-height: 50px;
+}
+
+.topNav{
+    /* border: 2px solid hsl(223, 72%, 58%);
+    border-radius: 5px; */
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-top: 8px;
+    margin-right: 20px;
+    float: right;
+    cursor: pointer;
+    text-align: center;
+    line-height: 40px;
+    display: inline-block;
+    height: 40px;
+    color: hsl(223, 72%, 58%);
+    font-weight: bold;
+    font-size: x-large;
+}
+
+.topNav:hover{
+    color: hsl(223, 86%, 72%);
+}

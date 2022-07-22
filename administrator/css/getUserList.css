@@ -96,7 +96,7 @@
     width: 500px;
     height: 80px;
     color: hsl(225, 80%, 43%);
-    margin: 20px auto;
+    margin: 10px auto;
     line-height: 80px;
     text-align: center;
     font-size: xx-large;
@@ -116,7 +116,7 @@
     width: 100px;
     height: 100px;
     border-radius: 50px;
-    margin-top: 20px;
+    margin-top: 10px;
     margin-right: 20px;
 }
 
@@ -186,4 +186,26 @@
 .last,
 .total {
     padding: 0 10px;
+}
+
+.up{
+    width: 120px;
+    height: 40px;
+    left: 91%;
+    top: 94%;
+    color: hsl(225, 80%, 43%);
+    font-size: x-large;
+    font-weight: bolder;
+    position: fixed;
+}
+
+.down{
+    width: 120px;
+    height: 40px;
+    left: 91%;
+    top: 8%;
+    color: hsl(225, 80%, 43%);
+    font-size: x-large;
+    font-weight: bolder;
+    position: fixed;
 }

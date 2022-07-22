@@ -23,7 +23,7 @@ window.onload = function(){
     }
     createPager({
         currentPage: 1,
-        limit: 2,
+        limit: 10,
         divNumber: 5,
         order: "username",
         unread: null,
@@ -69,9 +69,7 @@ window.onload = function(){
             dataHtml += `<div class="user_data">
             <div class="picBox"><img class="user_pic" src="${domain+item.avatar_uri}"></img></div>
             <div class="contentBox"><div class="user_level">身份为：${lev}</div>
-            <div class="user_id">用户id为：${item.id}</div>
             <div class="user_username">用户名为：${item.username}</div>
-            <div class="user_signature">用户的签名为：${item.signature}</div>
             <button class="user_delete">删除此用户</button>
             <button class="user_delete">查看用户详情</button></div>
             </div>`

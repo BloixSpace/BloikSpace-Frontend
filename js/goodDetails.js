@@ -318,6 +318,10 @@ document.getElementById("centerBox").addEventListener("click", function (e) {
         xhr.onreadystatechange = function () {
             if (xhr.readyState === 4 && xhr.status === 200) {
                 var res = JSON.parse(xhr.responseText);
+                if (res.status != 1) {
+                    alert(res.errMsg);
+                    return;
+                }
                 location.href = "cart.html"
                 console.log(res);
             }

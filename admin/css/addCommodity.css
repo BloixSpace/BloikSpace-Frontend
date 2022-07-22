@@ -1,0 +1,173 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    list-style: none;
+}
+
+.top {
+    height: 50px;
+    background-color: hsl(225, 80%, 43%);
+}
+
+.topBox {
+    display: inline-block;
+    height: 50px;
+    width: 500px;
+    background-color: hsl(225, 80%, 43%);
+    margin: 0 50px;
+}
+
+.topItem {
+    line-height: 50px;
+    color: aliceblue;
+    margin: 0 20px;
+    text-decoration: none;
+}
+
+.login {
+    line-height: 50px;
+    color: aliceblue;
+    margin: 0 20px;
+    text-decoration: none;
+    float: right;
+}
+
+.camera {
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    background-image: url(../img/file.jpg);
+    background-size: cover;
+    margin: 5px 20px;
+    text-decoration: none;
+    float: right;
+}
+
+.camera:hover {
+    transform: scale(1.2, 1.2);
+    z-index: 100;
+}
+
+.selfCenter {
+    line-height: 50px;
+    color: aliceblue;
+    padding: 0 20px;
+    text-decoration: none;
+    position: relative;
+    float: right;
+}
+
+.selfCenter:hover {
+    background-color: #fff;
+    color: hsl(223, 86%, 72%);
+    text-decoration: none;
+}
+
+.hidden {
+    width: 105px;
+    height: 250px;
+    background-color: #fff;
+    color: hsl(223, 86%, 72%);
+    display: none;
+    position: absolute;
+    right: 0;
+    z-index: 10;
+}
+
+/* 当鼠标悬停在个人中心上时hidden的样式为 */
+.selfCenter:hover>.hidden {
+    display: block;
+    z-index: 100;
+}
+
+.hideInform {
+    text-align: center;
+}
+
+.hideInform:hover {
+    background-color: hsl(225, 80%, 43%);
+    color: #fff;
+}
+
+#container {
+    width: 1000px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    /* background-color:hsl(223, 79%, 89%); */
+    margin: 20px auto;
+    text-align: center;
+    border: 2px solid hsl(225, 80%, 43%);
+    border-radius: 10px;
+}
+
+.pic {
+    margin: 20px;
+}
+
+.text1,
+.text2 {
+    text-align: center;
+    color: hsl(225, 80%, 43%);
+    font-weight: bold;
+    margin: 20px auto;
+}
+
+.text1 {
+    font-size: xx-large;
+}
+
+.text2 {
+    font-size: large;
+}
+
+#files {
+    width: 220px;
+    font-size: large;
+    font-weight: bold;
+    color: hsl(225, 80%, 43%);
+    margin: 10px auto;
+}
+
+#commodityDetail {
+    color: hsl(225, 80%, 43%);
+    font-size: large;
+    font-weight: bold;
+}
+
+#title,
+#content,
+#category,
+#price,
+#stock {
+    margin: 10px auto;
+    height: 40px;
+    outline-style: none;
+    border-radius: 5px;
+    border: 2px solid hsl(225, 80%, 43%);
+    font-size: large;
+    width: 600px;
+}
+
+input::placeholder {
+    color: hsl(223, 86%, 72%);
+}
+
+#submit {
+    margin-top: 20px;
+    display: inline-block;
+    padding-left: 10px;
+    padding-right: 10px;
+    height: 40px;
+    background-color: hsl(225, 80%, 43%);
+    color: #fff;
+    font-size: larger;
+    border-radius: 5px;
+    border: 2px solid hsl(223, 86%, 72%);
+}
+
+#submit:hover {
+    background-color: hsl(223, 86%, 72%);
+}

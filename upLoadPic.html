@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>上传头像</title>
+    <link rel="stylesheet" href="css/upLoadPic.css">
+</head>
+
+<body>
+    <!-- 导航栏 -->
+    <div class="top">
+        <p class="topBox">
+            <a href="homePage.html" class="topItem"
+                style="color: #94b0f6;font-size: larger;font-weight: bolder;">BloikSpace</a>
+            <a href="cart.html" class="topItem">购物车</a>
+            <a href="#" class="topItem">Q&A</a>
+            <a href="#" class="topItem">帮助</a>
+        </p>
+        <a href="" class="selfCenter">个人中心
+            <!-- 隐藏二级菜单 -->
+            <div id="rightMenu" class="hidden">
+                <li class="hideInform" id="notice">我的通知</li>
+                <li class="hideInform">我的收藏</li>
+                <li class="hideInform" id="newpswd">修改密码</li>
+                <li class="hideInform" id="order">我的订单</li>
+                <li class="hideInform" id="manageCommodity" style="display: none;">商品管理</li>
+                <li class="hideInform" id="manageOrder" style="display: none;">订单管理</li>
+                <li class="hideInform" id="logout">退出登录</li>
+            </div>
+        </a>
+        <a href="login.html" class="login" id="log">登录注册</a>
+        <div class="camera" id="camera">
+            <img src="img/file.jpg" style="width: 40px;height:40px;border-radius: 20px;"></img>
+        </div>
+    </div>
+    <script src="js/adminOther.js"></script>
+    <!-- 头像上传 -->
+    <div class="uploadBox">
+        <div class="pic" id="pic">
+            <img src="img/8.jpg" style="width:200px;height:200px;overflow: hidden;"></img>
+        </div>
+        <input type="file" class="file" id="file">
+        <p class="confirmText">是否确认您的头像？</p><button class="confirm" id="btn">确认</button>
+    </div>
+</body>
+
+</html>
+<script src="js/upLoadPic.js"></script>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>请完善个人信息</title>
+    <link rel="stylesheet" href="css/loginDetails.css">
+</head>
+
+<body>
+    <!-- 导航栏 -->
+    <div class="top">
+        <p class="topBox">
+            <a href="homePage.html" class="topItem"
+                style="color: #94b0f6;font-size: larger;font-weight: bolder;">BloikSpace</a>
+            <a href="cart.html" class="topItem">购物车</a>
+            <a href="#" class="topItem">Q&A</a>
+            <a href="#" class="topItem">帮助</a>
+        </p>
+        <a href="" class="selfCenter">个人中心
+            <!-- 隐藏二级菜单 -->
+            <div id="rightMenu" class="hidden">
+                <li class="hideInform" id="notice">我的通知</li>
+                <li class="hideInform">我的收藏</li>
+                <li class="hideInform" id="newpswd">修改密码</li>
+                <li class="hideInform" id="order">我的订单</li>
+                <li class="hideInform" id="manageCommodity" style="display: none;">商品管理</li>
+                <li class="hideInform" id="manageOrder" style="display: none;">订单管理</li>
+                <li class="hideInform" id="logout">退出登录</li>
+            </div>
+        </a>
+        <a href="login.html" class="login" id="log">登录注册</a>
+        <div class="camera" id="camera">
+            <img src="img/file.jpg" style="width: 40px;height:40px;border-radius: 20px;"></img>
+        </div>
+    </div>
+    <script src="js/adminOther.js"></script>
+
+
+    <div class="formBox">
+        <div class="welcome">接下来请完善你的个人信息吧！</div>
+        <div class="inputBox">
+            <div class="left">身 份</div>
+            <div class="radio">
+                &nbsp;商家 <input type="radio" name="role">
+                消费者 <input type="radio" name="role">
+            </div>
+        </div>
+        <!-- <div class="inputBox">
+                <div class="left">昵  称</div><input type="text" class="input" placeholder=" 给自己起个好听的昵称吧~">
+            </div> -->
+        <div class="inputBox">
+            <div class="left">用户名</div><input type="text" class="input" id="username"
+                placeholder=" 请输入您希望在BloikSpAce创建的账户名">
+        </div>
+        <div class="inputBox">
+            <div class="left">密 码</div><input type="password" id="password" class="input" placeholder=" 请输入密码">
+        </div>
+        <div class="inputBox">
+            <div class="left">确认密码</div><input type="password" class="input" placeholder=" 请再次确认您的密码">
+        </div>
+        <div class="inputBox">
+            <div class="left">个性签名</div><input type="text" class="input" id="motto" placeholder=" 留下你的个性签名，让我们更好的认识你">
+        </div>
+
+        <div class="btnBox">
+            <a href="login.html" class="anchor" target="_self">返 回</a>
+            <button type="reset" class="logbtn">重 置</button>
+            <button class="logbtn" id="submit">提 交</button>
+        </div>
+    </div>
+
+
+
+
+</body>
+
+</html>
+<script src="js/loginDetails.js"></script>

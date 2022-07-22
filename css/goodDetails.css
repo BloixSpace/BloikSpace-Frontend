@@ -1,0 +1,417 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    list-style: none;
+}
+
+.top {
+    height: 50px;
+    background-color: hsl(225, 80%, 43%);
+}
+
+.topBox {
+    display: inline-block;
+    height: 50px;
+    width: 500px;
+    background-color: hsl(225, 80%, 43%);
+    margin: 0 50px;
+}
+
+.topItem {
+    line-height: 50px;
+    color: aliceblue;
+    margin: 0 20px;
+    text-decoration: none;
+}
+
+.login {
+    line-height: 50px;
+    color: aliceblue;
+    margin: 0 20px;
+    text-decoration: none;
+    float: right;
+}
+
+.camera {
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    background-image: url(../img/file.jpg);
+    background-size: cover;
+    margin: 5px 20px;
+    text-decoration: none;
+    float: right;
+}
+
+.camera:hover {
+    transform: scale(1.2, 1.2);
+    z-index: 100;
+}
+
+.selfCenter {
+    line-height: 50px;
+    color: aliceblue;
+    padding: 0 20px;
+    text-decoration: none;
+    position: relative;
+    float: right;
+}
+
+.selfCenter:hover {
+    background-color: #fff;
+    color: hsl(223, 86%, 72%);
+    text-decoration: none;
+}
+
+.hidden {
+    width: 105px;
+    height: 250px;
+    background-color: #fff;
+    color: hsl(223, 86%, 72%);
+    display: none;
+    position: absolute;
+    right: 0;
+    z-index: 10;
+}
+
+/* 当鼠标悬停在个人中心上时hidden的样式为 */
+.selfCenter:hover>.hidden {
+    display: block;
+    z-index: 100;
+}
+
+.hideInform {
+    text-align: center;
+}
+
+.hideInform:hover {
+    background-color: hsl(225, 80%, 43%);
+    color: #fff;
+}
+
+/* 搜索栏 */
+.underTop {
+    overflow: hidden;
+    height: 60px;
+    background-color: hsl(223, 86%, 72%);
+}
+
+.searchBox {
+    width: 500px;
+    height: 40px;
+    background-color: hsl(223, 86%, 72%);
+    margin: 10px auto;
+}
+
+.search {
+    vertical-align: top;
+    display: inline-block;
+    width: 300px;
+    height: 36px;
+    background-color: #fff;
+    border: 2px solid hsl(225, 80%, 43%);
+    border-radius: 5px;
+    outline-color: hsl(225, 80%, 43%);
+    margin-left: 90px;
+}
+
+.searchBtn {
+    display: inline-block;
+    width: 100px;
+    height: 40px;
+    background-color: hsl(225, 80%, 43%);
+    color: #fff;
+    font-size: large;
+    border-radius: 5px;
+    border: 2px solid #fff;
+}
+
+.searchBtn:hover {
+    background-color: hsl(223, 86%, 72%);
+}
+
+/* 商品详情 */
+.centerBox {
+    width: 1300px;
+    padding-bottom: 20px;
+    background-color: hsl(223, 79%, 89%);
+    margin: 0 auto;
+}
+
+.goodImg {
+    overflow: hidden;
+    width: 500px;
+    height: 700px;
+    background-color: #fff;
+    display: inline-block;
+    margin: 23px;
+}
+
+.mainPic {
+    width: 500px;
+    height: 500px;
+}
+
+.mainPic>img {
+    width: 500px;
+    height: 500px;
+}
+
+.minorBox {
+    width: 500px;
+    height: 100px;
+    background-color: #fff;
+    margin-top: 10px;
+}
+
+.minorBox>li {
+    display: inline-block;
+    height: 80px;
+    width: 80px;
+    margin: 10px 0 10px 13px;
+    cursor: pointer;
+}
+
+.minorBox>li>img {
+    width: 76px;
+    height: 76px;
+    border: 2px solid #fff;
+}
+
+.minorBox>li>img:hover {
+    border: 2px solid hsl(225, 80%, 43%);
+}
+
+.goodDetails {
+    vertical-align: top;
+    overflow: hidden;
+    width: 700px;
+    background-color: #fff;
+    display: inline-block;
+    margin: 23px;
+}
+
+.goodName {
+    width: 700px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    color: #fff;
+    background-color: hsl(223, 86%, 72%);
+    text-align: center;
+    font-size: x-large;
+    font-weight: bold;
+}
+
+.goodInform {
+    width: 700px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    color: hsl(225, 80%, 43%);
+    text-align: center;
+    font-size: x-large;
+    background-color: hsl(224, 58%, 94%);
+}
+
+.box {
+    overflow: hidden;
+    width: 700px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    color: hsl(225, 80%, 43%);
+    margin: 10px 0;
+    text-align: center;
+}
+
+.buyBtnBox {
+    width: 700px;
+    height: 100px;
+    line-height: 100px;
+    text-align: center;
+}
+
+.buyBtn {
+    display: inline-block;
+    width: 200px;
+    height: 50px;
+    background-color: hsl(0, 75%, 47%);
+    color: #fff;
+    font-size: larger;
+    border-radius: 5px;
+    border: 2px solid hsl(0, 82%, 29%);
+}
+
+.buyBtn:hover {
+    background-color: hsl(0, 83%, 40%);
+}
+
+.text,
+.price,
+.add,
+.minus,
+.amount,
+.amountBtn {
+    font-size: larger;
+    display: inline-block;
+}
+
+.add,
+.minus {
+    width: 20px;
+    height: 20px;
+    background-color: hsl(223, 79%, 89%);
+    border: #fff;
+    border-radius: 2px;
+    cursor: pointer;
+}
+
+.amount {
+    width: 100px;
+    height: 30px;
+    background-color: #fff;
+    outline-color: hsl(225, 80%, 43%);
+    border: 2px solid hsl(223, 86%, 72%);
+}
+
+.price {
+    font-weight: bold;
+    font-size: xx-large;
+    color: maroon;
+}
+
+.commentBox {
+    border: 4px solid hsl(225, 80%, 43%);
+    border-radius: 10px;
+    width: 1240px;
+    margin: 20px auto;
+    padding: 20px;
+}
+
+.comment {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: hsl(223, 79%, 89%);
+    width: 1000px;
+    border: 2px solid hsl(225, 80%, 43%);
+    border-radius: 5px;
+    text-align: center;
+    margin: 10px auto;
+}
+
+.title {
+    width: 500px;
+    height: 80px;
+    color: hsl(225, 80%, 43%);
+    margin: 20px auto;
+    line-height: 80px;
+    text-align: center;
+    font-size: xx-large;
+    font-weight: bolder;
+}
+
+.operate {
+    text-align: center;
+    font-size: larger;
+    height: 50px;
+    line-height: 50px;
+}
+
+.confirm {
+    background-color: hsl(223, 86%, 72%);
+    color: #fff;
+    font-size: large;
+    padding: 2px 6px;
+    border-radius: 5px;
+    border: 2px solid hsl(225, 80%, 43%);
+    cursor: pointer;
+    margin: 10px;
+}
+
+.confirm:hover {
+    background-color: hsl(225, 80%, 43%);
+}
+
+.anchor {
+    text-decoration: none;
+    color: hsl(225, 80%, 43%);
+    margin: 0 20px;
+}
+
+.comment_id,
+.user_id,
+.star,
+.comment_content {
+    margin: 10px auto;
+    font-size: larger;
+    padding: 0 30px;
+    color: hsl(225, 79%, 26%);
+}
+
+.emptyComment {
+    color: hsl(225, 80%, 43%);
+    margin: 20px auto;
+    font-size: x-large;
+    font-weight: bolder;
+}
+
+#emptyComment {
+    width: 800px;
+    text-align: center;
+    margin: 10px auto;
+}
+
+.comment_time {
+    text-align: right;
+    margin: 10px auto;
+    padding: 20px;
+    font-size: larger;
+    color: hsl(225, 79%, 26%);
+}
+
+#stars {
+    text-align: left;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 0;
+}
+
+.star {
+    width: 25px;
+    height: 25px;
+    margin: 0px;
+    padding: 5px;
+}
+
+/* 分页 */
+#pager {
+    text-align: center;
+    line-height: 80px;
+    font-size: larger;
+    width: 800px;
+    height: 80px;
+    margin: 0 auto;
+    cursor: pointer;
+}
+
+.numberselected {
+    background-color: hsl(223, 86%, 72%);
+    color: #fff;
+    padding: 0 8px;
+    margin: 0 10px 0 0;
+    border-radius: 4px;
+}
+
+.number {
+    margin: 0 10px 0 0;
+}
+
+.first,
+.prev,
+.omit,
+.next,
+.last,
+.total {
+    padding: 0 10px;
+}

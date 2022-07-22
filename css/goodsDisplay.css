@@ -1,0 +1,288 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    list-style: none;
+}
+
+.top {
+    height: 50px;
+    background-color: hsl(225, 80%, 43%);
+}
+
+.topBox {
+    display: inline-block;
+    height: 50px;
+    width: 500px;
+    background-color: hsl(225, 80%, 43%);
+    margin: 0 50px;
+}
+
+.topItem {
+    line-height: 50px;
+    color: aliceblue;
+    margin: 0 20px;
+    text-decoration: none;
+}
+
+.login {
+    line-height: 50px;
+    color: aliceblue;
+    margin: 0 20px;
+    text-decoration: none;
+    float: right;
+}
+
+.camera {
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    background-image: url(../img/file.jpg);
+    background-size: cover;
+    margin: 5px 20px;
+    text-decoration: none;
+    float: right;
+}
+
+.camera:hover {
+    transform: scale(1.2, 1.2);
+    z-index: 100;
+}
+
+.selfCenter {
+    line-height: 50px;
+    color: aliceblue;
+    padding: 0 20px;
+    text-decoration: none;
+    position: relative;
+    float: right;
+}
+
+.selfCenter:hover {
+    background-color: #fff;
+    color: hsl(223, 86%, 72%);
+    text-decoration: none;
+}
+
+.hidden {
+    width: 105px;
+    height: 250px;
+    background-color: #fff;
+    color: hsl(223, 86%, 72%);
+    display: none;
+    position: absolute;
+    right: 0;
+    z-index: 10;
+}
+
+/* 当鼠标悬停在个人中心上时hidden的样式为 */
+.selfCenter:hover>.hidden {
+    display: block;
+    z-index: 100;
+}
+
+.hideInform {
+    text-align: center;
+}
+
+.hideInform:hover {
+    background-color: hsl(225, 80%, 43%);
+    color: #fff;
+}
+
+/* 搜索栏 */
+.underTop {
+    overflow: hidden;
+    height: 60px;
+    background-color: hsl(223, 86%, 72%);
+}
+
+.searchBox {
+    width: 1000px;
+    height: 40px;
+    background-color: hsl(223, 86%, 72%);
+    margin: 10px auto;
+}
+
+.search {
+    vertical-align: top;
+    display: inline-block;
+    width: 300px;
+    height: 36px;
+    background-color: #fff;
+    border: 2px solid hsl(225, 80%, 43%);
+    border-radius: 5px;
+    outline-color: hsl(225, 80%, 43%);
+    margin-left: 120px;
+}
+
+.p {
+    display: inline-block;
+    color: #fff;
+    font-size: larger;
+}
+
+#orderForm {
+    display: inline-block;
+    border: 2px solid #fff;
+    border-radius: 5px;
+    font-size: larger;
+    height: 40px;
+    color: #fff;
+    background-color: hsl(225, 80%, 43%);
+    outline-style: none;
+    padding: 0 10px;
+}
+
+.searchBtn {
+    display: inline-block;
+    width: 100px;
+    height: 40px;
+    background-color: hsl(225, 80%, 43%);
+    color: #fff;
+    font-size: large;
+    border-radius: 5px;
+    border: 2px solid #fff;
+}
+
+.searchBtn:hover {
+    background-color: hsl(223, 86%, 72%);
+}
+
+/* 商品展示 */
+.addBtn {
+    display: inline-block;
+    padding-left: 10px;
+    padding-right: 10px;
+    height: 40px;
+    background-color: hsl(225, 80%, 43%);
+    color: #fff;
+    font-size: large;
+    border-radius: 5px;
+    border: 2px solid hsl(223, 86%, 72%);
+}
+
+.addBtn:hover {
+    background-color: hsl(223, 86%, 72%);
+}
+
+.title {
+    width: 400px;
+    height: 50px;
+    color: hsl(225, 80%, 43%);
+    margin: 40px auto;
+    font-size: xx-large;
+    font-weight: bolder;
+    line-height: 50px;
+}
+
+.anchor {
+    font-size: larger;
+    text-decoration: none;
+    color: hsl(225, 80%, 43%);
+    margin: 0 20px;
+}
+
+.commodity_data {
+    background-color: hsl(223, 79%, 89%);
+    width: 800px;
+    margin: 20px auto;
+    border: 2px solid hsl(225, 80%, 43%);
+    border-radius: 10px;
+    padding: 20px auto;
+}
+
+.container {
+    text-align: center;
+    width: 1200px;
+    border: 2px solid hsl(225, 80%, 43%);
+    margin: 20px auto;
+    border-radius: 10px;
+    padding-bottom: 20px;
+}
+
+.imgBox {
+    margin: 20px;
+    display: inline-block;
+    vertical-align: top;
+    transform: translateY(40%);
+}
+
+.contentBox {
+    font-size: large;
+    margin: 20px;
+    display: inline-block;
+    color: hsl(225, 80%, 43%);
+}
+
+.itemCategory,
+.itemPrice,
+.itemStock {
+    margin: 20px;
+}
+
+.itemTitle {
+    background-color: #fff;
+    border-radius: 5px;
+    height: 40px;
+    font-size: larger;
+    font-weight: bold;
+    line-height: 40px;
+    padding: 0 40px;
+}
+
+.itemPrice {
+    background-color: #fff;
+    border-radius: 5px;
+    height: 40px;
+    line-height: 40px;
+    font-weight: bolder;
+    padding: 0 40px;
+}
+
+.emptyComment {
+    color: hsl(225, 80%, 43%);
+    margin: 20px auto;
+    font-size: x-large;
+    font-weight: bolder;
+}
+
+#emptyComment {
+    width: 800px;
+    text-align: center;
+    margin: 10px auto;
+}
+
+/* 分页 */
+#pager {
+    text-align: center;
+    line-height: 80px;
+    font-size: larger;
+    width: 800px;
+    height: 80px;
+    margin: 0 auto;
+    cursor: pointer;
+}
+
+.numberselected {
+    background-color: hsl(223, 86%, 72%);
+    color: #fff;
+    padding: 0 8px;
+    margin: 0 10px 0 0;
+    border-radius: 4px;
+}
+
+.number {
+    margin: 0 10px 0 0;
+}
+
+.first,
+.prev,
+.omit,
+.next,
+.last,
+.total {
+    padding: 0 10px;
+}

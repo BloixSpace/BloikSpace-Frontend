@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>购物车</title>
+    <link rel="stylesheet" href="css/cart.css">
+</head>
+
+<body>
+    <!-- 导航栏 -->
+    <div class="top">
+        <p class="topBox">
+            <a href="homePage.html" class="topItem"
+                style="color: #94b0f6;font-size: larger;font-weight: bolder;">BloikSpace</a>
+            <a href="cart.html" class="topItem">购物车</a>
+            <a href="#" class="topItem">Q&A</a>
+            <a href="#" class="topItem">帮助</a>
+        </p>
+        <a href="" class="selfCenter">个人中心
+            <!-- 隐藏二级菜单 -->
+            <div id="rightMenu" class="hidden">
+                <li class="hideInform" id="notice">我的通知</li>
+                <li class="hideInform">我的收藏</li>
+                <li class="hideInform" id="newpswd">修改密码</li>
+                <li class="hideInform" id="order">我的订单</li>
+                <li class="hideInform" id="manageCommodity" style="display: none;">商品管理</li>
+                <li class="hideInform" id="manageOrder" style="display: none;">订单管理</li>
+                <li class="hideInform" id="logout">退出登录</li>
+            </div>
+        </a>
+        <a href="login.html" class="login" id="log">登录注册</a>
+        <div class="camera" id="camera">
+            <img src="img/file.jpg" style="width: 40px;height:40px;border-radius: 20px;"></img>
+        </div>
+    </div>
+
+    <!-- 购物车 -->
+    <div class="cartContainer">
+        <p class="title">我的购物车</p>
+        <!-- 操作按钮 -->
+        <div class="operate">
+            <button class="delete" id="empty">清空购物车</button>
+            <button class="delete" id="settle">结算购物车</button>
+            <a href="#TOP" class="anchor">&uArr;回到顶部</a>
+            <a href="#pager" class="anchor">&dArr;回到底部</a>
+            <span class="commodity_price" id="totalPrice"></span>
+        </div>
+        <div class="cartBox" id="cartBox">
+            <div class="cart" id="cart_data">
+                <img class="pic">
+                <div class="commodity_id">商品的id为</div>
+                <div class="commodity_title">商品的名称为</div>
+                <div class="commodity_price">商品的价格为</div>
+                <div class="commodity_stock">商品的库存为</div>
+                <button class="delete" id="delete">删除该商品</button>
+            </div>
+        </div>
+
+        <!-- 分页 -->
+        <div id="pager">
+
+        </div>
+        <!-- 操作按钮 -->
+        <div class="operate">
+            <a href="#TOP" class="anchor">&uArr;回到顶部</a><a href="#pager" class="anchor">&dArr;回到底部</a>
+        </div>
+    </div>
+
+</body>
+
+</html>
+<script src="js/cart.js"></script>

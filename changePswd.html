@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>更改密码</title>
+    <link rel="stylesheet" href="css/changePswd.css">
+</head>
+
+<body>
+    <!-- 导航栏 -->
+    <div class="top">
+        <p class="topBox">
+            <a href="homePage.html" class="topItem"
+                style="color: #94b0f6;font-size: larger;font-weight: bolder;">BloikSpace</a>
+            <a href="cart.html" class="topItem">购物车</a>
+            <a href="#" class="topItem">Q&A</a>
+            <a href="#" class="topItem">帮助</a>
+        </p>
+        <a href="" class="selfCenter">个人中心
+            <!-- 隐藏二级菜单 -->
+            <div id="rightMenu" class="hidden">
+                <li class="hideInform" id="notice">我的通知</li>
+                <li class="hideInform">我的收藏</li>
+                <li class="hideInform" id="newpswd">修改密码</li>
+                <li class="hideInform" id="order">我的订单</li>
+                <li class="hideInform" id="manageCommodity" style="display: none;">商品管理</li>
+                <li class="hideInform" id="manageOrder" style="display: none;">订单管理</li>
+                <li class="hideInform" id="logout">退出登录</li>
+            </div>
+        </a>
+        <a href="login.html" class="login" id="log">登录注册</a>
+        <div class="camera" id="camera">
+            <img src="img/file.jpg" style="width: 40px;height:40px;border-radius: 20px;"></img>
+        </div>
+    </div>
+    <script src="js/adminOther.js"></script>
+
+
+    <div class="formBox">
+        <div class="welcome">此处您可以更改密码</div>
+        <div class="inputBox">
+            <div class="left">旧密码</div><input type="password" id="oldpswd" class="input" placeholder=" 请输入原密码">
+        </div>
+        <div class="inputBox">
+            <div class="left">新密码</div><input type="password" id="newPswd" class="input" placeholder=" 请输入新密码">
+        </div>
+
+        <div class="btnBox">
+            <a href="homePage.html" class="anchor" target="_self">返 回</a>
+            <button type="reset" class="logbtn">重 置</button>
+            <button class="logbtn" id="submit">提 交</button>
+        </div>
+    </div>
+</body>
+
+</html>
+<script src="js/changePswd.js"></script>

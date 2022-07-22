@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>商品列表展示</title>
+    <link rel="stylesheet" href="css/manageCommodity.css">
+</head>
+
+<body>
+    <!-- 导航栏 -->
+    <div class="top">
+        <p class="topBox">
+            <a href="../homePage.html" class="topItem"
+                style="color: #94b0f6;font-size: larger;font-weight: bolder;">BloikSpace</a>
+            <a href="#" class="topItem">购物车</a>
+            <a href="#" class="topItem">Q&A</a>
+            <a href="#" class="topItem">帮助</a>
+        </p>
+        <a href="" class="selfCenter">个人中心
+            <!-- 隐藏二级菜单 -->
+            <div id="rightMenu" class="hidden">
+                <li class="hideInform" id="notice">我的通知</li>
+                <li class="hideInform">我的收藏</li>
+                <li class="hideInform" id="newpswd">修改密码</li>
+                <li class="hideInform" id="order">我的订单</li>
+                <li class="hideInform" id="manageCommodity" style="display: none;">商品管理</li>
+                <li class="hideInform" id="manageOrder" style="display: none;">订单管理</li>
+                <li class="hideInform" id="logout">退出登录</li>
+            </div>
+        </a>
+        <a href="../login.html" class="login" id="log">登录注册</a>
+        <div class="camera" id="camera">
+            <img src="../img/file.jpg" style="width: 40px;height:40px;border-radius: 20px;"></img>
+        </div>
+    </div>
+    <script src="js/adminOther.js"></script>
+    <!-- 搜索栏 -->
+    <div class="underTop">
+        <div class="searchBox" id="options">
+            <input type="text" class="search" id="keyWord" placeholder="请输入你想搜索的商品">
+            <button class="searchBtn" id="searchBtn">搜索</button>
+            <p class="p">排序方式</p>
+            <select id="orderForm">
+                <option value="update_time">按更新时间</option>
+                <option value="create_time">按创建时间</option>
+                <option value="price">按价格</option>
+                <option value="stock">按库存</option>
+                <option value="title">按名称</option>
+                <option value="sales">按销量</option>
+            </select>
+            <button class="searchBtn" id="orderBtn">从小到大</button>
+            <button class="searchBtn" id="orderBtnDesc">从大到小</button>
+        </div>
+    </div>
+    <!-- 商品展示 -->
+    <div class="container">
+        <div class="title">BloikSpace商品展示</div>
+        <button class="addBtn" id="add">点击添加新商品</button>
+        <a href="#TOP" class="anchor">&uArr;回到顶部</a><a href="#pager" class="anchor">&dArr;回到底部</a>
+        <!-- 动态渲染 -->
+        <div id="data">
+            <div class="commodity_data">
+
+            </div>
+        </div>
+        <!-- 分页 -->
+        <div id="pager">
+
+        </div>
+        <a href="#TOP" class="anchor">&uArr;回到顶部</a><a href="#pager" class="anchor">&dArr;回到底部</a>
+    </div>
+</body>
+
+</html>
+<script src="js/manageCommodity.js"></script>

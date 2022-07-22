@@ -1,0 +1,365 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    list-style: none;
+}
+
+.top {
+    height: 50px;
+    background-color: hsl(225, 80%, 43%);
+}
+
+.topBox {
+    display: inline-block;
+    height: 50px;
+    width: 500px;
+    background-color: hsl(225, 80%, 43%);
+    margin: 0 50px;
+}
+
+.topItem {
+    line-height: 50px;
+    color: aliceblue;
+    margin: 0 20px;
+    text-decoration: none;
+}
+
+.login {
+    line-height: 50px;
+    color: aliceblue;
+    margin: 0 20px;
+    text-decoration: none;
+    float: right;
+}
+
+.camera {
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    background-image: url(../img/file.jpg);
+    background-size: cover;
+    margin: 5px 20px;
+    text-decoration: none;
+    float: right;
+}
+
+.camera:hover {
+    transform: scale(1.2, 1.2);
+    z-index: 100;
+}
+
+.selfCenter {
+    line-height: 50px;
+    color: aliceblue;
+    padding: 0 20px;
+    text-decoration: none;
+    position: relative;
+    float: right;
+}
+
+.selfCenter:hover {
+    background-color: #fff;
+    color: hsl(223, 86%, 72%);
+    text-decoration: none;
+}
+
+.hidden {
+    width: 105px;
+    height: 250px;
+    background-color: #fff;
+    color: hsl(223, 86%, 72%);
+    display: none;
+    position: absolute;
+    right: 0;
+    z-index: 10;
+}
+
+/* 当鼠标悬停在个人中心上时hidden的样式为 */
+.selfCenter:hover>.hidden {
+    display: block;
+    z-index: 100;
+}
+
+.hideInform {
+    text-align: center;
+}
+
+.hideInform:hover {
+    background-color: hsl(225, 80%, 43%);
+    color: #fff;
+}
+
+/* 背景蓝色版心居中框 */
+.centerBox {
+    width: 1300px;
+    height: 1900px;
+    background-color: hsl(223, 79%, 89%);
+    margin: 0 auto;
+    border: 2px solid hsl(223, 79%, 89%);
+}
+
+/* 搜索栏 */
+.underTop {
+    overflow: hidden;
+    height: 60px;
+    background-color: hsl(223, 86%, 72%);
+}
+
+.searchBox {
+    width: 500px;
+    height: 40px;
+    background-color: hsl(223, 86%, 72%);
+    margin: 10px auto;
+}
+
+.search {
+    vertical-align: top;
+    display: inline-block;
+    width: 300px;
+    height: 36px;
+    background-color: #fff;
+    border: 2px solid hsl(225, 80%, 43%);
+    border-radius: 5px;
+    outline-color: hsl(225, 80%, 43%);
+    margin-left: 90px;
+}
+
+.searchBtn {
+    display: inline-block;
+    width: 100px;
+    height: 40px;
+    background-color: hsl(225, 80%, 43%);
+    color: #fff;
+    font-size: large;
+    border-radius: 5px;
+    border: 2px solid #fff;
+}
+
+.searchBtn:hover {
+    background-color: hsl(223, 86%, 72%);
+}
+
+/* 左侧菜单栏 */
+.leftNav {
+    float: left;
+    width: 300px;
+    height: 600px;
+    background-color: hsl(223, 86%, 72%);
+    margin: 20px 20px 20px 80px;
+    border-radius: 10px;
+}
+
+.leftLi {
+    height: 75px;
+    width: 300px;
+    color: #fff;
+    background-color: hsl(223, 86%, 72%);
+    text-align: center;
+    font-size: x-large;
+    font-weight: bolder;
+    line-height: 75px;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.leftLi:hover {
+    color: hsl(225, 80%, 43%);
+    background-color: #fff;
+}
+
+.leftLi:hover>.leftHide {
+    display: inline-block;
+    z-index: 100;
+}
+
+.icon {
+    margin-right: 10px;
+    float: right;
+    display: block;
+    font-size: x-large;
+    font-weight: bolder;
+}
+
+.leftHide {
+    position: absolute;
+    transform: translate(-20px, 20px);
+    display: inline-block;
+    z-index: 1;
+}
+
+.leftHide>img {
+    width: 600px;
+    height: 600px;
+}
+
+/* 轮播图 */
+a {
+    text-decoration: none;
+}
+
+/* 轮播图显示单框 */
+.container {
+    position: relative;
+    width: 800px;
+    height: 600px;
+    margin: 20px;
+    overflow: hidden;
+    border-radius: 2%;
+}
+
+.lis {
+    position: absolute;
+    width: 4000px;
+    /*整个图片层长度：500*5=2500*/
+    height: 600px;
+}
+
+.container .lis li {
+    float: left;
+    width: 800px;
+    height: 600px;
+}
+
+.container .lis li img {
+    width: 800px;
+    height: 600px;
+}
+
+.leftBtn,
+.rightBtn {
+    width: 30px;
+    height: 30px;
+    background-color: hsl(223, 79%, 89%);
+    border-radius: 20%;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    font-size: 20px;
+    color: hsl(225, 80%, 43%);
+    text-align: center;
+    line-height: 30px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.leftBtn {
+    left: 10px;
+}
+
+.rightBtn {
+    right: 10px;
+}
+
+.leftBtn:hover,
+.rightBtn:hover {
+    background-color: hsl(223, 86%, 72%);
+    color: hsl(225, 80%, 43%);
+    cursor: pointer;
+}
+
+.dotBox {
+    width: 200px;
+    height: 40px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    margin: 0 300px;
+    line-height: 40px;
+    padding: 0 40px;
+    box-sizing: border-box;
+}
+
+.dot {
+    float: right;
+    position: absolute;
+}
+
+.container .dotBox .dot li {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    float: left;
+    margin: 0 5px;
+    cursor: pointer;
+}
+
+.other {
+    background-color: hsl(223, 86%, 72%);
+}
+
+.current {
+    background-color: hsl(225, 80%, 43%);
+}
+
+/* 销量高商品展示 */
+.goodDisplay {
+    width: 1200px;
+    height: 1200px;
+    background-color: #fff;
+    margin: 10px auto;
+    border-radius: 10px;
+    border: 1px solid #fff;
+}
+
+.title {
+    height: 60px;
+    width: 800px;
+    margin: 40px auto;
+    color: hsl(225, 80%, 43%);
+    text-align: center;
+    font-size: xx-large;
+    font-weight: bolder;
+    line-height: 60px;
+}
+
+.title:hover {
+    color: hsl(223, 86%, 72%);
+}
+
+.goods {
+    display: inline-block;
+    width: 250px;
+    height: 250px;
+    background-color: hsl(225, 80%, 43%);
+    margin: 40px 0 20px 38px;
+    border-radius: 10px;
+}
+
+.goods:hover {
+    transform: scale(1.1, 1.1);
+}
+
+.enter {
+    display: block;
+    text-align: center;
+    font-size: x-large;
+    font-weight: bolder;
+    cursor: pointer;
+    width: 400px;
+    height: 60px;
+    background-color: hsl(223, 79%, 89%);
+    border-radius: 10px;
+    color: hsl(225, 80%, 43%);
+    margin: 20px auto;
+    line-height: 60px;
+}
+
+.enter:hover {
+    font-size: x-large;
+    color: hsl(223, 86%, 72%);
+}
+
+.copyright {
+    color: white;
+    font-size: larger;
+    font-weight: bolder;
+    line-height: 60px;
+    text-align: center;
+    margin-top: 40px;
+    height: 60px;
+    background-color: hsl(225, 80%, 43%);
+}

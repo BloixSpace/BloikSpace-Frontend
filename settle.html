@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>收银台</title>
+    <link rel="stylesheet" href="css/settle.css">
+</head>
+
+<body>
+    <!-- 导航栏 -->
+    <div class="top">
+        <p class="topBox">
+            <a href="homePage.html" class="topItem"
+                style="color: #94b0f6;font-size: larger;font-weight: bolder;">BloikSpace</a>
+            <a href="cart.html" class="topItem">购物车</a>
+            <a href="#" class="topItem">Q&A</a>
+            <a href="#" class="topItem">帮助</a>
+        </p>
+        <a href="" class="selfCenter">个人中心
+            <!-- 隐藏二级菜单 -->
+            <div id="rightMenu" class="hidden">
+                <li class="hideInform" id="notice">我的通知</li>
+                <li class="hideInform">我的收藏</li>
+                <li class="hideInform" id="newpswd">修改密码</li>
+                <li class="hideInform" id="order">我的订单</li>
+                <li class="hideInform" id="manageCommodity" style="display: none;">商品管理</li>
+                <li class="hideInform" id="manageOrder" style="display: none;">订单管理</li>
+                <li class="hideInform" id="logout">退出登录</li>
+            </div>
+        </a>
+        <a href="login.html" class="login" id="log">登录注册</a>
+        <div class="camera" id="camera">
+            <img src="img/file.jpg" style="width: 40px;height:40px;border-radius: 20px;"></img>
+        </div>
+    </div>
+
+    <!-- 动态渲染结算金额 -->
+    <div id="settleForm">
+        <p class="title">收银台</p>
+        <div class="box">
+            <span class="text">您的昵称 </span><input type="text" placeholder="请输入昵称" class="Input" id="nickname">
+        </div>
+        <div class="box">
+            <span class="text">手机号码 </span><input type="text" placeholder="请输入手机号" class="Input" id="tel">
+        </div>
+        <div class="box">
+            <span class="text">收货地址 </span><input type="text" placeholder="请输入收货地址" class="Input" id="address">
+        </div>
+        <div class="box">
+            <span class="text">订单备注 </span><input type="text" placeholder="请输入备注" class="Input" id="remark">
+        </div>
+        <div class="box">
+            <button class="confirm" id="settle">点击提交</button>
+        </div>
+
+    </div>
+</body>
+
+</html>
+<script src="js/settle.js"></script>

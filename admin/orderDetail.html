@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>订单详情</title>
+    <link rel="stylesheet" href="css/orderDetail.css">
+</head>
+
+<body>
+    <!-- 导航栏 -->
+    <div class="top">
+        <p class="topBox">
+            <a href="../homePage.html" class="topItem"
+                style="color: #94b0f6;font-size: larger;font-weight: bolder;">BloikSpace</a>
+            <a href="#" class="topItem">购物车</a>
+            <a href="#" class="topItem">Q&A</a>
+            <a href="#" class="topItem">帮助</a>
+        </p>
+        <a href="" class="selfCenter">个人中心
+            <!-- 隐藏二级菜单 -->
+            <div id="rightMenu" class="hidden">
+                <li class="hideInform" id="notice">我的通知</li>
+                <li class="hideInform">我的收藏</li>
+                <li class="hideInform" id="newpswd">修改密码</li>
+                <li class="hideInform" id="order">我的订单</li>
+                <li class="hideInform" id="manageCommodity" style="display: none;">商品管理</li>
+                <li class="hideInform" id="manageOrder" style="display: none;">订单管理</li>
+                <li class="hideInform" id="logout">退出登录</li>
+            </div>
+        </a>
+        <a href="../login.html" class="login" id="log">登录注册</a>
+        <div class="camera" id="camera">
+            <img src="../img/file.jpg" style="width: 40px;height:40px;border-radius: 20px;"></img>
+        </div>
+    </div>
+    <script src="js/adminOther.js"></script>
+
+    <!-- 动态渲染订单 -->
+    <div id="orderForm">
+        <p class="title">订单详情</p>
+        <!-- 商品图片 -->
+        <div id="commodityPic">
+            <img src="" />
+        </div>
+
+        <div id="commodityTitle">
+            抱歉，系统未查询到相关商品信息
+        </div>
+
+        昵称：<input type="text" id="nickname" /><br>
+        电话：<input type="text" id="phone" /><br>
+        地址：<input type="text" id="address"><br>
+        备注：<input type="text" id="remark"><br>
+        <p id="orderTime"></p>
+        <p id="isShip"></p>
+        <p id="shipTime"></p>
+        <p id="isReceipt"></p>
+        <p id="receiptTime"></p>
+        <button id="deleteOrder" class="confirm">申请取消订单</button>
+    </div>
+
+</body>
+
+</html>
+<script src="js/orderDetail.js"></script>

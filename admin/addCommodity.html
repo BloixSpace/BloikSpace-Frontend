@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>添加商品</title>
+    <link rel="stylesheet" href="css/addCommodity.css">
+</head>
+
+<body>
+    <!-- 导航栏 -->
+    <div class="top">
+        <p class="topBox">
+            <a href="../homePage.html" class="topItem"
+                style="color: #94b0f6;font-size: larger;font-weight: bolder;">BloikSpace</a>
+            <a href="#" class="topItem">购物车</a>
+            <a href="#" class="topItem">Q&A</a>
+            <a href="#" class="topItem">帮助</a>
+        </p>
+        <a href="" class="selfCenter">个人中心
+            <!-- 隐藏二级菜单 -->
+            <div id="rightMenu" class="hidden">
+                <li class="hideInform" id="notice">我的通知</li>
+                <li class="hideInform">我的收藏</li>
+                <li class="hideInform" id="newpswd">修改密码</li>
+                <li class="hideInform" id="order">我的订单</li>
+                <li class="hideInform" id="manageCommodity" style="display: none;">商品管理</li>
+                <li class="hideInform" id="manageOrder" style="display: none;">订单管理</li>
+                <li class="hideInform" id="logout">退出登录</li>
+            </div>
+        </a>
+        <a href="../login.html" class="login" id="log">登录注册</a>
+        <div class="camera" id="camera">
+            <img src="../img/file.jpg" style="width: 40px;height:40px;border-radius: 20px;"></img>
+        </div>
+    </div>
+    <script src="js/adminOther.js"></script>
+
+    <!-- 添加商品 -->
+    <div id="container">
+        <div id="commodityPic">
+            <p class="text1">上传商品</p>
+            <div id="preview">
+                <!-- 图片预览 -->
+            </div>
+            <p class="text2">上传图片（最多上传五张）</p>
+            <input type="file" id="files" accept="image/gif,image/jpeg,image/jpg,image/png,image/svg"
+                multiple="multiple">
+        </div>
+        <div id="commodityDetail">
+            商品名称：<input type="text" id="title" placeholder="请输入商品名称"><br>
+            商品描述：<input type="text" id="content" placeholder="请输入商品描述"><br>
+            商品分类：<input type="text" id="category" placeholder="请输入商品分类"><br>
+            商品价格：<input type="number" id="price" placeholder="请输入商品价格"><br>
+            库存数量：<input type="number" id="stock" placeholder="请输入商品库存数"><br>
+        </div>
+        <button id="submit">点击确认提交</button>
+
+    </div>
+</body>
+
+</html>
+<script src="js/addCommodity.js"></script>

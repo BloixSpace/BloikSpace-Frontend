@@ -1,0 +1,213 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    list-style: none;
+}
+
+.top {
+    height: 50px;
+    background-color: hsl(225, 80%, 43%);
+}
+
+.topBox {
+    display: inline-block;
+    height: 50px;
+    width: 500px;
+    background-color: hsl(225, 80%, 43%);
+    margin: 0 50px;
+}
+
+.topItem {
+    line-height: 50px;
+    color: aliceblue;
+    margin: 0 20px;
+    text-decoration: none;
+}
+
+.login {
+    line-height: 50px;
+    color: aliceblue;
+    margin: 0 20px;
+    text-decoration: none;
+    float: right;
+}
+
+.camera {
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    background-image: url(../img/file.jpg);
+    background-size: cover;
+    margin: 5px 20px;
+    text-decoration: none;
+    float: right;
+}
+
+.camera:hover {
+    transform: scale(1.2, 1.2);
+    z-index: 100;
+}
+
+.selfCenter {
+    line-height: 50px;
+    color: aliceblue;
+    padding: 0 20px;
+    text-decoration: none;
+    position: relative;
+    float: right;
+}
+
+.selfCenter:hover {
+    background-color: #fff;
+    color: hsl(223, 86%, 72%);
+    text-decoration: none;
+}
+
+.hidden {
+    width: 105px;
+    height: 250px;
+    background-color: #fff;
+    display: none;
+    position: absolute;
+    right: 0;
+    z-index: 10;
+}
+
+/* 当鼠标悬停在个人中心上时hidden的样式为 */
+.selfCenter:hover .hidden {
+    display: block;
+}
+
+.hideInform {
+    text-align: center;
+}
+
+.hideInform:hover {
+    background-color: hsl(225, 80%, 43%);
+    color: #fff;
+}
+
+.formBox {
+    width: 800px;
+    height: 500px;
+    background-color: #fff;
+    margin: 40px auto;
+    border: 2px solid hsl(223, 86%, 72%);
+    border-radius: 10px;
+}
+
+.inputBox {
+    width: 608px;
+    height: 60px;
+    margin: 40px auto;
+    border-radius: 10px;
+}
+
+.welcome {
+    width: 600px;
+    height: 60px;
+    margin: 60px auto;
+    color: hsl(223, 86%, 72%);
+    font-size: xx-large;
+    font-weight: bolder;
+    line-height: 60px;
+    text-align: center;
+}
+
+.left {
+    width: 80px;
+    height: 60px;
+    background-color: hsl(223, 69%, 86%);
+    display: inline-block;
+    border-radius: 10px 0 0 10px;
+    padding: 0 10px;
+    vertical-align: bottom;
+    color: hsl(225, 80%, 43%);
+    font-weight: bold;
+    font-size: large;
+    line-height: 60px;
+    text-align: center;
+    border: 2px solid hsl(225, 80%, 43%);
+}
+
+.input {
+    width: 500px;
+    height: 60px;
+    background-color: #fff;
+    border: 2px solid hsl(225, 80%, 43%);
+    border-left: 0px;
+    margin: 0;
+    color: hsl(225, 80%, 43%);
+    font-size: larger;
+    vertical-align: bottom;
+    outline-color: hsl(225, 80%, 43%);
+    border-radius: 0 10px 10px 0;
+}
+
+input::placeholder {
+    color: hsl(223, 69%, 86%);
+}
+
+.radio {
+    text-align: left;
+    display: inline-block;
+    width: 500px;
+    height: 60px;
+    background-color: #fff;
+    border: 2px solid hsl(225, 80%, 43%);
+    border-left: 0px;
+    margin: 0;
+    color: hsl(225, 80%, 43%);
+    font-size: larger;
+    line-height: 60px;
+    outline-color: hsl(225, 80%, 43%);
+    border-radius: 0 10px 10px 0;
+}
+
+.btnBox {
+    width: 604px;
+    height: 60px;
+    background-color: #fff;
+    margin: 20px auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+.logbtn {
+    background-color: hsl(225, 85%, 60%);
+    border: 2px solid hsl(225, 85%, 60%);
+    color: #fff;
+    font-size: larger;
+    margin: 10px 0;
+    padding: 0 20px;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+.logbtn:hover {
+    background-color: hsl(225, 89%, 72%);
+    border: 2px solid hsl(225, 89%, 72%);
+}
+
+.anchor {
+    display: inline-block;
+    height: 36px;
+    background-color: hsl(225, 85%, 60%);
+    border: 2px solid hsl(225, 85%, 60%);
+    color: #fff;
+    font-size: larger;
+    margin: 10px 0;
+    padding: 0 20px;
+    border-radius: 4px;
+    font-weight: bold;
+    text-decoration: none;
+    line-height: 36px;
+}
+
+.anchor:hover {
+    background-color: hsl(225, 89%, 72%);
+    border: 2px solid hsl(225, 89%, 72%);
+}

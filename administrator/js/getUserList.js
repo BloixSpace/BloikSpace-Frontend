@@ -23,9 +23,9 @@ window.onload = function(){
     }
     createPager({
         currentPage: 1,
-        limit: 10,
+        limit: 2,
         divNumber: 5,
-        order: "time",
+        order: "username",
         unread: null,
         pageNumber: 0
     })
@@ -55,15 +55,24 @@ window.onload = function(){
     // 动态渲染
     function adddata(arg) {
         var dataHtml = ""
-        for (let item of arg.notices) {
-            dataHtml += `<div class="notice_data">
-            <div class="class">${item.class}</div>
-            <div class="content">${item.content}</div>
-            <span class="time">${item.time}</span>
-            <span class="ifread">${item.unread == true ? "状态：未读" : "状态：已读"}</span>
-            <button class="delete_notice" id=${item.id}>删除此通知</button>
-            ${unreadstr}
-            ${detail}
+        var lev = '';
+        for (let item of arg.users) {
+            if(item.level == 1){
+                lev = "消费者"
+            }
+            if(item.level == 2){
+                lev = "商家"
+            }
+            if(item.level == 3){
+                lev = "管理员"
+            }
+            dataHtml += `<div class="user_data">
+            <img class="user_pic" src="${domain+item.avatarUri}"></img>
+            <div class="user_level">身份${lev}</div>
+            <div class="user_id">用户id为${item.id}</div>
+            <div class="user_username">用户名${item.username}</div>
+            <span class="user_signature">用户的签名${item.signature}</span>
+            <button class="user_delete">删除此通知</button>
             </div>`
         }
         document.getElementById("data").innerHTML = dataHtml
@@ -126,38 +135,49 @@ window.onload = function(){
                 topage(targetPage, pager)
             }
         }, false)
-        document.getElementById("data").addEventListener("click", function (e) {
-            var classlist = e.target.getAttribute('class')
-            console.log(classlist);
-            if (classlist.search("read_notice") !== -1) {
-                let noticeId = e.target.id
-                requestRead(noticeId)
-                setTimeout(() => {
-                    request(pager)
-                }, 200);
-            } else if (classlist.search("delete_notice") !== -1) {
-                let noticeId = e.target.id
-                requestDelete(noticeId)
-                setTimeout(() => {
-                    request(pager)
-                }, 200);
-            } else if (classlist.search("order_detail") !== -1) {
-                let orderId = e.target.id;
-                location.href = "orderDetail.html?id=" + orderId;
-            }
-        }, false)
-        var read = document.getElementById('read');
-        read.onclick = function () {
-            pager.unread = false;
-            request(pager);
-            return false;
+        // document.getElementById("data").addEventListener("click", function (e) {
+        //     var classlist = e.target.getAttribute('class')
+        //     console.log(classlist);
+        //     if (classlist.search("read_notice") !== -1) {
+        //         let noticeId = e.target.id
+        //         requestRead(noticeId)
+        //         setTimeout(() => {
+        //             request(pager)
+        //         }, 200);
+        //     } else if (classlist.search("delete_notice") !== -1) {
+        //         let noticeId = e.target.id
+        //         requestDelete(noticeId)
+        //         setTimeout(() => {
+        //             request(pager)
+        //         }, 200);
+        //     } else if (classlist.search("order_detail") !== -1) {
+        //         let orderId = e.target.id;
+        //         location.href = "orderDetail.html?id=" + orderId;
+        //     }
+        // }, false)
+        // var read = document.getElementById('read');
+        // read.onclick = function () {
+        //     pager.unread = false;
+        //     request(pager);
+        //     return false;
+        // }
+        // var unread = document.getElementById('unread');
+        // unread.onclick = function () {
+        //     pager.unread = true;
+        //     request(pager);
+        //     return false;
+        // }
+    }
+    function topage(page, pager) {
+        console.log("topage执行了")
+        if (page < 1) {
+            page = 1
         }
-        var unread = document.getElementById('unread');
-        unread.onclick = function () {
-            pager.unread = true;
-            request(pager);
-            return false;
+        if (page > pager.pageNumber) {
+            page = pager.pageNumber
         }
+        pager.currentPage = page
+        request(pager)
     }
     return false;
 }

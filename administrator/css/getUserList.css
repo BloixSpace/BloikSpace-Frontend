@@ -32,6 +32,10 @@
     font-size: larger;
 }
 
+.ani{
+    transition: all 0.2s;
+}
+
 .leftNav:hover{
     background-color: hsl(223, 72%, 58%);
     font-size: large;
@@ -87,6 +91,11 @@
     margin: 40px auto;
 }
 
+.user_pic{
+    width: 200px;
+    height: 200px;
+    border-radius: 100px;
+}
 /* 分页 */
 #pager {
     text-align: center;

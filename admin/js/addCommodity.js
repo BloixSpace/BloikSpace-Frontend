@@ -21,7 +21,26 @@ window.onload = function () {
             }
         }
     }
-
+    var Price = document.getElementById('price');
+    Price.onblur = function(){
+        if(Price.value == ''){
+            Price.value = "您未设置价格！";
+            Price.style.color = 'red';
+        }
+        else if(parseFloat(Price.value) <= 0){
+            Price.value = "价格只能是正数！";
+            Price.style.color = 'red';
+        }
+        return false;
+    }
+    var Stock = document.getElementById('stock');
+    Stock.onblur = function(){
+        if(!(/^[+]{0,1}(\d+)$/.exec(Stock.value))){
+            Stock.value = "库存只能是自然数！";
+            Stock.style.color = 'red';
+        }
+        return false;
+    }
     // 点击提交按钮
     var submitButton = document.getElementById("submit");
     submitButton.onclick = function () {

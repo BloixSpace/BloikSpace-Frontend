@@ -6,7 +6,7 @@
         document.getElementById("manageCommodity").style.display = 'block';
         document.getElementById("manageOrder").style.display = 'block';
     } else {
-        document.getElementById("rightMenu").style.height = '250';
+        document.getElementById("rightMenu").style.height = '250px';
         document.getElementById("manageCommodity").style.display = 'none';
         document.getElementById("manageOrder").style.display = 'none';
     }

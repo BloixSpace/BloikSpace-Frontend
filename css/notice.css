@@ -162,6 +162,7 @@ li {
 }
 
 .read_notice,
+.order_detail,
 .delete_notice {
     background-color: hsl(225, 80%, 43%);
     color: #fff;

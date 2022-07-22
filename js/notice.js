@@ -146,6 +146,10 @@ window.onload = function () {
             if (item.unread) {
                 unreadstr = `<button class="read_notice" id=${item.id}>标为已读</button>`
             }
+            var detail = "";
+            if (item.class != "消息类别：订单删除") {
+                detail = `<button class="order_detail" id=${item.order_id}>订单详情</button>`
+            }
             dataHtml += `<div class="notice_data">
             <div class="class">${item.class}</div>
             <div class="content">${item.content}</div>
@@ -153,6 +157,7 @@ window.onload = function () {
             <span class="ifread">${item.unread == true ? "状态：未读" : "状态：已读"}</span>
             <button class="delete_notice" id=${item.id}>删除此通知</button>
             ${unreadstr}
+            ${detail}
             </div>`
         }
         document.getElementById("data").innerHTML = dataHtml
@@ -230,6 +235,9 @@ window.onload = function () {
                 setTimeout(() => {
                     request(pager)
                 }, 200);
+            } else if (classlist.search("order_detail") !== -1) {
+                let orderId = e.target.id;
+                location.href = "orderDetail.html?id=" + orderId;
             }
         }, false)
         var read = document.getElementById('read');

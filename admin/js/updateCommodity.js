@@ -49,7 +49,36 @@ window.onload = function () {
             document.getElementById("preview").innerHTML = html;
         }
     }
-
+    var Price = document.getElementById('price');
+    Price.onblur = function(){
+        if(Price.value == 0){
+            Price.value = 0;
+            Price.style.color = 'red';
+        }
+        else if(Price.value <= 0){
+            Price.value = 0;
+            Price.style.color = 'red';
+        }
+        return false;
+    }
+    Price.onclick = function(){
+        Price.style.color = 'black';
+    }
+    var Stock = document.getElementById('stock');
+    Stock.onblur = function(){
+        if(Stock.value<=0){
+            Stock.value = 0;
+            Stock.style.color = 'red';
+        }
+        else {
+            Stock.value = Math.floor(Stock.value);
+            Stock.style.color = 'red';
+        }
+        return false;
+    }
+    Stock.onclick = function(){
+        Stock.style.color = 'black';
+    }
     // 点击提交按钮
     var submitButton = document.getElementById("submit");
     submitButton.onclick = function () {

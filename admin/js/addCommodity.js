@@ -23,23 +23,33 @@ window.onload = function () {
     }
     var Price = document.getElementById('price');
     Price.onblur = function(){
-        if(Price.value == ''){
-            Price.value = "您未设置价格！";
+        if(Price.value == 0){
+            Price.value = 0;
             Price.style.color = 'red';
         }
-        else if(parseFloat(Price.value) <= 0){
-            Price.value = "价格只能是正数！";
+        else if(Price.value <= 0){
+            Price.value = 0;
             Price.style.color = 'red';
         }
         return false;
     }
+    Price.onclick = function(){
+        Price.style.color = 'black';
+    }
     var Stock = document.getElementById('stock');
     Stock.onblur = function(){
-        if(!(/^[+]{0,1}(\d+)$/.exec(Stock.value))){
-            Stock.value = "库存只能是自然数！";
+        if(Stock.value<=0){
+            Stock.value = 0;
+            Stock.style.color = 'red';
+        }
+        else {
+            Stock.value = Math.floor(Stock.value);
             Stock.style.color = 'red';
         }
         return false;
+    }
+    Stock.onclick = function(){
+        Stock.style.color = 'black';
     }
     // 点击提交按钮
     var submitButton = document.getElementById("submit");

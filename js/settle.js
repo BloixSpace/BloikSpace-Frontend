@@ -52,9 +52,22 @@ window.onload = function () {
 //结算购物车
 var nickname = document.getElementById('nickname');
 var tel = document.getElementById('tel');
+var num = /^(13[0-9]|14[01456879]|15[0-35-9]|16[2567]|17[0-8]|18[0-9]|19[0-35-9])\d{8}$/;
+
 var address = document.getElementById('address');
 var remark = document.getElementById('remark');
 var settleBtn = document.getElementById('settle');
+tel.onblur = function(){
+    if (tel.value =="") {
+        tel.value = "您未输入手机号码";
+        tel.style.color = red;
+    }
+    else if(!num.test(tel.value)){
+        tel.value = "请输入正确的手机号码";
+        tel.style.color = red;
+    }
+    return false;
+}
 settleBtn.onclick = function () {
     var xhr = new XMLHttpRequest();
     xhr.open("post", `${domain}/cart/settle`);

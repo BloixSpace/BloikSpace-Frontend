@@ -67,12 +67,13 @@ window.onload = function(){
                 lev = "管理员"
             }
             dataHtml += `<div class="user_data">
-            <img class="user_pic" src="${domain+item.avatarUri}"></img>
-            <div class="user_level">身份${lev}</div>
-            <div class="user_id">用户id为${item.id}</div>
-            <div class="user_username">用户名${item.username}</div>
-            <span class="user_signature">用户的签名${item.signature}</span>
-            <button class="user_delete">删除此通知</button>
+            <div class="picBox"><img class="user_pic" src="${domain+item.avatar_uri}"></img></div>
+            <div class="contentBox"><div class="user_level">身份为：${lev}</div>
+            <div class="user_id">用户id为：${item.id}</div>
+            <div class="user_username">用户名为：${item.username}</div>
+            <div class="user_signature">用户的签名为：${item.signature}</div>
+            <button class="user_delete">删除此用户</button>
+            <button class="user_delete">查看用户详情</button></div>
             </div>`
         }
         document.getElementById("data").innerHTML = dataHtml

@@ -235,7 +235,6 @@ search.onclick = function () {
 }
 
 // 销量冠军显示
-
 function goodDisplay() {
     console.log("request执行了")
     var xhr = new XMLHttpRequest()

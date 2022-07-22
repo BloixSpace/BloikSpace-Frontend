@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HomePage</title>
+    <link rel="stylesheet" href="css/managerHomePage.css">
+</head>
+<body>
+    <!-- 左侧导航栏和上层导航栏 -->
+    <div class="leftBox">
+        <a class="leftImg"></a>
+        <a class="leftNav">你好</a>
+        <a class="leftNav" id="manage1">管理用户</a>
+        <div class="hidden ani" id="hidden1" style="display: none;">
+            <a class="leftNav">1</a>
+            <a class="leftNav">2</a>
+            <a class="leftNav">3</a>
+        </div>
+        <a class="leftNav" id="manage2">管理商品</a>
+        <div class="hidden ani" id="hidden2" style="display: none;">
+            <a class="leftNav">1</a>
+            <a class="leftNav">2</a>
+            <a class="leftNav">3</a>
+        </div>
+        <a class="leftNav">管理订单</a>
+        <a class="leftNav">管理首页</a>
+    </div><div class="rightBox">
+        <!-- 顶部导航栏 -->
+        <div class="top">
+            <a class="topNav">退出登录</a>
+            <a class="topNav">登录</a>
+        </div>
+        <!-- 右侧列表 -->
+        <div class="container">
+            <p class="title">我的消息</p>
+            <!-- 动态渲染 -->
+            <div id="data">
+                <div class="user_data">
+
+                </div>
+            </div>
+
+            <!-- 分页 -->
+            <div id="pager">
+
+            </div>
+        
+        </div>
+    </div>
+
+    
+    
+</body>
+</html>
+<script src="js/managerHomePage.js"></script>

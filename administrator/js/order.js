@@ -55,7 +55,7 @@ window.onload = function () {
     }
     var defaultPager = {
         currentPage: 1,
-        limit: 20,
+        limit: 10,
         divNumber: 7,
         order: "order_time",
         unread: false,
@@ -64,7 +64,7 @@ window.onload = function () {
     }
     createPager({
         currentPage: 1,
-        limit: 20,
+        limit: 10,
         divNumber: 7,
         order: "order_time",
         unread: false,
@@ -82,7 +82,7 @@ window.onload = function () {
         console.log("request执行了")
         var xhr2 = new XMLHttpRequest()
         console.log(pager.limit)
-        var url = `${domain}/order/queryList?page=${pager.currentPage}&page_size=${pager.limit}&order=${pager.order}`
+        var url = `${domain}/order/sellerQueryList?page=${pager.currentPage}&page_size=${pager.limit}&order=${pager.order}`
         if (pager.isShip != null) {
             url += `&is_ship=${pager.isShip}`
         }

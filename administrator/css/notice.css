@@ -1,0 +1,237 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+a{
+    text-decoration: none;
+}
+
+/* 左侧导航栏 */
+.leftBox{
+    position: fixed;
+    display: inline-block;
+    width: 12%;
+    height: 100vh;
+    background-color: hsl(223, 86%, 72%);
+    box-shadow: 2px 0 10px grey;
+}
+
+.leftImg{
+    text-align: center;
+    display: block;
+    width: 120px;
+    height: 120px;
+    background-color: #fff;
+    border-radius: 60px;
+    margin: 20px auto;
+}
+
+.leftNav{
+    cursor: pointer;
+    text-align: center;
+    line-height: 50px;
+    display: block;
+    height: 50px;
+    color: #fff;
+    font-size: larger;
+}
+
+.hideNav{
+    cursor: pointer;
+    text-align: center;
+    line-height: 50px;
+    display: block;
+    height: 50px;
+    color: hsl(223, 79%, 89%);
+}
+
+.ani{
+    transition: all 0.2s;
+}
+
+.leftNav:hover{
+    background-color: hsl(223, 72%, 58%);
+    font-size: large;
+    text-shadow: #fff 0 4px 4px;
+}
+
+.hideNav:hover{
+    background-color: hsl(223, 72%, 58%);
+    color: #fff;
+}
+
+.rightBox{
+    float: right;
+    vertical-align: top;
+    display: inline-block;
+    width: 88%;
+}
+
+/* 顶部 */
+.top{
+    width: 100%;
+    display: inline-block;
+    height: 60px;
+    vertical-align: top;
+    background-color: hsl(223, 79%, 89%);
+    box-shadow: hsl(225, 80%, 43%) 2px 4px 20px;
+    line-height: 50px;
+}
+
+.topNav,
+.topNav1{
+    /* border: 2px solid hsl(223, 72%, 58%);
+    border-radius: 5px; */
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-top: 8px;
+    margin-right: 20px;
+    cursor: pointer;
+    text-align: center;
+    line-height: 40px;
+    display: inline-block;
+    height: 40px;
+    color: hsl(223, 72%, 58%);
+    font-weight: bold;
+    font-size: x-large;
+}
+
+.topNav{
+    float: right;
+}
+
+.topNav1{
+    float: left;
+}
+
+.topNav:hover,
+.topNav1:hover{
+    color: hsl(223, 86%, 72%);
+}
+
+/* 动态渲染消息 */
+.container {
+    width: 1100px;
+    margin: 20px auto;
+    border: 2px solid hsl(225, 80%, 43%);
+    border-radius: 10px;
+    padding-bottom: 20px;
+}
+
+.title {
+    width: 500px;
+    height: 80px;
+    color: hsl(225, 80%, 43%);
+    margin: 20px auto;
+    line-height: 80px;
+    text-align: center;
+    font-size: xx-large;
+    font-weight: bolder;
+}
+
+.operate {
+    text-align: center;
+    font-size: larger;
+    height: 50px;
+    line-height: 50px;
+}
+
+.confirm {
+    background-color: hsl(223, 86%, 72%);
+    color: #fff;
+    font-size: large;
+    padding: 2px 6px;
+    border-radius: 5px;
+    border: 2px solid hsl(225, 80%, 43%);
+    cursor: pointer;
+    margin: 10px;
+}
+
+.confirm:hover {
+    background-color: hsl(225, 80%, 43%);
+}
+
+.anchor {
+    text-decoration: none;
+    color: hsl(225, 80%, 43%);
+    margin: 0 20px;
+}
+
+.time,
+.ifread {
+    font-size: medium;
+    color: hsl(225, 80%, 43%);
+}
+
+.content {
+    color: hsl(225, 79%, 26%);
+    font-size: larger;
+}
+
+.notice_data {
+    width: 800px;
+    padding: 5px;
+    background-color: hsl(223, 79%, 89%);
+    margin: 20px auto;
+    line-height: 50px;
+    border: 2px solid hsl(225, 80%, 43%);
+    border-radius: 10px;
+}
+
+.read_notice,
+.order_detail,
+.delete_notice {
+    background-color: hsl(225, 80%, 43%);
+    color: #fff;
+    font-size: larger;
+    padding: 2px 6px;
+    border-radius: 5px;
+    border: 2px solid #fff;
+    cursor: pointer;
+    float: right;
+    margin: 10px;
+}
+
+.read_notice:hover,
+.delete_notice:hover {
+    background-color: hsl(223, 86%, 72%);
+}
+
+.class {
+    color: hsl(225, 80%, 43%);
+    font-size: larger;
+    font-weight: bolder;
+}
+
+/* 分页 */
+#pager {
+    text-align: center;
+    line-height: 80px;
+    font-size: larger;
+    width: 800px;
+    height: 80px;
+    margin: 0 auto;
+    cursor: pointer;
+}
+
+.numberselected {
+    background-color: hsl(223, 86%, 72%);
+    color: #fff;
+    padding: 0 8px;
+    margin: 0 10px 0 0;
+    border-radius: 4px;
+}
+
+.number {
+    margin: 0 10px 0 0;
+}
+
+.first,
+.prev,
+.omit,
+.next,
+.last,
+.total {
+    padding: 0 10px;
+}

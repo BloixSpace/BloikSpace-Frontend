@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>获取用户列表</title>
+    <link rel="stylesheet" href="css/notice.css">
+</head>
+<body>
+    <!-- 左侧导航栏和上层导航栏 -->
+    <div class="leftBox">
+        <a class="leftImg"></a>
+        <a class="leftNav">你好</a>
+        <a class="leftNav" id="manage1">管理用户</a>
+        <div class="hidden ani" id="hidden1" style="display: none;">
+            <a class="hideNav" href="getUserList.html">获取用户列表</a>
+            <a class="hideNav">查看用户信息</a>
+            <a class="hideNav" href="addUser.html">添加新用户</a>
+        </div>
+        <a class="leftNav" id="manage2">管理商品</a>
+        <div class="hidden ani" id="hidden2" style="display: none;">
+            <a class="hideNav">查看商品列表</a>
+            <a class="hideNav">2</a>
+            <a class="hideNav">3</a>
+        </div>
+        <a class="leftNav">管理订单</a>
+        <a class="leftNav">管理首页</a>
+
+    </div><div class="rightBox">
+        <!-- 顶部导航栏 -->
+        <div class="top" id="top">
+            <a class="topNav1">BloikSpace</a>
+            <a class="topNav">退出登录</a>
+            <a class="topNav" href="../login.html">登录</a>
+        </div>
+        <!-- 右侧 -->
+        <div class="container">
+            <p class="title">我的消息</p>
+            <div class="operate">
+                <button class="confirm" id="read">仅查看已读</button>
+                <button class="confirm" id="unread">仅查看未读</button>
+                <button class="confirm" id="cancel">取消</button>
+                <a href="#TOP" class="anchor">&uArr;回到顶部</a><a href="#pager" class="anchor">&dArr;回到底部</a>
+            </div>
+            <div id="data">
+                <div class="notice_data">
+    
+                </div>
+            </div>
+    
+            <div id="pager">
+    
+            </div>
+            <div class="operate">
+                <a href="#TOP" class="anchor">&uArr;回到顶部</a><a href="#pager" class="anchor">&dArr;回到底部</a>
+            </div>
+        </div>
+        
+    </div>
+
+   
+    
+</body>
+</html>
+<script src="js/notice.js"></script>

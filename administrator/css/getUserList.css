@@ -254,7 +254,7 @@ a{
 }
 
 .userName,
-.userLevel,
+.userPswd,
 .userNickname,
 .userSignature{
     outline-style: none;
@@ -268,9 +268,11 @@ a{
     font-size: large;
 }
 
-.userName::placeholder{
+.userPswd::placeholder{
     color: hsl(223, 72%, 58%);
 }
+
+.userLevel
 
 .userTime{
     width: 500px;

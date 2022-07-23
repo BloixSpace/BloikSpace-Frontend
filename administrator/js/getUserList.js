@@ -233,8 +233,10 @@ window.onload = function () {
                             <img src=${domain+res.avatar_uri} class="img">
                         </div>
                         用户名：<input type="text" class="userName" value="${res.username}"></input><br>
-                        密 码 ：<input type="text" class="userName" placeholder="若不输入此空，默认不做修改"></input><br>
-                        身 份 ：<input type="radio" class="userLevel" value="${Level}"></input><br>
+                        密 码 ：<input type="text" class="userPswd" placeholder="若不输入此空，默认不做修改"></input><br>
+                        身 份 ：<input type="radio" class="userLevel" name="level""> 消费者</input>
+                        <input type="radio" class="userLevel" name="level""> 卖家</input>
+                        <input type="radio" class="userLevel" name="level""> 管理员</input><br>
                         签 名 ：<input type="text" class="userSignature" value="${res.signature}"></input><br>
                         <div class="userTime">创建时间：${res.create_date}</div><br>
                         <button class="user_delete" id="back">返回</button>

@@ -282,6 +282,15 @@ window.onload = function () {
                 all.innerHTML = "全选此页";
             }
         }
+
+        var unselectAll = document.getElementById("unselectAll");
+        unselectAll.onclick = function () {
+            window.localStorage.setItem("userSelect", "[]");
+            for (var i = 0; i < inputs.length; i++) {
+                inputs[i].checked = false;
+                clickSelect(inputs[i].id, false);
+            }
+        }
     }
 
     // 选择被点击

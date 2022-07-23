@@ -404,6 +404,6 @@ input::placeholder {
     border: 2px solid hsl(223, 86%, 72%);
 }
 
-#submit:hover {
+#submit:hover,#submit:hover{
     background-color: hsl(223, 86%, 72%);
 }

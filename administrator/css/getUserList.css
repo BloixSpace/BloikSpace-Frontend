@@ -228,7 +228,7 @@ a{
     top: 50%;
     background-color: #fff;
     transform: translate(-50%, -50%);
-    width: 800px;
+    width: 900px;
     height: 600px;
     text-align: center;
     z-index: 11;
@@ -254,6 +254,8 @@ a{
 .userNickname,
 .userSignature,
 .userTime{
+    width: 400px;
+    height: 40px;
     margin: 10px auto;
     background-color: pink;
 }

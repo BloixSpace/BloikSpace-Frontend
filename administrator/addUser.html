@@ -35,11 +35,33 @@
             <a class="topNav" href="../login.html">登录</a>
         </div>
         <!-- 右侧 -->
-        <div class="container">
-            <p class="title">添加新用户</p>
-            <div class="contentBox">
-                <div class="imgBox"></div>
-                <div></div>
+        <div class="formBox">
+            <div class="welcome">添加新用户</div>
+            <div class="imgBox"><img src=""></div>
+            <input type="file">
+            <div class="inputBox">
+                <div class="left">身 份</div><div class="radio">
+                    &nbsp;商家 <input type="radio" name="role">
+                    消费者 <input type="radio" name="role">
+                </div>
+            </div>
+            <div class="inputBox">
+                <div class="left">用户名</div><input type="text" class="input" id="username"
+                    placeholder=" 请输入您希望在BloikSpAce创建的账户名">
+            </div>
+            <div class="inputBox">
+                <div class="left">密 码</div><input type="password" id="password" class="input" 
+                placeholder=" 请输入密码">
+            </div>
+            <div class="inputBox">
+                <div class="left">个性签名</div><input type="text" class="input" id="motto" 
+                placeholder=" 留下你的个性签名，让我们更好地认识你">
+            </div>
+    
+            <div class="btnBox">
+                <a href="login.html" class="anchor" target="_self">返 回</a>
+                <button type="reset" class="logbtn">重 置</button>
+                <button class="logbtn" id="submit">提 交</button>
             </div>
         </div>
     </div>

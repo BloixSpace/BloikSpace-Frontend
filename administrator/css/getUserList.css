@@ -252,12 +252,21 @@ a{
 .userName,
 .userLevel,
 .userNickname,
-.userSignature,
-.userTime{
+.userSignature{
     width: 400px;
     height: 40px;
     margin: 10px auto;
-    background-color: pink;
+    border: 2px solid hsl(223, 72%, 58%);
+    border-radius: 5px;
+    padding-left: 10px;
+    color: hsl(223, 72%, 58%);
+    font-size: large;
+}
+
+.userTime{
+    width: 500px;
+    height: 40px;
+    margin: 20px auto;
 }
 /* 分页 */
 #pager {

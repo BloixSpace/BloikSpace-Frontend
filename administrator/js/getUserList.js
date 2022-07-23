@@ -235,8 +235,9 @@ window.onload = function () {
                         用户名为：<input type="text" class="userName" value="${res.username}"></input><br>
                         身份为：<input type="text" class="userLevel" value="${Level}"></input><br>
                         签名为：<input type="text" class="userSignature" value="${res.signature}"></input><br>
-                        创建时间为：<div class="userTime"></div><br>
+                        <div class="userTime">创建时间为：${res.create_date}</div><br>
                         <button class="user_delete" id="back">返回</button>
+                        <button class="user_delete" id="modifi">确认修改</button>
                     </div>`;
                         document.getElementById('shade').innerHTML=html;
                     }

@@ -228,7 +228,6 @@ a{
     vertical-align: top;
     transform: translateY(40%);
 }
-
 .contentBox {
     font-size: large;
     margin: 20px;
@@ -304,4 +303,107 @@ a{
 .last,
 .total {
     padding: 0 10px;
+}
+
+/* 遮罩 */
+.shade{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.4);
+    display: block;
+}
+
+.shade::after{
+    content: "";
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    backdrop-filter: blur(3px);
+}
+
+.pop{
+    position: absolute;
+    left: 56%;
+    top: 50%;
+    background-color: #fff;
+    transform: translate(-50%, -50%);
+    width: 1000px;
+    height: 600px;
+    text-align: center;
+    z-index: 1000;
+    font-size: large;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin: 20px auto;
+    border: 2px solid hsl(225, 80%, 43%);
+    border-radius: 10px;
+}
+.pic {
+    margin: 20px;
+}
+
+.text1,
+.text2 {
+    text-align: center;
+    color: hsl(225, 80%, 43%);
+    font-weight: bold;
+    margin: 20px auto;
+}
+
+.text1 {
+    font-size: xx-large;
+}
+
+.text2 {
+    font-size: large;
+}
+
+#files {
+    width: 220px;
+    font-size: large;
+    font-weight: bold;
+    color: hsl(225, 80%, 43%);
+    margin: 10px auto;
+}
+
+#commodityDetail {
+    color: hsl(225, 80%, 43%);
+    font-size: large;
+    font-weight: bold;
+}
+
+#title,
+#content,
+#category,
+#price,
+#stock {
+    margin: 10px auto;
+    height: 40px;
+    outline-style: none;
+    border-radius: 5px;
+    border: 2px solid hsl(225, 80%, 43%);
+    font-size: large;
+    width: 600px;
+}
+
+input::placeholder {
+    color: hsl(223, 86%, 72%);
+}
+
+#submit {
+    margin-top: 20px;
+    display: inline-block;
+    padding-left: 10px;
+    padding-right: 10px;
+    height: 40px;
+    background-color: hsl(225, 80%, 43%);
+    color: #fff;
+    font-size: larger;
+    border-radius: 5px;
+    border: 2px solid hsl(223, 86%, 72%);
+}
+
+#submit:hover {
+    background-color: hsl(223, 86%, 72%);
 }

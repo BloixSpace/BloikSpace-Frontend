@@ -1,3 +1,4 @@
+//隐藏菜单
 var manage1 = document.getElementById('manage1');
 var hidden1 = document.getElementById('hidden1');
 manage1.onclick = function(){
@@ -10,29 +11,65 @@ manage2.onclick = function(){
     hidden2.style.display = (hidden2.style.display == 'none'? 'block':'none');
     return false;
 }
+//点击头像跳转到上传头像界面
+var camera = document.getElementById('camera');
+camera.onclick = function () {
+    location.href = "../uploadPic.html";
+    return false;
+}
+
+var search = document.getElementById('searchBtn');
+search.onclick = function () {
+    var keyWord = document.getElementById('keyWord').value;
+    console.log(keyWord);
+    var url = "manageCommodity.html?key=" + document.getElementById('keyWord').value;
+    location.href = (`${url}`);
+    return false;
+}
+//点击二级菜单的退出登录实现登出，登出接口
+var logout = document.getElementById('logout');
+logout.onclick = function () {
+    var xhr1 = new XMLHttpRequest();
+    var url = 'https://forum.wyy.ink/user/logout';
+    xhr1.open("GET", url, true);
+    xhr1.withCredentials = true;
+    xhr1.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    xhr1.send();
+    xhr1.onreadystatechange = function () {
+        if (xhr1.readyState === 4 && xhr1.status === 200) {
+            var storage = JSON.parse(xhr1.responseText);
+            console.log("已经成功登出");
+            window.localStorage.ifLogin = '0';
+            location.href = "../homePage.html";
+        }
+    }
+    return false;
+}
+
+
 window.onload = function () {
-    // //检查登录状态，更新头像及用户名
-    // var cameraUri, userName;
-    // var xhr0 = new XMLHttpRequest();
-    // xhr0.open("get", "https://forum.wyy.ink/user/getUserInfo");
-    // xhr0.withCredentials = true;
-    // xhr0.setRequestHeader('Content-Type', 'application/json');
-    // xhr0.send();
-    // xhr0.onreadystatechange = function () {
-    //     if (xhr0.readyState === 4 && xhr0.status === 200) {
-    //         var res0 = JSON.parse(xhr0.responseText);
-    //         if (res0.status == '1') {
-    //             cameraUri = 'https://forum.wyy.ink' + res0.avatar_uri;
-    //             console.log(cameraUri);
-    //             userName = '你好,' + res0.username;
-    //             document.getElementById('camera').innerHTML = `<img src="${cameraUri}" style="width: 40px;height:40px;border-radius: 20px;"></img>`;
-    //             document.getElementById('log').innerText = userName;
-    //         } else {
-    //             alert("很抱歉，登录失败！登录状态为：" + res0.status + "\n失败原因是：" + res0.errMsg);
-    //             location.href = "login.html";
-    //         }
-    //     }
-    // }
+    //检查登录状态，更新头像及用户名
+    var cameraUri, userName;
+    var xhr0 = new XMLHttpRequest();
+    xhr0.open("get", "https://forum.wyy.ink/user/getUserInfo");
+    xhr0.withCredentials = true;
+    xhr0.setRequestHeader('Content-Type', 'application/json');
+    xhr0.send();
+    xhr0.onreadystatechange = function () {
+        if (xhr0.readyState === 4 && xhr0.status === 200) {
+            var res0 = JSON.parse(xhr0.responseText);
+            if (res0.status == '1') {
+                cameraUri = 'https://forum.wyy.ink' + res0.avatar_uri;
+                console.log(cameraUri);
+                userName = '你好,' + res0.username;
+                document.getElementById('camera').innerHTML = `<img src="${cameraUri}" style="width: 120px;height:120px;border-radius: 60px;"></img>`;
+                document.getElementById('log').innerText = userName;
+            } else {
+                alert("很抱歉，登录失败！登录状态为：" + res0.status + "\n失败原因是：" + res0.errMsg);
+                location.href = "../login.html";
+            }
+        }
+    }
     var params = new URLSearchParams(window.location.search)
     var domain = "https://forum.wyy.ink"
     var defaultPager = {
@@ -66,23 +103,18 @@ window.onload = function () {
         console.log("request执行了")
         var xhr = new XMLHttpRequest()
         console.log(pager.limit)
+        var local = window.localStorage;
         var desc = "";
-        if (pager.desc) desc = "&desc=true";
-        xhr.open("get", `${domain}/commodity/list?page=${pager.currentPage}&page_size=${pager.limit}&order=${pager.order}&key=${pager.key}${desc}`)
+        if (pager.desc) {
+            desc = "&desc=true";
+        }
+        xhr.open("get", `${domain}/commodity/list?page=${pager.currentPage}&page_size=${pager.limit}&order=${pager.order}&key=${pager.key}&user_id=${local.userId}${desc}`)
         xhr.withCredentials = true
         xhr.send()
         xhr.onreadystatechange = function () {
             if (xhr.readyState === 4 && xhr.status === 200) {
                 var res = JSON.parse(xhr.responseText)
                 pager.pageNumber = res.page_num
-                if (res.num == 0) {
-                    var emptyHtml = `<div id="emptyComment">
-                    <p class="emptyComment">这里空空如也</p>
-                    <p class="emptyComment">没有找到任何符合条件商品</p>
-                    </div>`
-                    document.getElementById("data").innerHTML = emptyHtml;
-                    return;
-                }
                 adddata(res)
                 show(pager)
             }
@@ -99,7 +131,7 @@ window.onload = function () {
             <span class="imgBox"><img src=${domain+picUri} style="width: 100px;height:100px;" class="displayImg"></span>
             <span class="contentBox">
             <div class="itemTitle">${item.title}</div>
-            <div class="itemCategory">类别：${item.category}</div>
+            <div class="itemCategory">${item.category}类商品</div>
             <div class="itemPrice">售价${item.price}元</div>
             <div class="itemStock">销量${item.sales}件</div>
             <div class="itemStock">库存 ${item.stock >= 100 ? "100+件" : "剩余"+item.stock+"件"}</div>
@@ -110,12 +142,12 @@ window.onload = function () {
     }
 
     function show(pager) {
-        // document.getElementById("keyWord").value = pager.key
-        // var orderSelect = document.getElementById("orderForm");
-        // for (i = 0; i < orderSelect.length; i++) {
-        //     if (orderSelect[i].value == pager.order)
-        //         orderSelect[i].selected = true;
-        // }
+        document.getElementById("keyWord").value = pager.key
+        var orderSelect = document.getElementById("order");
+        for (i = 0; i < orderSelect.length; i++) {
+            if (orderSelect[i].value == pager.order)
+                orderSelect[i].selected = true;
+        }
         var min, max
         min = pager.currentPage - Math.floor(pager.divNumber / 2)
         if (min < 1) {
@@ -171,17 +203,18 @@ window.onload = function () {
                 var targetPage = Number(e.target.innerText)
                 topage(targetPage, pager)
             }
-        }, false)
+        }, false);
         document.getElementById("data").addEventListener("click", function (e) {
             var classlist = e.target.parentNode.parentNode.getAttribute('class')
             console.log(classlist)
             if (classlist.search("commodity_data") !== -1) {
                 var id = e.target.parentNode.parentNode.getAttribute("id")
                 console.log(id)
-                location.href = (`goodDetails.html?id=${id}`)
+                location.href = (`updateCommodity.html?id=${id}`)
             }
-        }, false)
-        var btn = document.getElementById('orderBtn');
+        }, false);
+
+        var btn = document.getElementById("orderBtn");
         btn.onclick = function () {
             var orderForm = document.getElementById("orderForm");
             for (var i = 0; i < orderForm.length; i++) {
@@ -189,12 +222,13 @@ window.onload = function () {
                     var selectedValue = orderForm[i].value;
                 }
             }
-            pager.order = selectedValue;
+            console.log(selectedValue);
             pager.desc = false;
+            pager.order = selectedValue;
             request(pager);
             return false;
         }
-        var btn1 = document.getElementById('orderBtnDesc');
+        var btn1 = document.getElementById("orderBtnDesc");
         btn1.onclick = function () {
             var orderForm = document.getElementById("orderForm");
             for (var i = 0; i < orderForm.length; i++) {
@@ -202,11 +236,24 @@ window.onload = function () {
                     var selectedValue = orderForm[i].value;
                 }
             }
-            pager.order = selectedValue;
+            console.log(selectedValue);
             pager.desc = true;
+            pager.order = selectedValue;
             request(pager);
             return false;
         }
+        document.getElementById('data').addEventListener("click",function(e){
+            var classlist = e.target.getAttribute('class');
+            if(classlist.search("addBtn")!== -1){
+                var shade = document.getElementById('shade');
+                shade.style.display = 'block';
+            }
+            // else if(Class.search("check")!== -1){
+            //     if()
+            //     idarr.push(e.target.id);
+            //     console.log(idarr);
+            // }
+        },false)
     }
 
     function topage(page, pager) {
@@ -220,14 +267,5 @@ window.onload = function () {
         pager.currentPage = page
         request(pager)
     }
-    return false;
-}
-
-var search = document.getElementById('searchBtn');
-search.onclick = function () {
-    var keyWord = document.getElementById('keyWord').value;
-    console.log(keyWord);
-    var url = "goodDisplay.html?key=" + document.getElementById('keyWord').value;
-    location.href = (`${url}`);
     return false;
 }

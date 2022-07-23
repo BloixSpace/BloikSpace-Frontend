@@ -52,7 +52,12 @@ window.onload = function () {
                 }
                 if (storage.status == 1) {
                     local.ifLogin = '1';
-                    location.href = ("homePage.html");
+                    if(local.level != 1){
+                        location.href = "administrator/home.html";
+                    }
+                    else{
+                        location.href = "homePage.html";
+                    }
                 }
             }
         }

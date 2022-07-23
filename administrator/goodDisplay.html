@@ -8,10 +8,34 @@
     <link rel="stylesheet" href="css/goodDisplay.css">
 </head>
 <body>
+    <!-- 遮罩层 -->
+    <div class="shade" id="shade">
+        <!-- 弹出层 -->
+        <div class="pop">
+            <div id="commodityPic">
+                <p class="text1">上传商品</p>
+                <div id="preview">
+                    <!-- 图片预览 -->
+                </div>
+                <p class="text2">上传图片（最多上传五张）</p>
+                <input type="file" id="files" accept="image/gif,image/jpeg,image/jpg,image/png,image/svg" multiple="multiple">
+            </div>
+            <div id="commodityDetail">
+                商品名称：<input type="text" id="title" placeholder="请输入商品名称"><br>
+                商品描述：<input type="text" id="content" placeholder="请输入商品描述"><br>
+                商品分类：<input type="text" id="category" placeholder="请输入商品分类"><br>
+                商品价格：<input type="number" id="price" placeholder="请输入商品价格"><br>
+                库存数量：<input type="number" id="stock" placeholder="请输入商品库存数"><br>
+            </div>
+            <button id="submit">点击确认提交</button>
+        </div>
+    </div>
+
+
     <!-- 左侧导航栏和上层导航栏 -->
     <div class="leftBox">
-        <a class="leftImg"></a>
-        <a class="leftNav">你好</a>
+        <a class="leftImg" id="camera"></a>
+        <a class="leftNav" id="log">你好</a>
         <a class="leftNav" id="manage1">管理用户</a>
         <div class="hidden ani" id="hidden1" style="display: none;">
             <a class="hideNav" href="getUserList.html">获取用户列表</a>
@@ -31,7 +55,7 @@
         <!-- 顶部导航栏 -->
         <div class="top" id="top">
             <a class="topNav1" href="home.html">BloikSpace</a>
-            <a class="topNav">退出登录</a>
+            <a class="topNav" id="logout">退出登录</a>
             <a class="topNav" href="../login.html">登录</a>
         </div>
         <!-- 搜索栏 -->
@@ -52,10 +76,14 @@
                 <button class="searchBtn" id="orderBtnDesc">从大到小</button>
             </div>
         </div>
+
+        
+
+
         <!-- 商品展示 -->
         <div class="container">
             <div class="title">BloikSpace商品展示</div>
-            <!-- <button class="addBtn" id="add">点击添加新商品</button> -->
+            <button class="addBtn" id="add">点击添加新商品</button>
             <a href="#TOP" class="anchor">&uArr;回到顶部</a><a href="#pager" class="anchor">&dArr;回到底部</a>
             <!-- 动态渲染 -->
             <div id="data">

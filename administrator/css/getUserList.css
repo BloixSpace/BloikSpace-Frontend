@@ -34,6 +34,7 @@ a{
     height: 50px;
     color: #fff;
     font-size: larger;
+    transition: all 0.5s;
 }
 
 .hideNav{
@@ -43,6 +44,7 @@ a{
     display: block;
     height: 50px;
     color: hsl(223, 79%, 89%);
+    transition: all 0.5s;
 }
 
 .ani{
@@ -53,11 +55,13 @@ a{
     background-color: hsl(223, 72%, 58%);
     font-size: large;
     text-shadow: #fff 0 4px 4px;
+    transition: all 0.5s;
 }
 
 .hideNav:hover{
     background-color: hsl(223, 72%, 58%);
     color: #fff;
+    transition: all 0.5s;
 }
 
 .rightBox{
@@ -94,6 +98,7 @@ a{
     color: hsl(223, 72%, 58%);
     font-weight: bold;
     font-size: x-large;
+    transition: all 0.5s;
 }
 
 .topNav{
@@ -107,6 +112,7 @@ a{
 .topNav:hover,
 .topNav1:hover{
     color: hsl(223, 86%, 72%);
+    transition: all 0.5s;
 }
 
 /* 动态渲染 */

@@ -35,6 +35,7 @@ a{
     height: 50px;
     color: #fff;
     font-size: larger;
+    transition: all 0.5s;
 }
 
 .hideNav{
@@ -44,6 +45,7 @@ a{
     display: block;
     height: 50px;
     color: hsl(223, 79%, 89%);
+    transition: all 0.5s;
 }
 
 .ani{
@@ -53,12 +55,14 @@ a{
 .leftNav:hover{
     background-color: hsl(223, 72%, 58%);
     font-size: large;
+    transition: all 0.5s;
     text-shadow: #fff 0 4px 4px;
 }
 
 .hideNav:hover{
     background-color: hsl(223, 72%, 58%);
     color: #fff;
+    transition: all 0.5s;
 }
 
 .rightBox{
@@ -95,6 +99,7 @@ a{
     color: hsl(223, 72%, 58%);
     font-weight: bold;
     font-size: x-large;
+    transition: all 0.5s;
 }
 
 .topNav{
@@ -108,6 +113,7 @@ a{
 .topNav:hover,
 .topNav1:hover{
     color: hsl(223, 86%, 72%);
+    transition: all 0.5s;
 }
 
 /* 动态渲染消息 */
@@ -146,10 +152,12 @@ a{
     border: 2px solid hsl(225, 80%, 43%);
     cursor: pointer;
     margin: 10px;
+    transition: all 0.5s;
 }
 
 .confirm:hover {
     background-color: hsl(225, 80%, 43%);
+    transition: all 0.5s;
 }
 
 .anchor {
@@ -191,11 +199,13 @@ a{
     cursor: pointer;
     float: right;
     margin: 10px;
+    transition: all 0.5s;
 }
 
 .read_notice:hover,
 .delete_notice:hover {
     background-color: hsl(223, 86%, 72%);
+    transition: all 0.5s;
 }
 
 .class {

@@ -13,13 +13,12 @@
         <!-- 弹出层 -->
         <div class="pop">
             <div class="imgBox">
-                <img src="" class="img">
+                <img src=${domain+res.avatar_uri} class="img">
             </div>
-            <div class="userName">用户名</div>
-            <div class="userLevel">身份</div>
-            <div class="userNickname">昵称</div>
-            <div class="userSignature">签名</div>
-            <div class="userTime">创建时间</div>
+            <input type="text" class="userName">用户名</input>
+            <input type="text" class="userLevel">身份</input>
+            <input type="text" class="userSignature">签名</input>
+            <input type="text" class="userTime">创建时间为${res.create_date}</input>
             <button class="user_delete" id="back">返回</button>
         </div>
     </div>

@@ -232,10 +232,10 @@ window.onload = function () {
                         <div class="imgBox">
                             <img src=${domain+res.avatar_uri} class="img">
                         </div>
-                        <div class="userName">用户名为${res.username}</div>
-                        <div class="userLevel">身份为${Level}</div>
-                        <div class="userSignature">签名为${res.signature}</div>
-                        <div class="userTime">创建时间为${res.create_date}</div>
+                        <input type="text" class="userName">用户名为${res.username}</input>
+                        <input type="text" class="userLevel">身份为${Level}</input>
+                        <input type="text" class="userSignature">签名为${res.signature}</input>
+                        <input type="text" class="userTime">创建时间为${res.create_date}</input>
                         <button class="user_delete" id="back">返回</button>
                     </div>`;
                         document.getElementById('shade').innerHTML=html;

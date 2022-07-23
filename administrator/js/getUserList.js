@@ -248,7 +248,7 @@ window.onload = function () {
                     request(pager)
                 }, 200);
             }
-            if (nameList.search("checkUser") !== -1) {
+            else if (nameList.search("checkUser") !== -1) {
                 let userId = e.target.id;
                 let isCheck = e.target.checked;
                 clickSelect(userId, isCheck);

@@ -291,6 +291,32 @@ window.onload = function () {
                 clickSelect(inputs[i].id, false);
             }
         }
+
+        var deleteUsers = document.getElementById("deleteUsers");
+        deleteUsers.onclick = function () {
+            var local = window.localStorage;
+            array = JSON.parse(local.getItem("userSelect"));
+            if (array == null) {
+                alert("未选择用户");
+                return;
+            }
+            var xhr = new XMLHttpRequest();
+            xhr.open("post", `${domain}/admin/batchDelete`);
+            xhr.withCredentials = true;
+            xhr.send(JSON.stringify({
+                id: array
+            }))
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    var res = JSON.parse(xhr.responseText);
+                    if (res.errMsg != null) {
+                        alert(res.errMsg);
+                    }
+                    local.setItem("userSelect", "[]");
+                    request(pager);
+                }
+            };
+        }
     }
 
     // 选择被点击

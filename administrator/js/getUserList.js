@@ -11,6 +11,11 @@ manage2.onclick = function () {
     hidden2.style.display = (hidden2.style.display == 'none' ? 'block' : 'none');
     return false;
 }
+var back = document.getElementById('back');
+back.onclick = function(){
+    var shade = document.getElementById('shade');
+    shade.style.display = 'none';
+}
 //点击二级菜单的退出登录实现登出，登出接口
 var logout = document.getElementById('logout');
 logout.onclick = function () {
@@ -290,7 +295,25 @@ window.onload = function () {
             }
         }
     }
-
+    function requestDetail(userid){
+        var xhr = new XMLHttpRequest();
+        xhr.open("post",`${domain}/admin/getUser`);
+        xhr.withCredentials = true;
+        xhr.send(JSON.stringify({
+            id:userid
+        }))
+        xhr.onreadystatechange = function(){
+            if(xhr.readyState === 4 && xhr.status === 200){
+                var res = JSON.parse(xhr.responseText);
+                if(res.status == 0){
+                    alert(res.errMsg)
+                }
+                else{
+                    
+                }
+            }
+        }
+    }
     function topage(page, pager) {
         console.log("topage执行了")
         if (page < 1) {

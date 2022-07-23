@@ -116,7 +116,7 @@ a{
     padding-bottom: 20px;
     border: 2px solid hsl(223, 72%, 58%);
     border-radius: 10px;
-    margin: 40px auto;
+    margin: 60px auto;
 }
 
 .title {
@@ -304,7 +304,7 @@ a{
     width: 120px;
     height: 40px;
     left: 91%;
-    top: 8%;
+    top: 9%;
     color: hsl(225, 80%, 43%);
     font-size: x-large;
     font-weight: bolder;

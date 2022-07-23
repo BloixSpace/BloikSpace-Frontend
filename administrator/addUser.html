@@ -37,12 +37,13 @@
         <!-- 右侧 -->
         <div class="formBox">
             <div class="welcome">添加新用户</div>
-            <div class="imgBox"><img src=""></div>
-            <input type="file" class="file">
+            <div class="imgBox" id="user_pic"></div>
+            <input type="file" id="file">
             <div class="inputBox">
                 <div class="left">身 份</div><div class="radio">
                     &nbsp;商家 <input type="radio" name="role">
                     消费者 <input type="radio" name="role">
+                    管理员 <input type="radio" name="role">
                 </div>
             </div>
             <div class="inputBox">
@@ -59,7 +60,7 @@
             </div>
     
             <div class="btnBox">
-                <a href="login.html" class="anchor" target="_self">返 回</a>
+                <a href="home.html" class="anchor" target="_self">返 回</a>
                 <button type="reset" class="logbtn">重 置</button>
                 <button class="logbtn" id="submit">提 交</button>
             </div>

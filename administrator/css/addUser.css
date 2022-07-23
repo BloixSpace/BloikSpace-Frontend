@@ -113,7 +113,7 @@ a{
 /* 表单 */
 .formBox {
     width: 800px;
-    height: 1000px;
+    height: 900px;
     background-color: #fff;
     margin: 40px auto;
     border: 2px solid hsl(223, 86%, 72%);
@@ -123,14 +123,18 @@ a{
 .imgBox{
     width: 200px;
     height: 200px;
-    background-color: red;
     margin: 0 auto;
+    border-radius: 100px;
 }
 
-.file{
+#file{
+    width: 400px;
+    margin-top: 20px;
+    margin-left: 260px;
     text-align: center;
     font-size: larger;
     font-weight: bold;
+    color: hsl(225, 80%, 43%);
 }
 .inputBox {
     width: 608px;

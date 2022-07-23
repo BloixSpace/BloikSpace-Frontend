@@ -1,3 +1,4 @@
+//管理员左侧菜单栏隐藏
 var manage1 = document.getElementById('manage1');
 var hidden1 = document.getElementById('hidden1');
 manage1.onclick = function(){
@@ -53,4 +54,81 @@ window.onload = function(){
          }
      }
      return false;
+}
+//上传头像&&设置用户信息（传图片uri）
+var url;
+document.getElementById("file").onchange = function () {
+    var file = document.getElementById("file").files[0];
+    var reader = new FileReader();
+    reader.addEventListener("load", function () {
+        document.getElementById("user_pic").innerHTML = `<img src="${reader.result}" style="width:200px;height:200px;overflow: hidden;border-radius:100px;"></img>`;
+    }, false)
+    if (file) {
+        reader.readAsDataURL(file); //读取file信息将读取到的内容存储到result中
+    }
+    url = reader.result;
+    console.log((url));
+    var formData = new FormData();
+    formData.append('file', file);
+    var xhr = new XMLHttpRequest();
+    xhr.open('post', 'https://forum.wyy.ink/admin/addUser',false);
+    xhr.withCredentials = true;
+    xhr.send(formData);
+    xhr.onreadystatechange = function () {
+        if (xhr.status === 200) {
+            res = JSON.parse(xhr.responseText); //json转js对象，res是对象
+            console.log(res);
+        }
+    }
+
+}
+
+//获取角色函数
+function getRadioValue(arg) {
+    var role = document.getElementsByName(arg);
+    var value = "";
+    for (var i = 0, len = role.length; i < len; i++) {
+        if (role[0].checked) {
+            value = 2;
+        }
+        if (role[1].checked) {
+            value = 1;
+        }
+        if (role[2].checked){
+            value = 3;
+        }
+    }
+    return value;
+}
+
+var rolevalue = getRadioValue('role');
+var username = document.getElementById('username');
+var password = document.getElementById('password');
+var signature = document.getElementById('motto');
+//点击确定按钮，设置用户信息的头像
+var btn = document.getElementById('submit');
+btn.onclick = function () {
+    var xhr = new XMLHttpRequest();
+    xhr.open("post", "https://forum.wyy.ink/user/admin/addUser");
+    xhr.withCredentials = true;
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.send(JSON.stringify({ //js对象转字符串
+        username:username.value,
+        password:password.value,
+        signature:signature.value,
+        level:rolevalue
+    }))
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+            res = JSON.parse(xhr1.responseText); //json转js对象，res1是对象
+            console.log(res.errMsg);
+            if (res.status == '0') {
+                alert(res.errMsg);
+                window.onload();
+            } else {
+                location.href = ("home.html");
+            }
+        }
+    }
+    return false;
 }

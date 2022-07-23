@@ -186,6 +186,7 @@ window.onload = function(){
             if(classlist.search("user_detail")!== -1){
                 var shade = document.getElementById('shade');
                 shade.style.display = 'block';
+
             }
             else if(classlist.search("user_delete")!== -1){
                 let userid = e.target.id;
@@ -237,7 +238,25 @@ window.onload = function(){
             }
         }
     }
-
+    function requestDetail(userid){
+        var xhr = new XMLHttpRequest();
+        xhr.open("post",`${domain}/admin/getUser`);
+        xhr.withCredentials = true;
+        xhr.send(JSON.stringify({
+            id:userid
+        }))
+        xhr.onreadystatechange = function(){
+            if(xhr.readyState === 4 && xhr.status === 200){
+                var res = JSON.parse(xhr.responseText);
+                if(res.status == 0){
+                    alert(res.errMsg)
+                }
+                else{
+                    
+                }
+            }
+        }
+    }
     function topage(page, pager) {
         console.log("topage执行了")
         if (page < 1) {

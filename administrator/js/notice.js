@@ -268,7 +268,7 @@ window.onload = function () {
                 }, 200);
             } else if (classlist.search("order_detail") !== -1) {
                 let orderId = e.target.id;
-                location.href = "orderDetail.html?id=" + orderId;
+                location.href = "../orderDetail.html?id=" + orderId;
             }
         }, false)
         var read = document.getElementById('read');

@@ -78,14 +78,14 @@ a{
     line-height: 50px;
 }
 
-.topNav{
+.topNav,
+.topNav1{
     /* border: 2px solid hsl(223, 72%, 58%);
     border-radius: 5px; */
     padding-left: 10px;
     padding-right: 10px;
     margin-top: 8px;
     margin-right: 20px;
-    float: right;
     cursor: pointer;
     text-align: center;
     line-height: 40px;
@@ -96,7 +96,16 @@ a{
     font-size: x-large;
 }
 
-.topNav:hover{
+.topNav{
+    float: right;
+}
+
+.topNav1{
+    float: left;
+}
+
+.topNav:hover,
+.topNav1:hover{
     color: hsl(223, 86%, 72%);
 }
 

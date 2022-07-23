@@ -99,7 +99,7 @@ window.onload = function () {
 
     function show(pager) {
         document.getElementById("keyWord").value = pager.key
-        var orderSelect = document.getElementById("order");
+        var orderSelect = document.getElementById("orderForm");
         for (i = 0; i < orderSelect.length; i++) {
             if (orderSelect[i].value == pager.order)
                 orderSelect[i].selected = true;

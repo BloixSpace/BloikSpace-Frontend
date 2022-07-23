@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>获取用户列表</title>
-    <link rel="stylesheet" href="css/home.css">
+    <title>查看商品列表</title>
+    <link rel="stylesheet" href="css/goodDisplay.css">
 </head>
 <body>
     <!-- 左侧导航栏和上层导航栏 -->
@@ -20,24 +20,54 @@
         </div>
         <a class="leftNav" id="manage2">管理商品</a>
         <div class="hidden ani" id="hidden2" style="display: none;">
-            <a class="hideNav">查看商品列表</a>
+            <a class="hideNav" href="goodDisplay.html">查看商品列表</a>
             <a class="hideNav">2</a>
             <a class="hideNav">3</a>
         </div>
-        <a class="leftNav">管理订单</a>
+        <a class="leftNav" href="order.html">管理订单</a>
         <a class="leftNav">管理首页</a>
 
     </div><div class="rightBox">
         <!-- 顶部导航栏 -->
         <div class="top" id="top">
-            <a class="topNav1">BloikSpace</a>
+            <a class="topNav1" href="home.html">BloikSpace</a>
             <a class="topNav">退出登录</a>
             <a class="topNav" href="../login.html">登录</a>
         </div>
-        <!-- 右侧 -->
+        <!-- 搜索栏 -->
+        <div class="underTop">
+            <div class="searchBox" id="options">
+                <input type="text" class="search" id="keyWord" placeholder="请输入你想搜索的商品">
+                <button class="searchBtn" id="searchBtn">搜索</button>
+                <p class="p">排序方式</p>
+                <select id="orderForm">
+                    <option value="update_time">按更新时间</option>
+                    <option value="create_time">按创建时间</option>
+                    <option value="price">按价格</option>
+                    <option value="stock">按库存</option>
+                    <option value="title">按名称</option>
+                    <option value="sales">按销量</option>
+                </select>
+                <button class="searchBtn" id="orderBtn">从小到大</button>
+                <button class="searchBtn" id="orderBtnDesc">从大到小</button>
+            </div>
+        </div>
+        <!-- 商品展示 -->
         <div class="container">
-            <p class="title">您好，亲爱的管理员</p>
-            <p class="text1">欢迎来到BloikSpace管理员界面！</p>
+            <div class="title">BloikSpace商品展示</div>
+            <!-- <button class="addBtn" id="add">点击添加新商品</button> -->
+            <a href="#TOP" class="anchor">&uArr;回到顶部</a><a href="#pager" class="anchor">&dArr;回到底部</a>
+            <!-- 动态渲染 -->
+            <div id="data">
+                <div class="commodity_data">
+
+                </div>
+            </div>
+            <!-- 分页 -->
+            <div id="pager">
+
+            </div>
+            <a href="#TOP" class="anchor">&uArr;回到顶部</a><a href="#pager" class="anchor">&dArr;回到底部</a>
         </div>
     </div>
 
@@ -45,4 +75,4 @@
     
 </body>
 </html>
-<script src="js/home.js"></script>
+<script src="js/goodDisplay.js"></script>

@@ -110,33 +110,132 @@ a{
     color: hsl(223, 86%, 72%);
 }
 
-.container{
-    width: 1000px;
-    height: 800px;
-    background-color:antiquewhite;
+/* 动态渲染 */
+.container {
+    width: 1100px;
+    margin: 40px auto;
+    border: 2px solid hsl(225, 80%, 43%);
+    border-radius: 10px;
+    padding-bottom: 20px;
+}
+
+.order_data {
+    width: 800px;
+    padding: 10px 20px;
+    background-color: hsl(223, 79%, 89%);
     margin: 20px auto;
+    line-height: 50px;
+    border: 2px solid hsl(225, 80%, 43%);
+    border-radius: 10px;
 }
 
 .title {
     width: 500px;
     height: 80px;
     color: hsl(225, 80%, 43%);
-    margin: 10px auto;
+    margin: 20px auto;
     line-height: 80px;
     text-align: center;
     font-size: xx-large;
     font-weight: bolder;
-    background-color: #fff;
 }
 
-.text1{
-    width: 600px;
-    height: 80px;
-    background-color: #fff;
+/* 回顶部回底部和筛选已发货未发货 */
+.operate {
     text-align: center;
+    font-size: larger;
+    height: 50px;
+    line-height: 50px;
+}
+
+.confirm {
+    background-color: hsl(225, 80%, 43%);
+    color: #fff;
+    font-size: large;
+    padding: 2px 6px;
+    border-radius: 5px;
+    border: 2px solid hsl(223, 86%, 72%);
+    cursor: pointer;
+    margin: 10px;
+}
+
+.confirm:hover {
+    background-color: hsl(225, 80%, 43%);
+}
+
+.anchor {
+    text-decoration: none;
     color: hsl(225, 80%, 43%);
-    font-size: xx-large;
-    font-weight: bolder;
-    margin: 10px auto;
+    margin: 0 20px;
+}
+
+/* 订单内容 */
+.item_id,
+.item_address,
+.item_phone,
+.item_nickname {
+    margin: 8px;
+    color: hsl(225, 79%, 26%);
+    font-size: large;
+    font-weight: bold;
+    background-color: #fff;
+    border-radius: 5px;
+    padding-left: 10px;
+}
+
+.item_ship {
+    margin-left: 20px;
+}
+
+/* 删除订单和查看详情按钮 */
+.order_detail,
+.delete_order,
+.add_review {
+    background-color: hsl(225, 80%, 43%);
+    color: #fff;
+    font-size: larger;
+    padding: 2px 6px;
+    border-radius: 5px;
+    border: 2px solid #fff;
+    cursor: pointer;
+    float: right;
+    margin: 10px;
+}
+
+.order_detail:hover,
+.delete_order:hover,
+.add_review:hover {
+    background-color: hsl(223, 86%, 72%);
+}
+
+/* 分页 */
+#pager {
+    text-align: center;
     line-height: 80px;
+    font-size: larger;
+    width: 800px;
+    height: 80px;
+    margin: 0 auto;
+    cursor: pointer;
+}
+
+.numberselected {
+    background-color: hsl(223, 86%, 72%);
+    color: #fff;
+    padding: 0 8px;
+    margin: 0 10px 0 0;
+    border-radius: 4px;
+}
+
+.number {
+    margin: 0 10px 0 0;
+}
+
+.first,
+.prev,
+.omit,
+.next,
+.last,
+.total {
+    padding: 0 10px;
 }

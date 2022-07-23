@@ -235,7 +235,7 @@ window.onload = function () {
                         <div class="userName">用户名为${res.username}</div>
                         <div class="userLevel">身份为${Level}</div>
                         <div class="userSignature">签名为${res.signature}</div>
-                        <div class="userTime">创建时间为${res.create_time}</div>
+                        <div class="userTime">创建时间为${res.create_date}</div>
                         <button class="user_delete" id="back">返回</button>
                     </div>`;
                         document.getElementById('shade').innerHTML=html;

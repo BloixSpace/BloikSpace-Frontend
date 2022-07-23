@@ -257,6 +257,7 @@ a{
 .userLevel,
 .userNickname,
 .userSignature{
+    outline-style: none;
     width: 400px;
     height: 40px;
     margin: 10px auto;
@@ -265,6 +266,10 @@ a{
     padding-left: 10px;
     color: hsl(223, 72%, 58%);
     font-size: large;
+}
+
+.userName::placeholder{
+    color: hsl(223, 72%, 58%);
 }
 
 .userTime{

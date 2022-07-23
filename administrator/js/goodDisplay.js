@@ -45,10 +45,17 @@ logout.onclick = function () {
     }
     return false;
 }
+//点击添加新商品弹出框
 var add = document.getElementById('add');
 var shade = document.getElementById('shade');
 add.onclick = function(){
     shade.style.display = 'block';
+    return false;
+}
+//取消弹出
+var cancel = document.getElementById('cancel');
+cancel.onclick = function(){
+    shade.style.display = 'none';
     return false;
 }
 
@@ -133,7 +140,7 @@ window.onload = function () {
             // 多个图片用,隔开
             picUri = picUri.split(",")[0]
             dataHtml += `<div class="commodity_data" id=${item.id}>
-            <span class="imgBox"><img src=${domain+picUri} style="width: 100px;height:100px;" class="displayImg"></span>
+            <span class="imgBox"><img src=${domain+picUri} style="width: 100px;height:100px;z-index:1;" class="displayImg"></span>
             <span class="contentBox">
             <div class="itemTitle">${item.title}</div>
             <div class="itemCategory">${item.category}类商品</div>

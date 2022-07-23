@@ -10,6 +10,7 @@
     width: 12%;
     height: 100vh;
     background-color: hsl(223, 86%, 72%);
+    box-shadow: 2px 0 10px grey;
 }
 
 .leftImg{
@@ -32,6 +33,15 @@
     font-size: larger;
 }
 
+.hideNav{
+    cursor: pointer;
+    text-align: center;
+    line-height: 50px;
+    display: block;
+    height: 50px;
+    color: hsl(223, 79%, 89%);
+}
+
 .ani{
     transition: all 0.2s;
 }
@@ -40,6 +50,11 @@
     background-color: hsl(223, 72%, 58%);
     font-size: large;
     text-shadow: #fff 0 4px 4px;
+}
+
+.hideNav:hover{
+    background-color: hsl(223, 72%, 58%);
+    color: #fff;
 }
 
 .rightBox{
@@ -56,7 +71,7 @@
     height: 60px;
     vertical-align: top;
     background-color: hsl(223, 79%, 89%);
-    box-shadow: hsl(223, 86%, 72%) 2px 4px 4px;
+    box-shadow: hsl(225, 80%, 43%) 2px 4px 20px;
     line-height: 50px;
 }
 
@@ -93,7 +108,8 @@
 }
 
 .title {
-    width: 500px;
+    display: inline-block;
+    width: 200px;
     height: 80px;
     color: hsl(225, 80%, 43%);
     margin: 10px auto;
@@ -101,6 +117,26 @@
     text-align: center;
     font-size: xx-large;
     font-weight: bolder;
+}
+
+.all{
+    display: inline-block;
+}
+
+.operate{
+    color: hsl(225, 80%, 43%);
+    font-size: larger;
+    font-weight: bold;
+    text-align: center;
+}
+
+.Check{
+    display: inline-block;
+    color: hsl(225, 80%, 43%);
+    float: left;
+    font-size: larger;
+    margin-left: 20px;
+    margin-top: 20px;
 }
 
 .user_pic{
@@ -141,7 +177,8 @@
     margin:10px auto;
 }
 
-.user_delete {
+.user_delete,
+.user_detail{
     background-color: hsl(223, 86%, 72%);
     color: #fff;
     font-size: large;
@@ -156,6 +193,59 @@
     background-color: hsl(225, 80%, 43%);
 }
 
+/* 遮罩&弹出层 */
+.shade{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.4);
+    display: none;
+}
+
+.shade::after{
+    content: "";
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    backdrop-filter: blur(3px);
+    z-index: 10;
+}
+
+.pop{
+    position: absolute;
+    left: 56%;
+    top: 50%;
+    background-color: #fff;
+    transform: translate(-50%, -50%);
+    width: 800px;
+    height: 600px;
+    text-align: center;
+    z-index: 11;
+    font-size: large;
+}
+
+.imgBox{
+    width: 120px;
+    height: 120px;
+    border-radius: 60px;
+    background-color: pink;
+    margin: 40px auto 20px auto;
+}
+
+.img{
+    width: 120px;
+    height: 120px;
+    border-radius: 60px;
+}
+
+.userName,
+.userLevel,
+.userNickname,
+.userSignature,
+.userTime{
+    margin: 10px auto;
+    background-color: pink;
+}
 /* 分页 */
 #pager {
     text-align: center;

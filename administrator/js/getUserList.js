@@ -11,6 +11,7 @@ manage2.onclick = function(){
     hidden2.style.display = (hidden2.style.display == 'none'? 'block':'none');
     return false;
 }
+var idarr=[];
 window.onload = function(){
     //分页
     var defaultPager = {
@@ -23,7 +24,7 @@ window.onload = function(){
     }
     createPager({
         currentPage: 1,
-        limit: 10,
+        limit: 2,
         divNumber: 5,
         order: "username",
         unread: null,
@@ -67,11 +68,11 @@ window.onload = function(){
                 lev = "管理员"
             }
             dataHtml += `<div class="user_data">
+            <div class="Check"><input type="checkbox" name="check" id=${item.id} class="input">删除该用户</input></div>
             <div class="picBox"><img class="user_pic" src="${domain+item.avatar_uri}"></img></div>
             <div class="contentBox"><div class="user_level">身份为：${lev}</div>
             <div class="user_username">用户名为：${item.username}</div>
-            <button class="user_delete">删除此用户</button>
-            <button class="user_delete">查看用户详情</button></div>
+            <button class="user_detail" id=${item.id}>查看用户详情</button></div>
             </div>`
         }
         document.getElementById("data").innerHTML = dataHtml
@@ -134,39 +135,63 @@ window.onload = function(){
                 topage(targetPage, pager)
             }
         }, false)
-        // document.getElementById("data").addEventListener("click", function (e) {
-        //     var classlist = e.target.getAttribute('class')
-        //     console.log(classlist);
-        //     if (classlist.search("read_notice") !== -1) {
-        //         let noticeId = e.target.id
-        //         requestRead(noticeId)
-        //         setTimeout(() => {
-        //             request(pager)
-        //         }, 200);
-        //     } else if (classlist.search("delete_notice") !== -1) {
-        //         let noticeId = e.target.id
-        //         requestDelete(noticeId)
-        //         setTimeout(() => {
-        //             request(pager)
-        //         }, 200);
-        //     } else if (classlist.search("order_detail") !== -1) {
-        //         let orderId = e.target.id;
-        //         location.href = "orderDetail.html?id=" + orderId;
-        //     }
-        // }, false)
-        // var read = document.getElementById('read');
-        // read.onclick = function () {
-        //     pager.unread = false;
-        //     request(pager);
-        //     return false;
-        // }
-        // var unread = document.getElementById('unread');
-        // unread.onclick = function () {
-        //     pager.unread = true;
-        //     request(pager);
-        //     return false;
-        // }
+        document.getElementById('data').addEventListener("click",function(e){
+            var classlist = e.target.getAttribute('class');
+            if(classlist.search("user_detail")!== -1){
+                var shade = document.getElementById('shade');
+                shade.style.display = 'block';
+            }
+            else if(classlist.search("user_delete")!== -1){
+                let userid = e.target.id;
+                requestDelete(userid);
+                setTimeout(() => {
+                    request(pager)
+                }, 200);
+            }
+            // else if(Class.search("check")!== -1){
+            //     if()
+            //     idarr.push(e.target.id);
+            //     console.log(idarr);
+            // }
+        },false)
+        var all = document.getElementById('all');
+        var inputs = document.getElementById('data').getElementsByTagName('input');
+        all.onclick = function(){
+            for(var i=0 ; i<inputs.length ; i++){
+                inputs[i].checked = this.checked;
+            }
+        }
+        for(var i=0; i< inputs.length ; i++){
+            inputs[i].onclick = function(){
+                var flag = true;
+                for(var j=0; j<inputs.length ;j++){
+                    if(!inputs[j].checked){
+                        flag = false;
+                        break;
+                    }
+                }
+                all.checked = flag;
+            }
+        }
     }
+    //删除通知
+    function requestDelete(userid) {
+        var xhr4 = new XMLHttpRequest()
+        xhr4.open("post", `${domain}/admin/deleteUser`)
+        xhr4.withCredentials = true
+        xhr4.send(JSON.stringify({
+            id: userid
+        }))
+        xhr4.onreadystatechange = function () {
+            if (xhr4.readyState === 4 && xhr4.status === 200) {
+                var res4 = JSON.parse(xhr4.responseText)
+                if (res4.status == 0) {
+                    alert(res4.errMsg)
+                }
+            }
+        }
+    }
+
     function topage(page, pager) {
         console.log("topage执行了")
         if (page < 1) {

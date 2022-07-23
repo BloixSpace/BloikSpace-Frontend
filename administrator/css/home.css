@@ -3,6 +3,10 @@
     padding: 0;
 }
 
+a{
+    text-decoration: none;
+}
+
 /* 左侧导航栏 */
 .leftBox{
     position: fixed;
@@ -10,6 +14,7 @@
     width: 12%;
     height: 100vh;
     background-color: hsl(223, 86%, 72%);
+    box-shadow: 2px 0 10px grey;
 }
 
 .leftImg{
@@ -32,6 +37,15 @@
     font-size: larger;
 }
 
+.hideNav{
+    cursor: pointer;
+    text-align: center;
+    line-height: 50px;
+    display: block;
+    height: 50px;
+    color: hsl(223, 79%, 89%);
+}
+
 .ani{
     transition: all 0.2s;
 }
@@ -40,6 +54,11 @@
     background-color: hsl(223, 72%, 58%);
     font-size: large;
     text-shadow: #fff 0 4px 4px;
+}
+
+.hideNav:hover{
+    background-color: hsl(223, 72%, 58%);
+    color: #fff;
 }
 
 .rightBox{
@@ -56,18 +75,18 @@
     height: 60px;
     vertical-align: top;
     background-color: hsl(223, 79%, 89%);
-    box-shadow: hsl(223, 86%, 72%) 2px 4px 4px;
+    box-shadow: hsl(225, 80%, 43%) 2px 4px 20px;
     line-height: 50px;
 }
 
-.topNav{
+.topNav,
+.topNav1{
     /* border: 2px solid hsl(223, 72%, 58%);
     border-radius: 5px; */
     padding-left: 10px;
     padding-right: 10px;
     margin-top: 8px;
     margin-right: 20px;
-    float: right;
     cursor: pointer;
     text-align: center;
     line-height: 40px;
@@ -78,6 +97,46 @@
     font-size: x-large;
 }
 
-.topNav:hover{
+.topNav{
+    float: right;
+}
+
+.topNav1{
+    float: left;
+}
+
+.topNav:hover,
+.topNav1:hover{
     color: hsl(223, 86%, 72%);
+}
+
+.container{
+    width: 1000px;
+    height: 800px;
+    background-color:antiquewhite;
+    margin: 20px auto;
+}
+
+.title {
+    width: 500px;
+    height: 80px;
+    color: hsl(225, 80%, 43%);
+    margin: 10px auto;
+    line-height: 80px;
+    text-align: center;
+    font-size: xx-large;
+    font-weight: bolder;
+    background-color: #fff;
+}
+
+.text1{
+    width: 600px;
+    height: 80px;
+    background-color: #fff;
+    text-align: center;
+    color: hsl(225, 80%, 43%);
+    font-size: xx-large;
+    font-weight: bolder;
+    margin: 10px auto;
+    line-height: 80px;
 }

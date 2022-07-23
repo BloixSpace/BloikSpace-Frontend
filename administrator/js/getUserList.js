@@ -233,8 +233,9 @@ window.onload = function () {
                             <img src=${domain+res.avatar_uri} class="img">
                         </div>
                         用户名：<input type="text" class="userName" value="${res.username}"></input><br>
-                        身&nbsp;&nbsp;份 ：<input type="text" class="userLevel" value="${Level}"></input><br>
-                        签&nbsp;&nbsp;名 ：<input type="text" class="userSignature" value="${res.signature}"></input><br>
+                        密 码 ：<input type="text" class="userName" placeholder="若不输入此空，默认不做修改"></input><br>
+                        身 份 ：<input type="radio" class="userLevel" value="${Level}"></input><br>
+                        签 名 ：<input type="text" class="userSignature" value="${res.signature}"></input><br>
                         <div class="userTime">创建时间：${res.create_date}</div><br>
                         <button class="user_delete" id="back">返回</button>
                         <button class="user_delete" id="modifi">确认修改</button>

@@ -186,20 +186,57 @@ window.onload = function(){
             if(classlist.search("user_detail")!== -1){
                 var shade = document.getElementById('shade');
                 shade.style.display = 'block';
-
+                var xhr = new XMLHttpRequest();
+                xhr.open("get",`${domain}/user/getUser?id=${e.target.id}`,false);
+                xhr.withCredentials = true;
+                xhr.send();
+                if(xhr.status === 200){
+                    var res = JSON.parse(xhr.responseText);
+                    if(res.status == 0){
+                        alert(res.errMsg);
+                    }
+                    else{
+                        var Level = '';
+                        if(res.Level == 1){
+                            Level = '消费者';
+                        }
+                        if(res.Level == 2){
+                            Level = '商家';
+                        }
+                        if(res.Level == 3){
+                            Level = '管理员';
+                        }
+                        var html = `<div class="pop">
+                        <div class="imgBox">
+                            <img src=${domain+res.avatar_uri} class="img">
+                        </div>
+                        <div class="userName">用户名为${res.username}</div>
+                        <div class="userLevel">身份为${Level}</div>
+                        <div class="userSignature">签名为${res.signature}</div>
+                        <div class="userTime">创建时间为${res.create_time}</div>
+                        <button class="user_delete" id="back">返回</button>
+                    </div>`;
+                        document.getElementById('shade').innerHTML=html;
+                    }
+                }
             }
-            else if(classlist.search("user_delete")!== -1){
-                let userid = e.target.id;
-                requestDelete(userid);
-                setTimeout(() => {
-                    request(pager)
-                }, 200);
-            }
+            // else if(classlist.search("user_delete")!== -1){
+            //     let userid = e.target.id;
+            //     requestDelete(userid);
+            //     setTimeout(() => {
+            //         request(pager)
+            //     }, 200);
+            // }
             // else if(Class.search("check")!== -1){
             //     if()
             //     idarr.push(e.target.id);
             //     console.log(idarr);
             // }
+            var back = document.getElementById('back');
+            back.onclick = function(){
+                var shade = document.getElementById('shade');
+                shade.style.display = 'none';
+            }
         },false)
         var all = document.getElementById('all');
         var inputs = document.getElementById('data').getElementsByTagName('input');
@@ -222,41 +259,22 @@ window.onload = function(){
         }
     }
     //删除通知
-    function requestDelete(userid) {
-        var xhr4 = new XMLHttpRequest()
-        xhr4.open("post", `${domain}/admin/deleteUser`)
-        xhr4.withCredentials = true
-        xhr4.send(JSON.stringify({
-            id: userid
-        }))
-        xhr4.onreadystatechange = function () {
-            if (xhr4.readyState === 4 && xhr4.status === 200) {
-                var res4 = JSON.parse(xhr4.responseText)
-                if (res4.status == 0) {
-                    alert(res4.errMsg)
-                }
-            }
-        }
-    }
-    function requestDetail(userid){
-        var xhr = new XMLHttpRequest();
-        xhr.open("post",`${domain}/admin/getUser`);
-        xhr.withCredentials = true;
-        xhr.send(JSON.stringify({
-            id:userid
-        }))
-        xhr.onreadystatechange = function(){
-            if(xhr.readyState === 4 && xhr.status === 200){
-                var res = JSON.parse(xhr.responseText);
-                if(res.status == 0){
-                    alert(res.errMsg)
-                }
-                else{
-                    
-                }
-            }
-        }
-    }
+    // function requestDelete(userid) {
+    //     var xhr4 = new XMLHttpRequest()
+    //     xhr4.open("post", `${domain}/admin/deleteUser`)
+    //     xhr4.withCredentials = true
+    //     xhr4.send(JSON.stringify({
+    //         id: userid
+    //     }))
+    //     xhr4.onreadystatechange = function () {
+    //         if (xhr4.readyState === 4 && xhr4.status === 200) {
+    //             var res4 = JSON.parse(xhr4.responseText)
+    //             if (res4.status == 0) {
+    //                 alert(res4.errMsg)
+    //             }
+    //         }
+    //     }
+    // }
     function topage(page, pager) {
         console.log("topage执行了")
         if (page < 1) {

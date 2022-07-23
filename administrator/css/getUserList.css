@@ -192,8 +192,8 @@ a{
 .user_detail{
     background-color: hsl(223, 86%, 72%);
     color: #fff;
-    font-size: large;
-    padding: 2px 6px;
+    font-size: larger;
+    padding: 4px 10px;
     border-radius: 5px;
     border: 2px solid hsl(225, 80%, 43%);
     cursor: pointer;
@@ -233,6 +233,10 @@ a{
     text-align: center;
     z-index: 11;
     font-size: large;
+    color: hsl(225, 80%, 43%);
+    font-weight: bold;
+    border: 2px solid hsl(225, 80%, 43%);
+    border-radius: 10px;
 }
 
 .imgBox{

@@ -35,6 +35,7 @@ a{
     height: 50px;
     color: #fff;
     font-size: larger;
+    transition: all 0.5s;
 }
 
 .hideNav{
@@ -44,6 +45,7 @@ a{
     display: block;
     height: 50px;
     color: hsl(223, 79%, 89%);
+    transition: all 0.5s;
 }
 
 .ani{
@@ -54,11 +56,13 @@ a{
     background-color: hsl(223, 72%, 58%);
     font-size: large;
     text-shadow: #fff 0 4px 4px;
+    transition: all 0.5s;
 }
 
 .hideNav:hover{
     background-color: hsl(223, 72%, 58%);
     color: #fff;
+    transition: all 0.5s;
 }
 
 .rightBox{
@@ -95,6 +99,7 @@ a{
     color: hsl(223, 72%, 58%);
     font-weight: bold;
     font-size: x-large;
+    transition: all 0.5s;
 }
 
 .topNav{
@@ -108,6 +113,7 @@ a{
 .topNav:hover,
 .topNav1:hover{
     color: hsl(223, 86%, 72%);
+    transition: all 0.5s;
 }
 
 /* 搜索栏 */
@@ -164,10 +170,12 @@ a{
     font-size: large;
     border-radius: 5px;
     border: 2px solid hsl(223, 86%, 72%);
+    transition: all 0.5s;
 }
 
 .searchBtn:hover {
     background-color: hsl(223, 86%, 72%);
+    transition: all 0.5s;
 }
 
 /* 商品展示 */
@@ -181,10 +189,12 @@ a{
     font-size: large;
     border-radius: 5px;
     border: 2px solid hsl(223, 86%, 72%);
+    transition: all 0.5s;
 }
 
 .addBtn:hover {
     background-color: hsl(223, 86%, 72%);
+    transition: all 0.5s;
 }
 
 .title {
@@ -406,10 +416,12 @@ input::placeholder {
     font-size: larger;
     border-radius: 5px;
     border: 2px solid hsl(223, 86%, 72%);
+    transition: all 0.5s;
 }
 
 #submit:hover,#cancel:hover{
     background-color: hsl(223, 86%, 72%);
+    transition: all 0.5s;
 }
 
 

@@ -74,19 +74,18 @@ document.getElementById("file").onchange = function () {
     xhr.open('post', 'https://forum.wyy.ink/file/upload',false);
     xhr.withCredentials = true;
     xhr.send(formData);
-    xhr.onreadystatechange = function () {
-        if (xhr.status === 200) {
-            res = JSON.parse(xhr.responseText); //json转js对象，res是对象
-            uri = res.uri;
-            console.log(uri);
-        }
+    if (xhr.status === 200) {
+        res = JSON.parse(xhr.responseText); //json转js对象，res是对象
+        uri = res.uri;
+        console.log(uri);
     }
+    
 
 }
 
 //获取角色函数
 function getRadioValue(arg) {
-    var role = document.getElementsByName(arg);
+    var role = document.getElementsByName('role');
     var value = "";
     for (var i = 0, len = role.length; i < len; i++) {
         if (role[0].checked) {
@@ -102,13 +101,15 @@ function getRadioValue(arg) {
     return value;
 }
 
-var rolevalue = getRadioValue('role');
-var username = document.getElementById('username');
-var password = document.getElementById('password');
-var signature = document.getElementById('motto');
+
+
 //点击确定按钮，设置用户信息的头像
 var btn = document.getElementById('submit');
 btn.onclick = function () {
+    var rolevalue = getRadioValue('role');
+    var username = document.getElementById('username');
+    var password = document.getElementById('password');
+    var signature = document.getElementById('motto');
     var xhr = new XMLHttpRequest();
     xhr.open("post", "https://forum.wyy.ink/admin/addUser");
     xhr.withCredentials = true;
@@ -128,7 +129,7 @@ btn.onclick = function () {
                 alert(res.errMsg);
                 window.onload();
             } else {
-                location.href = ("home.html");
+                // location.href = ("home.html");
             }
         }
     }

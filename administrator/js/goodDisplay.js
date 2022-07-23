@@ -45,10 +45,17 @@ logout.onclick = function () {
     }
     return false;
 }
+//点击添加新商品弹出框
 var add = document.getElementById('add');
 var shade = document.getElementById('shade');
 add.onclick = function(){
     shade.style.display = 'block';
+    return false;
+}
+//取消弹出
+var cancel = document.getElementById('cancel');
+cancel.onclick = function(){
+    shade.style.display = 'none';
     return false;
 }
 

@@ -391,7 +391,7 @@ input::placeholder {
     color: hsl(223, 86%, 72%);
 }
 
-#submit {
+#submit,#cancel{
     margin-top: 20px;
     display: inline-block;
     padding-left: 10px;

@@ -56,7 +56,7 @@ window.onload = function(){
      return false;
 }
 //上传头像&&设置用户信息（传图片uri）
-var url;
+var uri;
 document.getElementById("file").onchange = function () {
     var file = document.getElementById("file").files[0];
     var reader = new FileReader();
@@ -71,13 +71,14 @@ document.getElementById("file").onchange = function () {
     var formData = new FormData();
     formData.append('file', file);
     var xhr = new XMLHttpRequest();
-    xhr.open('post', 'https://forum.wyy.ink/admin/addUser',false);
+    xhr.open('post', 'https://forum.wyy.ink/file/upload',false);
     xhr.withCredentials = true;
     xhr.send(formData);
     xhr.onreadystatechange = function () {
         if (xhr.status === 200) {
             res = JSON.parse(xhr.responseText); //json转js对象，res是对象
             console.log(res);
+            uri = res.uri;
         }
     }
 
@@ -109,18 +110,19 @@ var signature = document.getElementById('motto');
 var btn = document.getElementById('submit');
 btn.onclick = function () {
     var xhr = new XMLHttpRequest();
-    xhr.open("post", "https://forum.wyy.ink/user/admin/addUser");
+    xhr.open("post", "https://forum.wyy.ink/admin/addUser");
     xhr.withCredentials = true;
     xhr.setRequestHeader('Content-Type', 'application/json');
     xhr.send(JSON.stringify({ //js对象转字符串
         username:username.value,
         password:password.value,
+        avatar_uri:uri,
         signature:signature.value,
         level:rolevalue
     }))
     xhr.onreadystatechange = function () {
         if (xhr.readyState == 4 && xhr.status == 200) {
-            res = JSON.parse(xhr1.responseText); //json转js对象，res1是对象
+            res = JSON.parse(xhr.responseText); //json转js对象，res1是对象
             console.log(res.errMsg);
             if (res.status == '0') {
                 alert(res.errMsg);

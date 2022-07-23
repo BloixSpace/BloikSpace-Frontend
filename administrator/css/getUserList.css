@@ -278,7 +278,9 @@ a{
     color: hsl(223, 72%, 58%);
 }
 
-.userLevel
+.userLevel{
+    margin: 20px auto;
+}
 
 .userTime{
     width: 500px;

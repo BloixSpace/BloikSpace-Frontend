@@ -49,7 +49,7 @@ window.onload = function () {
                 document.getElementById('log').innerText = userName;
             } else {
                 alert("很抱歉，登录失败！登录状态为：" + res0.status + "\n失败原因是：" + res0.errMsg);
-                location.href = "login.html";
+                location.href = "../login.html";
             }
         }
     }

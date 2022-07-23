@@ -77,8 +77,8 @@ document.getElementById("file").onchange = function () {
     xhr.onreadystatechange = function () {
         if (xhr.status === 200) {
             res = JSON.parse(xhr.responseText); //json转js对象，res是对象
-            console.log(res);
             uri = res.uri;
+            console.log(uri);
         }
     }
 

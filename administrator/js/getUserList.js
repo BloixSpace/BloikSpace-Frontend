@@ -1,4 +1,5 @@
 var domain = 'https://forum.wyy.ink';
+var userid;
 var manage1 = document.getElementById('manage1');
 var hidden1 = document.getElementById('hidden1');
 manage1.onclick = function () {
@@ -35,7 +36,7 @@ logout.onclick = function () {
     }
     return false;
 }
-var idarr = [];
+
 window.onload = function () {
     //检查登录状态，更新头像及用户名
     var cameraUri, userName;
@@ -204,6 +205,7 @@ window.onload = function () {
         }, false)
         document.getElementById('data').addEventListener("click", function (e) {
             var classlist = e.target.getAttribute('class');
+            userid = e.target.id;
             var nameList = e.target.getAttribute("name");
             if (classlist.search("user_detail") !== -1) {
                 var shade = document.getElementById('shade');
@@ -232,12 +234,12 @@ window.onload = function () {
                         <div class="imgBox">
                             <img src=${domain+res.avatar_uri} class="img">
                         </div>
-                        用户名：<input type="text" class="userName" value="${res.username}"></input><br>
-                        密 码 ：<input type="text" class="userPswd" placeholder="若不输入此空，默认不做修改"></input><br>
+                        用户名：<input type="text" class="userName" value="${res.username}" id="name"></input><br>
+                        密 码 ：<input type="text" class="userPswd" placeholder="若不输入此空，默认不做修改" id="pswd"></input><br>
                         身 份 ：<input type="radio" class="userLevel" name="level""> 消费者</input>
                         <input type="radio" class="userLevel" name="level""> 卖家</input>
                         <input type="radio" class="userLevel" name="level""> 管理员</input><br>
-                        签 名 ：<input type="text" class="userSignature" value="${res.signature}"></input><br>
+                        签 名 ：<input type="text" class="userSignature" value="${res.signature}" id="signature"></input><br>
                         <div class="userTime">创建时间：${res.create_date}</div><br>
                         <button class="user_delete" id="back">返回</button>
                         <button class="user_delete" id="modifi">确认修改</button>
@@ -257,11 +259,6 @@ window.onload = function () {
                 let isCheck = e.target.checked;
                 clickSelect(userId, isCheck);
             }
-            // else if(Class.search("check")!== -1){
-            //     if()
-            //     idarr.push(e.target.id);
-            //     console.log(idarr);
-            // }
             var back = document.getElementById('back');
             back.onclick = function(){
                 var shade = document.getElementById('shade');
@@ -376,43 +373,36 @@ window.onload = function () {
 
 document.getElementById('shade').addEventListener("click", function (e) {
     var ID = e.target.getAttribute('id');
-    if (classlist.search("modifi") !== -1) {
-        console.log(123);
-        // var shade = document.getElementById('shade');
-        // shade.style.display = 'block';
-        // var xhr = new XMLHttpRequest();
-        // xhr.open("get",`${domain}/user/getUser?id=${e.target.id}`,false);
-        // xhr.withCredentials = true;
-        // xhr.send();
-        // if(xhr.status === 200){
-        //     var res = JSON.parse(xhr.responseText);
-        //     if(res.status == 0){
-        //         alert(res.errMsg);
-        //     }
-        //     else{
-        //         var Level = '';
-        //         if(res.level == 1){
-        //             Level = '消费者';
-        //         }
-        //         if(res.level == 2){
-        //             Level = '商家';
-        //         }
-        //         if(res.level == 3){
-        //             Level = '管理员';
-        //         }
-        //         var html = `<div class="pop">
-        //         <div class="imgBox">
-        //             <img src=${domain+res.avatar_uri} class="img">
-        //         </div>
-        //         用户名：<input type="text" class="userName" value="${res.username}"></input><br>
-        //         身&nbsp;&nbsp;份 ：<input type="text" class="userLevel" value="${Level}"></input><br>
-        //         签&nbsp;&nbsp;名 ：<input type="text" class="userSignature" value="${res.signature}"></input><br>
-        //         <div class="userTime">创建时间：${res.create_date}</div><br>
-        //         <button class="user_delete" id="back">返回</button>
-        //         <button class="user_delete" id="modifi">确认修改</button>
-        //     </div>`;
-        //         document.getElementById('shade').innerHTML=html;
-        //     }
-        // }
+    if (ID.search("modifi") !== -1) {
+        var username = document.getElementById('name');
+        var role = document.getElementsByName('level');
+        var pswd = document.getElementById('pswd');
+        var levell;
+        for(var i = 0 ; i < role.length ; i ++){
+            if(role[0].checked){
+                levell = i+1;
+            }
+        }
+        var xhr = new XMLHttpRequest();
+        xhr.open("post",`${domain}/admin/setUserInfo`);
+        xhr.withCredentials = true;
+        xhr.setRequestHeader('Content-Type', 'application/json');
+        xhr.send(JSON.stringify({
+            id:userid,
+            username:username.value,
+            password:pswd.value,
+            signature:signature.value,
+            level:levell
+        }));
+        if(xhr.readyState === 4 && xhr.status === 200){
+            var res = JSON.parse(xhr.responseText);
+            console.log(res);
+            if(res.status == 0){
+                alert(res.errMsg);
+            }
+            else{
+                window.onload();
+            }
+        }
     }
 },false)

@@ -219,13 +219,13 @@ window.onload = function () {
                     }
                     else{
                         var Level = '';
-                        if(res.Level == 1){
+                        if(res.level == 1){
                             Level = '消费者';
                         }
-                        if(res.Level == 2){
+                        if(res.level == 2){
                             Level = '商家';
                         }
-                        if(res.Level == 3){
+                        if(res.level == 3){
                             Level = '管理员';
                         }
                         var html = `<div class="pop">

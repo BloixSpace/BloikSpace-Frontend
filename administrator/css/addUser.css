@@ -1,14 +1,14 @@
-*{
+* {
     margin: 0;
     padding: 0;
 }
 
-a{
+a {
     text-decoration: none;
 }
 
 /* 左侧导航栏 */
-.leftBox{
+.leftBox {
     position: fixed;
     display: inline-block;
     width: 12%;
@@ -17,7 +17,7 @@ a{
     box-shadow: 2px 0 10px grey;
 }
 
-.leftImg{
+.leftImg {
     text-align: center;
     display: block;
     width: 120px;
@@ -27,7 +27,7 @@ a{
     margin: 20px auto;
 }
 
-.leftNav{
+.leftNav {
     cursor: pointer;
     text-align: center;
     line-height: 50px;
@@ -37,7 +37,7 @@ a{
     font-size: larger;
 }
 
-.hideNav{
+.hideNav {
     cursor: pointer;
     text-align: center;
     line-height: 50px;
@@ -46,22 +46,22 @@ a{
     color: hsl(223, 79%, 89%);
 }
 
-.ani{
+.ani {
     transition: all 0.2s;
 }
 
-.leftNav:hover{
+.leftNav:hover {
     background-color: hsl(223, 72%, 58%);
     font-size: large;
     text-shadow: #fff 0 4px 4px;
 }
 
-.hideNav:hover{
+.hideNav:hover {
     background-color: hsl(223, 72%, 58%);
     color: #fff;
 }
 
-.rightBox{
+.rightBox {
     float: right;
     vertical-align: top;
     display: inline-block;
@@ -69,7 +69,7 @@ a{
 }
 
 /* 顶部 */
-.top{
+.top {
     width: 100%;
     display: inline-block;
     height: 60px;
@@ -80,7 +80,7 @@ a{
 }
 
 .topNav,
-.topNav1{
+.topNav1 {
     /* border: 2px solid hsl(223, 72%, 58%);
     border-radius: 5px; */
     padding-left: 10px;
@@ -97,16 +97,16 @@ a{
     font-size: x-large;
 }
 
-.topNav{
+.topNav {
     float: right;
 }
 
-.topNav1{
+.topNav1 {
     float: left;
 }
 
 .topNav:hover,
-.topNav1:hover{
+.topNav1:hover {
     color: hsl(223, 86%, 72%);
 }
 
@@ -120,14 +120,14 @@ a{
     border-radius: 10px;
 }
 
-.imgBox{
+.imgBox {
     width: 200px;
     height: 200px;
     margin: 0 auto;
     border-radius: 100px;
 }
 
-#file{
+#file {
     width: 400px;
     margin-top: 20px;
     margin-left: 260px;
@@ -136,6 +136,7 @@ a{
     font-weight: bold;
     color: hsl(225, 80%, 43%);
 }
+
 .inputBox {
     width: 608px;
     height: 60px;
@@ -247,4 +248,29 @@ input::placeholder {
 .anchor:hover {
     background-color: hsl(225, 89%, 72%);
     border: 2px solid hsl(225, 89%, 72%);
+}
+
+@keyframes cameraImg {
+    0% {box-shadow: 0 0 20px bisque;}
+    25% {box-shadow: 0 0 20px rgb(200, 61, 255);}
+    50% {box-shadow: 0 0 20px rgb(42, 229, 249);}
+    75% {box-shadow: 0 0 20px rgb(245, 249, 42);}
+    100% {box-shadow: 0 0 20px bisque;}
+}
+
+.cameraImg {
+    width: 120px;
+    height: 120px;
+    border-radius: 60px;
+    box-shadow: 0 0 40px bisque;
+    animation-name: cameraImg;
+    animation-duration: 6s;
+    animation-iteration-count: infinite;
+    transform: rotate(0) scale(1);
+    transition: all 0.5s;
+}
+
+.cameraImg:hover {
+    transition: all 0.5s;
+    transform: rotate(720deg) scale(1.1);
 }

@@ -45,7 +45,7 @@ window.onload = function(){
                  cameraUri = 'https://forum.wyy.ink' + res0.avatar_uri;
                  console.log(cameraUri);
                  userName = '你好,' + res0.username;
-                 document.getElementById('camera').innerHTML = `<img src="${cameraUri}" style="width: 120px;height:120px;border-radius: 60px;"></img>`;
+                 document.getElementById('camera').innerHTML = `<img src="${cameraUri}" class="cameraImg"></img>`;
                  document.getElementById('log').innerText = userName;
              } else {
                  alert("很抱歉，登录失败！登录状态为：" + res0.status + "\n失败原因是：" + res0.errMsg);

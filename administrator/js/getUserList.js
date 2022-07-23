@@ -266,6 +266,8 @@ window.onload = function () {
             }
         },false)
 
+
+        //全选
         var all = document.getElementById('selectAll');
         var inputs = document.getElementById('data').getElementsByTagName('input');
         all.onclick = function () {
@@ -352,23 +354,6 @@ window.onload = function () {
         }
     }
 
-    //删除通知
-    // function requestDelete(userid) {
-    //     var xhr4 = new XMLHttpRequest()
-    //     xhr4.open("post", `${domain}/admin/deleteUser`)
-    //     xhr4.withCredentials = true
-    //     xhr4.send(JSON.stringify({
-    //         id: userid
-    //     }))
-    //     xhr4.onreadystatechange = function () {
-    //         if (xhr4.readyState === 4 && xhr4.status === 200) {
-    //             var res4 = JSON.parse(xhr4.responseText)
-    //             if (res4.status == 0) {
-    //                 alert(res4.errMsg)
-    //             }
-    //         }
-    //     }
-    // }
     function topage(page, pager) {
         console.log("topage执行了")
         if (page < 1) {
@@ -382,3 +367,49 @@ window.onload = function () {
     }
     return false;
 }
+
+
+
+
+document.getElementById('shade').addEventListener("click", function (e) {
+    var ID = e.target.getAttribute('id');
+    if (classlist.search("modifi") !== -1) {
+        console.log(123);
+        // var shade = document.getElementById('shade');
+        // shade.style.display = 'block';
+        // var xhr = new XMLHttpRequest();
+        // xhr.open("get",`${domain}/user/getUser?id=${e.target.id}`,false);
+        // xhr.withCredentials = true;
+        // xhr.send();
+        // if(xhr.status === 200){
+        //     var res = JSON.parse(xhr.responseText);
+        //     if(res.status == 0){
+        //         alert(res.errMsg);
+        //     }
+        //     else{
+        //         var Level = '';
+        //         if(res.level == 1){
+        //             Level = '消费者';
+        //         }
+        //         if(res.level == 2){
+        //             Level = '商家';
+        //         }
+        //         if(res.level == 3){
+        //             Level = '管理员';
+        //         }
+        //         var html = `<div class="pop">
+        //         <div class="imgBox">
+        //             <img src=${domain+res.avatar_uri} class="img">
+        //         </div>
+        //         用户名：<input type="text" class="userName" value="${res.username}"></input><br>
+        //         身&nbsp;&nbsp;份 ：<input type="text" class="userLevel" value="${Level}"></input><br>
+        //         签&nbsp;&nbsp;名 ：<input type="text" class="userSignature" value="${res.signature}"></input><br>
+        //         <div class="userTime">创建时间：${res.create_date}</div><br>
+        //         <button class="user_delete" id="back">返回</button>
+        //         <button class="user_delete" id="modifi">确认修改</button>
+        //     </div>`;
+        //         document.getElementById('shade').innerHTML=html;
+        //     }
+        // }
+    }
+},false)

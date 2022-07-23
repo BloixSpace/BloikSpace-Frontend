@@ -85,7 +85,7 @@ document.getElementById("file").onchange = function () {
 
 //获取角色函数
 function getRadioValue(arg) {
-    var role = document.getElementsByName('role');
+    var role = document.getElementsByName(arg);
     var value = "";
     for (var i = 0, len = role.length; i < len; i++) {
         if (role[0].checked) {
@@ -100,8 +100,6 @@ function getRadioValue(arg) {
     }
     return value;
 }
-
-
 
 //点击确定按钮，设置用户信息的头像
 var btn = document.getElementById('submit');

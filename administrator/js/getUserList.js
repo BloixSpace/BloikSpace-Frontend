@@ -11,6 +11,10 @@ manage2.onclick = function(){
     hidden2.style.display = (hidden2.style.display == 'none'? 'block':'none');
     return false;
 }
+var back = document.getElementById('back');
+back.onclick = function(){
+    
+}
 //点击二级菜单的退出登录实现登出，登出接口
 var logout = document.getElementById('logout');
 logout.onclick = function () {

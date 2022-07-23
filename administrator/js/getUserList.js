@@ -13,7 +13,8 @@ manage2.onclick = function(){
 }
 var back = document.getElementById('back');
 back.onclick = function(){
-    
+    var shade = document.getElementById('shade');
+    shade.style.display = 'none';
 }
 //点击二级菜单的退出登录实现登出，登出接口
 var logout = document.getElementById('logout');

@@ -45,7 +45,12 @@ logout.onclick = function () {
     }
     return false;
 }
-
+var add = document.getElementById('add');
+var shade = document.getElementById('shade');
+add.onclick = function(){
+    shade.style.display = 'block';
+    return false;
+}
 
 window.onload = function () {
     //检查登录状态，更新头像及用户名
@@ -243,18 +248,6 @@ window.onload = function () {
             request(pager);
             return false;
         }
-        document.getElementById('data').addEventListener("click",function(e){
-            var classlist = e.target.getAttribute('class');
-            if(classlist.search("addBtn")!== -1){
-                var shade = document.getElementById('shade');
-                shade.style.display = 'block';
-            }
-            // else if(Class.search("check")!== -1){
-            //     if()
-            //     idarr.push(e.target.id);
-            //     console.log(idarr);
-            // }
-        },false)
     }
 
     function topage(page, pager) {

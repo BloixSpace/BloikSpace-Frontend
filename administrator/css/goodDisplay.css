@@ -205,12 +205,15 @@ a{
 }
 
 .commodity_data {
+    vertical-align: text-top;
+    display: inline-block;
     background-color: hsl(223, 79%, 89%);
-    width: 800px;
-    margin: 20px auto;
+    width: 550px;
+    height: 240px;
+    margin: 20px 10px;
     border: 2px solid hsl(225, 80%, 43%);
     border-radius: 10px;
-    padding: 20px auto;
+    padding: 10px;
 }
 
 .container {
@@ -238,17 +241,17 @@ a{
 .itemCategory,
 .itemPrice,
 .itemStock {
-    margin: 20px;
+    margin: 10px;
 }
 
 .itemTitle {
+    vertical-align: text-top;
     background-color: #fff;
     border-radius: 5px;
-    height: 40px;
+    width: 240px;
     font-size: larger;
     font-weight: bold;
     line-height: 40px;
-    padding: 0 40px;
 }
 
 .itemPrice {
@@ -257,7 +260,8 @@ a{
     height: 40px;
     line-height: 40px;
     font-weight: bolder;
-    padding: 0 40px;
+    width: 120px;
+    margin: 0 auto;
 }
 
 .emptyComment {

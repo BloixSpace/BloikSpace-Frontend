@@ -226,7 +226,7 @@ a{
     margin: 20px;
     display: inline-block;
     vertical-align: top;
-    transform: translateY(40%);
+    /* transform: translateY(40%); */
 }
 .contentBox {
     font-size: large;

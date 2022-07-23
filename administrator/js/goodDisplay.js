@@ -144,12 +144,11 @@ window.onload = function () {
             </div>`
         }
         document.getElementById("data").innerHTML = dataHtml
-        loadjscssfile("css/goodDisplay.css", "css");
     }
 
     function show(pager) {
         document.getElementById("keyWord").value = pager.key
-        var orderSelect = document.getElementById("order");
+        var orderSelect = document.getElementById("orderForm");
         for (i = 0; i < orderSelect.length; i++) {
             if (orderSelect[i].value == pager.order)
                 orderSelect[i].selected = true;
@@ -262,22 +261,4 @@ window.onload = function () {
         request(pager)
     }
     return false;
-}
-
-
-// 动态加载css和js
-function loadjscssfile(filename, filetype) {
-    if (filetype == "js") { //判定文件类型
-        var fileref = document.createElement('script')//创建标签
-        fileref.setAttribute("type", "text/javascript")//定义属性type的值为text/javascript
-        fileref.setAttribute("src", filename)//文件的地址
-    }
-    else if (filetype == "css") { //判定文件类型
-        var fileref = document.createElement("link")
-        fileref.setAttribute("rel", "stylesheet")
-        fileref.setAttribute("type", "text/css")
-        fileref.setAttribute("href", filename)
-    }
-    if (typeof fileref != "undefined")
-        document.getElementsByTagName("head")[0].appendChild(fileref)
 }

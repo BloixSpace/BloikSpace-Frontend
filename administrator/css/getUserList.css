@@ -3,6 +3,9 @@
     padding: 0;
 }
 
+a{
+    text-decoration: none;
+}
 /* 左侧导航栏 */
 .leftBox{
     position: fixed;

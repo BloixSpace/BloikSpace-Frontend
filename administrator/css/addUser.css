@@ -1,0 +1,146 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+a{
+    text-decoration: none;
+}
+
+/* 左侧导航栏 */
+.leftBox{
+    position: fixed;
+    display: inline-block;
+    width: 12%;
+    height: 100vh;
+    background-color: hsl(223, 86%, 72%);
+    box-shadow: 2px 0 10px grey;
+}
+
+.leftImg{
+    text-align: center;
+    display: block;
+    width: 120px;
+    height: 120px;
+    background-color: #fff;
+    border-radius: 60px;
+    margin: 20px auto;
+}
+
+.leftNav{
+    cursor: pointer;
+    text-align: center;
+    line-height: 50px;
+    display: block;
+    height: 50px;
+    color: #fff;
+    font-size: larger;
+}
+
+.hideNav{
+    cursor: pointer;
+    text-align: center;
+    line-height: 50px;
+    display: block;
+    height: 50px;
+    color: hsl(223, 79%, 89%);
+}
+
+.ani{
+    transition: all 0.2s;
+}
+
+.leftNav:hover{
+    background-color: hsl(223, 72%, 58%);
+    font-size: large;
+    text-shadow: #fff 0 4px 4px;
+}
+
+.hideNav:hover{
+    background-color: hsl(223, 72%, 58%);
+    color: #fff;
+}
+
+.rightBox{
+    float: right;
+    vertical-align: top;
+    display: inline-block;
+    width: 88%;
+}
+
+/* 顶部 */
+.top{
+    width: 100%;
+    display: inline-block;
+    height: 60px;
+    vertical-align: top;
+    background-color: hsl(223, 79%, 89%);
+    box-shadow: hsl(225, 80%, 43%) 2px 4px 20px;
+    line-height: 50px;
+}
+
+.topNav,
+.topNav1{
+    /* border: 2px solid hsl(223, 72%, 58%);
+    border-radius: 5px; */
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-top: 8px;
+    margin-right: 20px;
+    cursor: pointer;
+    text-align: center;
+    line-height: 40px;
+    display: inline-block;
+    height: 40px;
+    color: hsl(223, 72%, 58%);
+    font-weight: bold;
+    font-size: x-large;
+}
+
+.topNav{
+    float: right;
+}
+
+.topNav1{
+    float: left;
+}
+
+.topNav:hover,
+.topNav1:hover{
+    color: hsl(223, 86%, 72%);
+}
+
+.container{
+    width: 1000px;
+    height: 1200px;
+    background-color:antiquewhite;
+    margin: 20px auto;
+}
+
+.title {
+    width: 500px;
+    height: 80px;
+    color: hsl(225, 80%, 43%);
+    margin: 20px auto;
+    padding-top: 20px;
+    line-height: 80px;
+    text-align: center;
+    font-size: xx-large;
+    font-weight: bolder;
+}
+
+.contentBox{
+    width: 800px;
+    height: 800px;
+    background-color: pink;
+    margin: 10px auto;
+}
+
+.imgBox{
+    width: 200px;
+    height: 200px;
+    border-radius: 100px;
+    background-color: #fff;
+    margin: 0 auto;
+    margin-top: 20px;
+}

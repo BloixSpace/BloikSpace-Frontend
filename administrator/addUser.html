@@ -4,25 +4,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>获取用户列表</title>
-    <link rel="stylesheet" href="css/getUserList.css">
+    <title>添加新用户</title>
+    <link rel="stylesheet" href="css/addUser.css">
 </head>
 <body>
-    <!-- 遮罩层 -->
-    <div class="shade" id="shade">
-        <!-- 弹出层 -->
-        <div class="pop">
-            <div class="imgBox">
-                <img src="" class="img">
-            </div>
-            <div class="userName">用户名</div>
-            <div class="userLevel">身份</div>
-            <div class="userNickname">昵称</div>
-            <div class="userSignature">签名</div>
-            <div class="userTime">创建时间</div>
-            <button class="user_delete">返回</button>
-        </div>
-    </div>
     <!-- 左侧导航栏和上层导航栏 -->
     <div class="leftBox">
         <a class="leftImg"></a>
@@ -36,8 +21,8 @@
         <a class="leftNav" id="manage2">管理商品</a>
         <div class="hidden ani" id="hidden2" style="display: none;">
             <a class="hideNav">查看商品列表</a>
-            <a class="hideNav">2</a>
-            <a class="hideNav">3</a>
+            <a class="hideNav">修改商品信息</a>
+            <a class="hideNav">批量删除商品</a>
         </div>
         <a class="leftNav">管理订单</a>
         <a class="leftNav">管理首页</a>
@@ -45,35 +30,23 @@
     </div><div class="rightBox">
         <!-- 顶部导航栏 -->
         <div class="top" id="top">
+            <a class="topNav1">BloikSpace</a>
             <a class="topNav">退出登录</a>
             <a class="topNav" href="../login.html">登录</a>
         </div>
-        <!-- 右侧列表 -->
+        <!-- 右侧 -->
         <div class="container">
-
-            <div class="operate">
-                <input type="checkbox" class="all" id="all">点击全选</input>
-                <p class="title">用户列表</p>
-            </div>
-            
-            <!-- 动态渲染 -->
-            <div id="data">
-                <div class="user_data">
-
+            <p class="title">添加新用户</p>
+            <div class="contentBox">
+                <div class="imgBox">
+                    <img>
                 </div>
             </div>
-
-            <!-- 分页 -->
-            <div id="pager">
-
-            </div>
-        
         </div>
     </div>
 
-    <a class="up" href="#top">回到顶部&uArr;</a>
-    <a class="down" href="#pager">去到底部&dArr;</a>
+   
     
 </body>
 </html>
-<script src="js/getUserList.js"></script>
+<script src="js/addUser.js"></script>

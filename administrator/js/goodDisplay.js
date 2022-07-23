@@ -120,7 +120,11 @@ window.onload = function () {
         if (pager.desc) {
             desc = "&desc=true";
         }
-        xhr.open("get", `${domain}/commodity/list?page=${pager.currentPage}&page_size=${pager.limit}&order=${pager.order}&key=${pager.key}&user_id=${local.userId}${desc}`)
+        var userId = "";
+        if (local.level != 3) {
+            userId = local.userId;
+        }
+        xhr.open("get", `${domain}/commodity/list?page=${pager.currentPage}&page_size=${pager.limit}&order=${pager.order}&key=${pager.key}&user_id=${userId}${desc}`)
         xhr.withCredentials = true
         xhr.send()
         xhr.onreadystatechange = function () {

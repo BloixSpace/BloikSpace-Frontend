@@ -94,8 +94,9 @@ li {
 
 /* 购物车 */
 .cartContainer {
+    text-align: center;
     margin: 20px auto;
-    width: 1000px;
+    width: 1300px;
     border: 4px solid hsl(225, 80%, 43%);
     border-radius: 10px;
 }
@@ -140,17 +141,19 @@ li {
 }
 
 .cart {
+    width: 1000px;
+    display: inline-block;
     text-align: center;
-    margin: 20px;
+    margin: 10px;
     border-radius: 5px;
     border: 2px solid hsl(225, 80%, 43%);
-    padding-top: 10px;
+    padding-top: 5px;
     padding-bottom: 10px;
 }
 
 .pic {
-    width: 200px;
-    height: 200px;
+    width: 100px;
+    height: 100px;
 }
 
 .picBox {
@@ -183,6 +186,7 @@ li {
     color: hsl(0, 74%, 50%);
     font-size: large;
     font-weight: bold;
+    margin-left: 20px;
     padding-top: 10px;
     padding-bottom: 10px;
 }
@@ -191,10 +195,33 @@ li {
     color: hsl(225, 80%, 43%);
     font-size: 30px;
     font-weight: bold;
-    padding-top: 10px;
-    padding-bottom: 10px;
 }
 
+.num{
+    height: 40px;
+    line-height: 40px;
+    vertical-align: top;
+    text-align: center;
+    font-size: larger;
+    font-weight: bold;
+    color: hsl(0, 74%, 50%);
+    margin: 10px auto;
+}
+
+.add,
+.minus{
+    vertical-align:middle;
+    border: none;
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    background-color: hsl(223, 86%, 72%);
+    color: #fff;
+    font-size: larger;
+    text-align: center;
+    border-radius: 5px;
+    padding-top: 0px;
+}
 /* 分页 */
 #pager {
     text-align: center;

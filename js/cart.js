@@ -72,12 +72,15 @@ window.onload = function () {
             }
             dataHtml += `<span class="picBox">
             <img class="pic" src=${domain+item.pic.split(",")[0]}></span>
+            <div class="contentBox">
             <div class="commodity_title"><span>${item.title}</span>
-            <span style="font-size:15px;color:black;"> x ${item.buy_num}</span></div>
-            <div class="commodity_price">¥${item.price.toFixed(2)}</div>
-            <div class="commodity_price">总价 ¥${item.price*item.buy_num.toFixed(2)}</div>
+            <span class="commodity_price">¥${item.price.toFixed(2)}</span>
+            </div>
+            <div class="num" id=${item.buy_num}>购买数量：<button class="minus" id=${item.id}> - </button> <span>${item.buy_num}</span> <button class="add" id=${item.id}> + </button>
+            <span class="commodity_price">总价 ¥${item.price*item.buy_num.toFixed(2)}</span></div>
             <div class="commodity_stock">库存：${item.stock}</div>
-            <button class="delete" id="${item.id}">删除该商品</button></span>
+            <button class="delete" id="${item.id}">删除该商品</button>
+            </div>
         </div>`
         }
         document.getElementById("totalPrice").innerHTML = `¥${totalPrice.toFixed(2)}`;
@@ -142,6 +145,7 @@ window.onload = function () {
                 topage(targetPage, pager)
             }
         }, false)
+
         document.getElementById("cartBox").addEventListener("click", function (e) {
             var c = e.target.getAttribute('class')
             console.log(c);
@@ -153,6 +157,29 @@ window.onload = function () {
                 }, 200);
             }
         }, false)
+
+        document.getElementById('cartBox').addEventListener("click",function(e){
+            var btnClass = e.target.getAttribute('class');
+            if(btnClass.search('add')!== -1){
+                let btnid = e.target.id;
+                let buyNumber = e.target.parentNode.id;
+                e.target.previousElementSibling.innerText = buyNumber++;
+                var xhr = new XMLHttpRequest();
+                xhr.open("post",`${domain}/cart/update`);
+                xhr.withCredentials = true;
+                xhr.send(JSON.stringify({
+                    id:btnid,
+                    buy_num:buyNumber++
+                }))
+                if(xhr.readyState === 4 && xhr.status === 200){
+                    var res = JSON.parse(xhr.responseText);
+                    if(res.status == 1){
+                        window.onload();
+                    }
+                }
+            }
+        },false)
+
         var empty = document.getElementById('empty');
         empty.onclick = function () {
             var xhr = new XMLHttpRequest()

@@ -135,8 +135,8 @@ li {
 
 /* 商品详情 */
 .centerBox {
-    border-bottom-left-radius: 2%;
-    border-bottom-right-radius: 2%;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
     width: 1300px;
     padding-bottom: 20px;
     background-color: hsl(223, 79%, 89%);
@@ -144,7 +144,7 @@ li {
 }
 
 .goodImg {
-    border-radius: 10%;
+    border-radius: 20px;
     overflow: hidden;
     width: 500px;
     height: 700px;
@@ -189,7 +189,7 @@ li {
 }
 
 .goodDetails {
-    border-radius: 10%;
+    border-radius: 10px;
     vertical-align: top;
     overflow: hidden;
     width: 700px;
@@ -216,6 +216,7 @@ li {
     color: hsl(225, 80%, 43%);
     text-align: center;
     font-size: x-large;
+    font-weight:bolder;
     background-color: hsl(224, 58%, 94%);
 }
 
@@ -240,7 +241,7 @@ li {
     display: inline-block;
     width: 200px;
     height: 50px;
-    background-color: hsl(24, 75%, 47%);
+    background-color: hsl(24, 85%, 52%);
     color: #fff;
     font-size: larger;
     border-radius: 5px;
@@ -253,10 +254,20 @@ li {
 
 .addToCart:hover {
     background-color: hsl(0, 83%, 40%);
+    font-size: large;
+    transition: all 0.3s;
+    text-shadow: #fff 0 4px 4px;
 }
 
 .buyBtn:hover {
-    background-color: hsl(28, 60%, 40%);
+    background-color: hsl(28, 95%, 43%);
+    font-size: large;
+    transition: all 0.3s;
+    text-shadow: #fff 0 4px 4px;
+}
+
+.text{
+    font-weight: bolder;
 }
 
 .text,
@@ -394,6 +405,32 @@ li {
     height: 25px;
     margin: 0px;
     padding: 5px;
+}
+
+.collectStar{
+    overflow: hidden;
+    display: inline-block;
+    vertical-align:super;
+    line-height: 40px;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    margin-right: 20px;
+}
+
+.collect{
+    vertical-align: text-top;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    font-size: larger;
+    font-weight: bold;
+    color: hsl(225, 80%, 43%);
+}
+
+.collectNum{
+    overflow: hidden;
+    display: inline-block;
 }
 
 /* 分页 */

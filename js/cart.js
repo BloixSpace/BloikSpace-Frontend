@@ -176,7 +176,7 @@ window.onload = function () {
                         var res = JSON.parse(xhr.responseText);
                         if(res.status == "1"){
                             console.log(1234);
-                            window.onload();
+                            request(pager);
                         }
                     }
                 }
@@ -198,7 +198,7 @@ window.onload = function () {
                         var res = JSON.parse(xhr.responseText);
                         if(res.status == "1"){
                             console.log(1234);
-                            window.onload();
+                            request(pager);
                         }
                     }
                 }

@@ -186,7 +186,10 @@ window.onload = function () {
                 }, 200);
             } else if (classlist.search("order_detail") !== -1) {
                 let orderId = e.target.id
-                window.location.href = "../orderDetail.html?id=" + orderId
+                var shade = document.getElementById('shade');
+                shade.style.display = 'block';
+                var xhr = new XMLHttpRequest();
+                xhr.open("get",)
             }
         }, false)
         document.getElementById("operate").addEventListener("click", function (e) {

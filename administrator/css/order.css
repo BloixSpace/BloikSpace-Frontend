@@ -300,8 +300,8 @@ a{
     top: 50%;
     background-color: #fff;
     transform: translate(-50%, -50%);
-    width: 900px;
-    height: 600px;
+    width: 1000px;
+    height: 700px;
     text-align: center;
     z-index: 11;
     font-size: large;

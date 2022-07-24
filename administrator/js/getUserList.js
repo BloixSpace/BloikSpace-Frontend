@@ -131,7 +131,7 @@ window.onload = function () {
             }
             if (flag != "") numOfSelect++;
             dataHtml += `<div class="user_data">
-            <div class="Check"><input type="checkbox" name="checkUser" id=${item.id} ${flag} class="input"></input></div>
+            <div class="check"><input type="checkbox" name="checkUser" id=${item.id} ${flag} class="input"></input></div>
             <div class="picBox"><img class="user_pic" src="${domain+item.avatar_uri}"></img></div>
             <div class="contentBox"><div class="user_level">身份为：${lev}</div>
             <div class="user_username">用户名为：${item.username}</div>

@@ -130,11 +130,12 @@ a{
     width: 200px;
     height: 80px;
     color: hsl(225, 80%, 43%);
-    margin: 10px auto;
+    margin-left: 20px;
     line-height: 80px;
     text-align: center;
     font-size: xx-large;
     font-weight: bolder;
+    margin-left: 150px;
 }
 
 .all{
@@ -145,13 +146,30 @@ a{
     color: hsl(225, 80%, 43%);
     font-size: larger;
     font-weight: bold;
-    text-align: center;
 }
 
 .Check{
     display: inline-block;
-    color: hsl(225, 80%, 43%);
+    color: #fff;
+    padding: 4px 10px;
+    font-size: large;
     float: left;
+    border: 2px solid hsl(223, 86%, 72%);
+    border-radius: 5px;
+    background-color:hsl(225, 80%, 43%);
+    margin: 10px 0 10px 10px;
+}
+
+.Check:hover{
+    background-color:hsl(223, 72%, 58%);
+    transition: all 0.2s;
+}
+
+.check{
+    display: inline-block;
+    float: left;
+    width: 30px;
+    height: 30px;;
     margin-left: 20px;
     margin-top: 20px;
 }

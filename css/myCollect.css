@@ -92,98 +92,173 @@ li {
     color: #fff;
 }
 
-/* 动态渲染消息 */
-.container {
-    width: 1200px;
-    margin: 20px auto;
+/* 搜索栏 */
+.underTop {
+    overflow: hidden;
+    height: 60px;
+    background-color: hsl(223, 86%, 72%);
+}
+
+.searchBox {
+    width: 1000px;
+    height: 40px;
+    background-color: hsl(223, 86%, 72%);
+    margin: 10px auto;
+}
+
+.search {
+    vertical-align: top;
+    display: inline-block;
+    width: 300px;
+    height: 36px;
+    background-color: #fff;
     border: 2px solid hsl(225, 80%, 43%);
-    border-radius: 10px;
-    padding-bottom: 20px;
+    border-radius: 5px;
+    outline-color: hsl(225, 80%, 43%);
+    margin-left: 120px;
+}
+
+.p {
+    display: inline-block;
+    color: #fff;
+    font-size: larger;
+}
+
+#orderForm {
+    display: inline-block;
+    border: 2px solid #fff;
+    border-radius: 5px;
+    font-size: larger;
+    height: 40px;
+    color: #fff;
+    background-color: hsl(225, 80%, 43%);
+    outline-style: none;
+    padding: 0 10px;
+}
+
+.searchBtn {
+    display: inline-block;
+    width: 100px;
+    height: 40px;
+    background-color: hsl(225, 80%, 43%);
+    color: #fff;
+    font-size: large;
+    border-radius: 5px;
+    border: 2px solid #fff;
+}
+
+.searchBtn:hover {
+    background-color: hsl(223, 86%, 72%);
+}
+
+/* 商品展示 */
+.detail,
+.delete {
+    display: inline-block;
+    padding-left: 10px;
+    padding-right: 10px;
+    height: 40px;
+    background-color: hsl(225, 80%, 43%);
+    color: #fff;
+    font-size: large;
+    border-radius: 5px;
+    border: 2px solid hsl(223, 86%, 72%);
+}
+
+.detail:hover,
+.delete:hover {
+    background-color: hsl(223, 86%, 72%);
+    transition: all 0.3s;
 }
 
 .title {
     width: 500px;
-    height: 80px;
     color: hsl(225, 80%, 43%);
     margin: 20px auto;
-    line-height: 80px;
-    text-align: center;
     font-size: xx-large;
     font-weight: bolder;
-}
-
-.operate {
-    text-align: center;
-    font-size: larger;
-    height: 50px;
     line-height: 50px;
 }
 
-.confirm {
-    background-color: hsl(223, 86%, 72%);
-    color: #fff;
-    font-size: large;
-    padding: 2px 6px;
-    border-radius: 5px;
-    border: 2px solid hsl(225, 80%, 43%);
-    cursor: pointer;
-    margin: 10px;
-}
-
-.confirm:hover {
-    background-color: hsl(225, 80%, 43%);
-}
-
 .anchor {
+    font-size: larger;
     text-decoration: none;
     color: hsl(225, 80%, 43%);
     margin: 0 20px;
 }
 
-.time,
-.ifread {
-    font-size: medium;
-    color: hsl(225, 80%, 43%);
-}
-
-.content {
-    color: hsl(225, 79%, 26%);
-    font-size: larger;
-}
-
-.notice_data {
-    width: 800px;
-    padding: 10px;
+.commodity_data {
+    vertical-align: text-top;
+    display: inline-block;
     background-color: hsl(223, 79%, 89%);
-    margin: 20px auto;
-    line-height: 50px;
+    width: 550px;
+    height: 240px;
+    margin: 20px 15px;
     border: 2px solid hsl(225, 80%, 43%);
     border-radius: 10px;
+    padding: 10px;
 }
 
-.read_notice,
-.order_detail,
-.delete_notice {
-    background-color: hsl(225, 80%, 43%);
-    color: #fff;
-    font-size: larger;
-    padding: 2px 6px;
-    border-radius: 5px;
-    border: 2px solid #fff;
-    cursor: pointer;
-    float: right;
+.container {
+    text-align: center;
+    width: 1300px;
+    border: 2px solid hsl(225, 80%, 43%);
+    margin: 20px auto;
+    border-radius: 10px;
+    padding-bottom: 20px;
+}
+
+.imgBox {
+    margin: 20px;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.contentBox {
+    width: 280px;
+    font-size: large;
     margin: 10px;
-}
-
-.read_notice:hover,
-.delete_notice:hover {
-    background-color: hsl(223, 86%, 72%);
-}
-
-.class {
+    display: inline-block;
     color: hsl(225, 80%, 43%);
+}
+
+.itemCategory,
+.itemPrice,
+.itemStock {
+    margin: 15px;
+}
+
+.itemTitle {
+    background-color: #fff;
+    border-radius: 5px;
     font-size: larger;
+    font-weight: bold;
+    padding-top: 4px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 4px;
+}
+
+.itemPrice {
+    background-color: #fff;
+    border-radius: 5px;
+    height: 40px;
+    line-height: 40px;
     font-weight: bolder;
+    padding: 0 40px;
+}
+
+.emptyComment {
+    color: hsl(225, 80%, 43%);
+    margin: 20px auto;
+    font-size: x-large;
+    font-weight: bolder;
+}
+
+#emptyComment {
+    width: 800px;
+    text-align: center;
+    margin: 10px auto;
 }
 
 /* 分页 */

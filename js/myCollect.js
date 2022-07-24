@@ -126,11 +126,11 @@ window.onload = function () {
             <span class="imgBox"><img src=${domain+item.pic} style="width: 200px;height:200px;z-index:1;"></span>
             <span class="contentBox">
             <div class="itemTitle">${item.title}</div>
-            <div class="itemCategory">商家id为${item.seller}</div>
             <div class="itemPrice">售价${item.price}元</div>
             <div class="itemStock">销量${item.sales}件</div>
             <div class="itemStock">库存 ${item.stock >= 100 ? "100+件" : "剩余"+item.stock+"件"}</div>
             <button id=${item.commodity_id} class="detail">查看商品详情</button>
+            <button id=${item.commodity_id} class="delete">取消收藏</button>
             </span>
             </div>`
         }

@@ -142,6 +142,8 @@ li {
 #category,
 #price,
 #stock {
+    padding-left: 10px;
+    color: hsl(225, 80%, 43%);
     margin: 10px auto;
     height: 40px;
     outline-style: none;

@@ -100,7 +100,7 @@ li {
 }
 
 .searchBox {
-    width: 1000px;
+    width: 1050px;
     height: 40px;
     background-color: hsl(223, 86%, 72%);
     margin: 10px auto;
@@ -125,6 +125,18 @@ li {
 }
 
 #orderForm {
+    display: inline-block;
+    border: 2px solid #fff;
+    border-radius: 5px;
+    font-size: larger;
+    height: 40px;
+    color: #fff;
+    background-color: hsl(225, 80%, 43%);
+    outline-style: none;
+    padding: 0 10px;
+}
+
+#categoryForm {
     display: inline-block;
     border: 2px solid #fff;
     border-radius: 5px;

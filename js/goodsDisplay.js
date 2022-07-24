@@ -56,7 +56,9 @@ window.onload = function () {
         console.log(pager.limit)
         var desc = "";
         if (pager.desc) desc = "&desc=true";
-        xhr.open("get", `${domain}/commodity/list?page=${pager.currentPage}&page_size=${pager.limit}&order=${pager.order}&key=${pager.key}${desc}`)
+        var category = "";
+        if (pager.category != null) category = "&category=" + pager.category;
+        xhr.open("get", `${domain}/commodity/list?page=${pager.currentPage}&page_size=${pager.limit}&order=${pager.order}&key=${pager.key}${desc}${category}`)
         xhr.withCredentials = true
         xhr.send()
         xhr.onreadystatechange = function () {
@@ -71,10 +73,29 @@ window.onload = function () {
                     document.getElementById("data").innerHTML = emptyHtml;
                     return;
                 }
+                loadCategory(pager);
                 adddata(res)
                 show(pager)
             }
         }
+    }
+
+    function loadCategory(pager) {
+        var xhr = new XMLHttpRequest();
+        xhr.open("get", `${domain}/commodity/getCategoryList`);
+        xhr.send();
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                var res = JSON.parse(xhr.responseText);
+                var html = `<option value="allSelect">所有</option>`;
+                for (let i = 0; i < res.length; i++) {
+                    let selected = "";
+                    if (pager.category == res[i]) selected = "selected";
+                    html += `<option value="${res[i]}" ${selected}>${res[i]}</option>`
+                }
+                document.getElementById("categoryForm").innerHTML = html;
+            }
+        };
     }
 
     function adddata(res) {
@@ -182,6 +203,7 @@ window.onload = function () {
             request(pager);
             return false;
         }
+
         var btn1 = document.getElementById('orderBtnDesc');
         btn1.onclick = function () {
             var orderForm = document.getElementById("orderForm");
@@ -194,6 +216,23 @@ window.onload = function () {
             pager.desc = true;
             request(pager);
             return false;
+        }
+
+        var category = document.getElementById("categoryForm");
+        category.onchange = function() {
+            let nowCategory = null;
+            for (let i = 0; i < category.length; i++) {
+                if (category[i].selected) {
+                    nowCategory = category[i].value;
+                }
+            }
+            if (nowCategory == "allSelect") {
+                pager.category = null;
+                request(pager);
+            } else {
+                pager.category = nowCategory;
+                request(pager);
+            }
         }
     }
 

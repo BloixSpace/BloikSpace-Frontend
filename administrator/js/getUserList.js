@@ -67,7 +67,7 @@ window.onload = function () {
     //分页
     var defaultPager = {
         currentPage: 1,
-        limit: 10,
+        limit: 5,
         divNumber: 5,
         order: "time",
         unread: false,
@@ -75,7 +75,7 @@ window.onload = function () {
     }
     createPager({
         currentPage: 1,
-        limit: 2,
+        limit: 5,
         divNumber: 5,
         order: "username",
         unread: null,

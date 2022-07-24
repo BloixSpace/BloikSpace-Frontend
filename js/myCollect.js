@@ -199,17 +199,19 @@ window.onload = function () {
             console.log(classlist);
             if (classlist.search("detail") !== -1) {
                 let commodityId = e.target.id
-                location.href = `goodDetail.html?id=${commodityId}`;
+                location.href = `goodDetails.html?id=${commodityId}`;
             }
             else if(classlist.search("delete")!== -1) {
                 let commodityId = e.target.id;
                 var xhr = new XMLHttpRequest();
                 xhr.open("post",`${domain}/star/delete`);
                 xhr.withCredentials = true;
-                xhr.send();
+                xhr.send(JSON.stringify({
+                    commodity_id:commodityId
+                }));
                 xhr.onreadystatechange = function(){
                     if(xhr.readyState === 4 && xhr.status === 200){
-                        
+                        request(pager);
                     }
                 }
             }

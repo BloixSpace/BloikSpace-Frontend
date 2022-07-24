@@ -301,7 +301,7 @@ a{
     background-color: #fff;
     transform: translate(-50%, -50%);
     width: 1000px;
-    height: 700px;
+    height: 720px;
     text-align: center;
     z-index: 11;
     font-size: large;
@@ -323,11 +323,17 @@ a{
 }
 
 #commodityTitle {
+    height: 100px;
+    line-height: 100px;
     font-size: xx-large;
     font-weight: bolder;
     color: hsl(225, 80%, 43%);
-    padding: 10px auto;
-    margin: 20px auto;
+    margin: 0 20px;
+}
+
+#commodityPic{
+    width: 100px;
+    height: 100px;
 }
 
 .confirm {
@@ -360,6 +366,10 @@ a{
     border: 2px solid hsl(225, 80%, 43%);
 }
 
+#nickname{
+    margin-top: 0;
+}
+
 #orderTime,
 #isShip,
 #shipTime,
@@ -370,4 +380,8 @@ a{
     color: hsl(225, 80%, 43%);
     font-size: large;
     font-weight: bold;
+}
+
+.text{
+    margin: 0 auto 20px;
 }

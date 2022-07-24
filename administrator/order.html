@@ -11,26 +11,31 @@
     <!-- 遮罩层 -->
     <div class="shade" id="shade">
         <!-- 弹出层 -->
-        <div class="pop">
+        <div class="pop" id="pop">
             <p class="title">订单详情</p>
             <!-- 商品图片 -->
-            <div id="commodityPic">
+            <span id="commodityPic">
                 <img src="" />
-            </div>
+            </span>
     
-            <div id="commodityTitle">
+            <span id="commodityTitle">
                 抱歉，系统未查询到相关商品信息
-            </div>
+            </span>
     
             姓名：<input type="text" id="nickname" /><br>
             电话：<input type="text" id="phone" /><br>
             地址：<input type="text" id="address"><br>
             备注：<input type="text" id="remark"><br>
             <p id="orderTime"></p>
-            <p id="isShip"></p>
-            <p id="shipTime"></p>
-            <p id="isReceipt"></p>
-            <p id="receiptTime"></p>
+            <div class="text">
+                <span id="isShip"></span>
+                <span id="shipTime"></span>
+            </div>
+            <div class="text">
+                <span id="isReceipt"></span>
+                <span id="receiptTime"></span>
+            </div>
+            <button id="close" class="confirm">关闭当前页面</button>
             <button id="updateOrder" class="confirm">更新订单信息</button>
             <button id="deleteOrder" class="confirm">申请取消订单</button>
         </div>

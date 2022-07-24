@@ -11,6 +11,12 @@ manage2.onclick = function(){
     hidden2.style.display = (hidden2.style.display == 'none'? 'block':'none');
     return false;
 }
+//关闭弹出层
+var clos = document.getElementById('close');
+clos.onclick = function(){
+    var shade = document.getElementById('shade');
+    shade.style.display = 'none';
+}
 //点击二级菜单的退出登录实现登出，登出接口
 var logout = document.getElementById('logout');
 logout.onclick = function () {
@@ -30,6 +36,9 @@ logout.onclick = function () {
     }
     return false;
 }
+
+var orderId;
+
 //检查登录状态，更新头像及用户名
 var cameraUri, userName;
 window.onload = function () {
@@ -184,12 +193,12 @@ window.onload = function () {
                 setTimeout(() => {
                     request(pager)
                 }, 200);
-            } else if (classlist.search("order_detail") !== -1) {
-                let orderId = e.target.id
+            }
+            else if(classlist.search("order_detail")!== -1){
                 var shade = document.getElementById('shade');
                 shade.style.display = 'block';
-                var xhr = new XMLHttpRequest();
-                xhr.open("get",)
+                orderId = e.target.id;
+                Request();
             }
         }, false)
         document.getElementById("operate").addEventListener("click", function (e) {
@@ -235,4 +244,164 @@ window.onload = function () {
         request(pager)
     }
     return false;
+}
+
+document.getElementById("pop").addEventListener("click", function (e) {
+    var classlist = e.target.getAttribute('id')
+    if (classlist.search("receiptOrder") !== -1) {
+        receiptOrder()
+    } else if (classlist.search("updateOrder") !== -1) {
+        updateOrder()
+    } else if (classlist.search("deleteOrder") !== -1) {
+        deleteOrder()
+    } else if (classlist.search("addReview") !== -1) {
+        location.href = "../addReview.html?order_id=" + orderId;
+    } else if (classlist.search("updateReview") !== -1) {
+        location.href = "../updateReview.html?order_id=" + orderId;
+    }
+    else if(classlist.search("close")!== -1){
+        var shade = document.getElementById('shade');
+        shade.style.display = 'none';
+    }
+}, false)
+
+function modifyReview() {
+    var xhr = new XMLHttpRequest();
+    xhr.open("get", `${domain}/review/getList?order_id=${orderId}`, false);
+    xhr.withCredentials = false;
+    xhr.send();
+    if (xhr.status === 200) {
+        var res = JSON.parse(xhr.responseText);
+        console.log(res);
+        if (res.num == 0) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+}
+
+function updateOrder() {
+    var nickname = document.getElementById("nickname").value
+    var phone = document.getElementById("phone").value
+    var address = document.getElementById("address").value
+    var remark = document.getElementById("remark").value
+
+    var xhr2 = new XMLHttpRequest();
+    xhr2.open("post", domain + "/order/update")
+    xhr2.withCredentials = true
+    xhr2.send(JSON.stringify({
+        id: orderId,
+        nickname: nickname,
+        phone: phone,
+        address: address,
+        remark: remark
+    }))
+    xhr2.onreadystatechange = function () {
+        if (xhr2.readyState === 4 && xhr2.status === 200) {
+            var res2 = JSON.parse(xhr2.responseText);
+            if (res2.status == 0) {
+                alert(res2.errMsg)
+                return
+            } else {
+                alert("订单信息更新成功")
+                Request()
+            }
+        }
+    }
+    return false
+}
+
+function deleteOrder() {
+    var xhr3 = new XMLHttpRequest();
+    xhr3.open("post", domain + "/order/delete")
+    xhr3.withCredentials = true
+    xhr3.send(JSON.stringify({
+        id: orderId
+    }))
+    xhr3.onreadystatechange = function () {
+        if (xhr3.readyState === 4 && xhr3.status === 200) {
+            var res3 = JSON.parse(xhr3.responseText);
+            if (res3.status == 0) {
+                alert(res3.errMsg)
+                return
+            } else {
+                alert("删除成功")
+                window.location.replace("queryOrderList.html")
+            }
+        }
+    }
+    return false
+}
+
+function receiptOrder() {
+    var xhr4 = new XMLHttpRequest();
+    xhr4.open("post", domain + "/order/receipt")
+    xhr4.withCredentials = true
+    xhr4.send(JSON.stringify({
+        id: orderId
+    }))
+    xhr4.onreadystatechange = function () {
+        if (xhr4.readyState === 4 && xhr4.status === 200) {
+            var res4 = JSON.parse(xhr4.responseText);
+            if (res4.status == 0) {
+                alert(res4.errMsg)
+                return
+            } else {
+                location.reload()
+            }
+        }
+    }
+    return false
+}
+
+function Request() {
+    var xhr5 = new XMLHttpRequest()
+    xhr5.open("get", domain + "/order/query?id=" + orderId)
+    xhr5.withCredentials = true;
+    xhr5.send()
+    xhr5.onreadystatechange = function () {
+        console.log(xhr5.responseText)
+        if (xhr5.readyState === 4 && xhr5.status === 200) {
+            var res5 = JSON.parse(xhr5.responseText)
+            if (res5.status == 0) {
+                alert(res5.errMsg)
+                return
+            }
+            if (res5.receipt_time == undefined && res5.is_ship) {
+                var form = document.getElementById("pop").innerHTML
+                form += "<button id='receiptOrder' class='confirm'>确认收货</button>"
+                document.getElementById("pop").innerHTML = form
+            }
+            if (res5.receipt_time != undefined) {
+                var flag = modifyReview();
+                var hasAdd = (document.getElementById("updateReview") != null)
+                if (!hasAdd) hasAdd = (document.getElementById("addReview") != null)
+                if (!hasAdd) {
+                    var form = document.getElementById("pop").innerHTML
+                    if (flag) {
+                        form += "<button id='updateReview' class='confirm'>修改/删除评价</button>";
+                    } else {
+                        form += "<button id='addReview' class='confirm'>添加评价</button>";
+                    }
+                    document.getElementById("pop").innerHTML = form
+                }
+            }
+            document.getElementById("commodityTitle").innerHTML = `${res5.commodity_title}<span style="font-size:15px;color:black;"> x ${res5.buy_num}</span><br/>`
+            document.getElementById("nickname").value = res5.nickname
+            document.getElementById("phone").value = res5.phone
+            document.getElementById("address").value = res5.address
+            document.getElementById("remark").value = res5.remark
+            document.getElementById("orderTime").innerHTML = "下单时间：" + res5.order_time
+            document.getElementById("isShip").innerHTML = res5.is_ship ? "已发货" : "未发货"
+            if (res5.is_ship) {
+                document.getElementById("shipTime").innerHTML = "发货时间：" + res5.ship_time
+            }
+            document.getElementById("isReceipt").innerHTML = res5.receipt_time != undefined ? "已确认收货" : "未确认收货"
+            if (res5.receipt_time != undefined) {
+                document.getElementById("receiptTime").innerHTML = "收货时间：" + res5.receipt_time
+            }
+            document.getElementById("commodityPic").innerHTML = `<img src=${domain + res5.commodity_pic.split(",")[0]} style="width: 100px;height:100px;border-radius: 0px;">`
+        }
+    }
 }

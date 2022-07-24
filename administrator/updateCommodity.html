@@ -4,24 +4,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>获取用户列表</title>
-    <link rel="stylesheet" href="css/getUserList.css">
+    <title>更新商品</title>
+    <link rel="stylesheet" href="css/updateCommodity.css">
 </head>
 <body>
-    <!-- 遮罩层 -->
-    <div class="shade" id="shade">
-        <!-- 弹出层 -->
-        <div class="pop">
-            <div class="imgBox">
-                <img src="" class="img">
-            </div>
-            <input type="text" class="userName">用户名</input>
-            <input type="text" class="userLevel">身份</input>
-            <input type="text" class="userSignature">签名</input>
-            <input type="text" class="userTime">创建时间</input>
-            <button class="user_delete" id="back">返回</button>
-        </div>
-    </div>
     <!-- 左侧导航栏和上层导航栏 -->
     <div class="leftBox">
         <a class="leftImg" id="camera"></a>
@@ -48,34 +34,15 @@
             <a class="topNav" id="logout">退出登录</a>
             <a class="topNav" href="../login.html">登录</a>
         </div>
-        <!-- 右侧列表 -->
+        <!-- 右侧 -->
         <div class="container">
-
-            <div class="operate">
-                <button id="selectAll" class="Check">全选此页</button>
-                <button id="unselectAll" class="Check">取消所有全选</button>
-                <button id="deleteUsers" class="Check">删除所选用户</button>
-                <p class="title">用户列表</p>
-            </div>
-            
-            <!-- 动态渲染 -->
-            <div id="data">
-                <div class="user_data">
-
-                </div>
-            </div>
-
-            <!-- 分页 -->
-            <div id="pager">
-
-            </div>
-        
+            <p class="title">您好，亲爱的管理员</p>
+            <p class="text1">欢迎来到BloikSpace管理员界面！</p>
         </div>
     </div>
 
-    <a class="up" href="#top">回到顶部&uArr;</a>
-    <a class="down" href="#pager">去到底部&dArr;</a>
-    <script src="js/adminOther.js"></script>
+   
+    <!-- <script src="js/adminOther.js"></script> -->
 </body>
 </html>
-<script src="js/getUserList.js"></script>
+<script src="js/updateCommodity.js"></script>

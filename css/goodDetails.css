@@ -232,19 +232,27 @@ li {
     text-align: center;
 }
 
-.buyBtn {
+.buyBtn, .addToCart {
     display: inline-block;
     width: 200px;
     height: 50px;
-    background-color: hsl(0, 75%, 47%);
+    background-color: hsl(24, 75%, 47%);
     color: #fff;
     font-size: larger;
     border-radius: 5px;
     border: 2px solid hsl(0, 82%, 29%);
 }
 
-.buyBtn:hover {
+.addToCart {
+    background-color: hsl(0, 75%, 47%);
+}
+
+.addToCart:hover {
     background-color: hsl(0, 83%, 40%);
+}
+
+.buyBtn:hover {
+    background-color: hsl(28, 60%, 40%);
 }
 
 .text,

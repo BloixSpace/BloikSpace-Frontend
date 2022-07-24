@@ -257,7 +257,8 @@ xhr2.onreadystatechange = function () {
             <button class="minus" id="minus"> - </button>
         </div>
         <div class="buyBtnBox">
-            <button class="buyBtn" id="join">加入购物车</button>
+            <button class="buyBtn" id="join">立即购买</button>
+            <button class="addToCart" id="join">加入购物车</button>
         </div>
     </div>`;
         document.getElementById("centerBox").innerHTML = Html;
@@ -305,6 +306,11 @@ document.getElementById("centerBox").addEventListener("click", function (e) {
     var clas = e.target.getAttribute('class')
     if (clas == null) return;
     if (clas.search("buyBtn") !== -1) {
+        var buyNumber = document.getElementById('amount')
+        // console.log(buyNumber.value)
+        // console.log("join");
+        location.href = `orderNow.html?id=${id}&buy_num=${buyNumber.value}`;
+    } else if (clas.search("addToCart") != -1) {
         var buyNumber = document.getElementById('amount')
         console.log(buyNumber.value)
         console.log("join");

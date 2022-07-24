@@ -197,15 +197,19 @@ window.onload = function () {
                 }
                 if (res5.receipt_time != undefined) {
                     var flag = modifyReview();
-                    var form = document.getElementById("orderForm").innerHTML
-                    if (flag) {
-                        form += "<button id='updateReview' class='confirm'>修改/删除评价</button>";
-                    } else {
-                        form += "<button id='addReview' class='confirm'>添加评价</button>";
+                    var hasAdd = (document.getElementById("updateReview") != null)
+                    if (!hasAdd) hasAdd = (document.getElementById("addReview") != null)
+                    if (!hasAdd) {
+                        var form = document.getElementById("orderForm").innerHTML
+                        if (flag) {
+                            form += "<button id='updateReview' class='confirm'>修改/删除评价</button>";
+                        } else {
+                            form += "<button id='addReview' class='confirm'>添加评价</button>";
+                        }
+                        document.getElementById("orderForm").innerHTML = form
                     }
-                    document.getElementById("orderForm").innerHTML = form
                 }
-                document.getElementById("commodityTitle").innerHTML = res5.commodity_title + "<br/>"
+                document.getElementById("commodityTitle").innerHTML = `${res5.commodity_title}<span style="font-size:15px;color:black;"> x ${res5.buy_num}</span><br/>`
                 document.getElementById("nickname").value = res5.nickname
                 document.getElementById("phone").value = res5.phone
                 document.getElementById("address").value = res5.address

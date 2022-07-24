@@ -265,22 +265,6 @@ document.getElementById("pop").addEventListener("click", function (e) {
     }
 }, false)
 
-function modifyReview() {
-    var xhr = new XMLHttpRequest();
-    xhr.open("get", `${domain}/review/getList?order_id=${orderId}`, false);
-    xhr.withCredentials = false;
-    xhr.send();
-    if (xhr.status === 200) {
-        var res = JSON.parse(xhr.responseText);
-        console.log(res);
-        if (res.num == 0) {
-            return false;
-        } else {
-            return true;
-        }
-    }
-}
-
 function updateOrder() {
     var nickname = document.getElementById("nickname").value
     var phone = document.getElementById("phone").value
@@ -372,20 +356,6 @@ function Request() {
                 var form = document.getElementById("pop").innerHTML
                 form += "<button id='receiptOrder' class='confirm'>确认收货</button>"
                 document.getElementById("pop").innerHTML = form
-            }
-            if (res5.receipt_time != undefined) {
-                var flag = modifyReview();
-                var hasAdd = (document.getElementById("updateReview") != null)
-                if (!hasAdd) hasAdd = (document.getElementById("addReview") != null)
-                if (!hasAdd) {
-                    var form = document.getElementById("pop").innerHTML
-                    if (flag) {
-                        form += "<button id='updateReview' class='confirm'>修改/删除评价</button>";
-                    } else {
-                        form += "<button id='addReview' class='confirm'>添加评价</button>";
-                    }
-                    document.getElementById("pop").innerHTML = form
-                }
             }
             document.getElementById("commodityTitle").innerHTML = `${res5.commodity_title}<span style="font-size:15px;color:black;"> x ${res5.buy_num}</span><br/>`
             document.getElementById("nickname").value = res5.nickname

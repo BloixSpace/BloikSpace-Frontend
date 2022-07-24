@@ -379,7 +379,7 @@ document.getElementById('shade').addEventListener("click", function (e) {
         var pswd = document.getElementById('pswd');
         var levell;
         for(var i = 0 ; i < role.length ; i ++){
-            if(role[0].checked){
+            if(role[i].checked){
                 levell = i+1;
             }
         }

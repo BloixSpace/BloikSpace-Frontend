@@ -11,6 +11,12 @@ notice.onclick = function () {
     location.href = "notice.html";
     return false;
 }
+//点击我的收藏到收藏界面
+var collect = document.getElementById('collect');
+collect.onclick = function () {
+    location.href = "myCollect.html";
+    return false;
+}
 //点击我的订单跳转订单界面
 var order = document.getElementById('order');
 order.onclick = function () {

@@ -35,9 +35,26 @@
             <a class="topNav" href="../login.html">登录</a>
         </div>
         <!-- 右侧 -->
-        <div class="container">
-            <p class="title">您好，亲爱的管理员</p>
-            <p class="text1">欢迎来到BloikSpace管理员界面！</p>
+        <!-- 更新商品 -->
+        <div id="container">
+            <div id="commodityPic">
+                <p class="text1">更新商品</p>
+                <div id="preview">
+                    <!-- 图片预览 -->
+                </div>
+                <p class="text2">上传图片（最多上传五张）</p>
+                <input type="file" id="files" accept="image/gif,image/jpeg,image/jpg,image/png,image/svg"
+                    multiple="multiple">
+            </div>
+            <div id="commodityDetail">
+                商品名称：<input type="text" id="title" placeholder="请输入商品名称"><br>
+                商品描述：<input type="text" id="content" placeholder="请输入商品描述"><br>
+                商品分类：<input type="text" id="category" placeholder="请输入商品分类"><br>
+                商品价格：<input type="number" id="price" placeholder="请输入商品价格"><br>
+                库存数量：<input type="number" id="stock" placeholder="请输入商品库存数"><br>
+            </div>
+            <button id="submit">点击确认提交</button>
+
         </div>
     </div>
 

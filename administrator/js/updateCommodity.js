@@ -1,3 +1,5 @@
+var domain = 'https://forum.wyy.ink';
+
 var manage1 = document.getElementById('manage1');
 var hidden1 = document.getElementById('hidden1');
 manage1.onclick = function(){
@@ -52,5 +54,142 @@ window.onload = function(){
              }
          }
      }
-     return false;
+    var params = new URLSearchParams(window.location.search);
+    var commodityId = params.get("id");
+
+    var xhr = new XMLHttpRequest();
+    xhr.open("get", `${domain}/commodity/get?id=${commodityId}`);
+    xhr.withCredentials = true;
+    xhr.send();
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            var res = JSON.parse(xhr.responseText);
+            if (res.status != 1) {
+                alert(res.errMsg);
+                return;
+            }
+            document.getElementById("title").value = res.title;
+            document.getElementById("content").value = res.content;
+            document.getElementById("category").value = res.category;
+            document.getElementById("price").value = res.price;
+            document.getElementById("stock").value = res.stock;
+            var uris = res.pic.split(",");
+            var html = "";
+            for (let i = 0; i < uris.length; i++) {
+                html += `<img src=${domain + uris[i]} style="width:100px;height:100px;overflow: hidden;">`;
+            }
+            document.getElementById("preview").innerHTML = html;
+        }
+    }
+    var Price = document.getElementById('price');
+    Price.onblur = function(){
+        if(Price.value == 0){
+            Price.value = 0;
+            Price.style.color = 'red';
+        }
+        else if(Price.value <= 0){
+            Price.value = 0;
+            Price.style.color = 'red';
+        }
+        return false;
+    }
+    Price.onclick = function(){
+        Price.style.color = 'black';
+    }
+    var Stock = document.getElementById('stock');
+    Stock.onblur = function(){
+        if(Stock.value<=0){
+            Stock.value = 0;
+            Stock.style.color = 'red';
+        }
+        else {
+            Stock.value = Math.floor(Stock.value);
+            Stock.style.color = 'red';
+        }
+        return false;
+    }
+    Stock.onclick = function(){
+        Stock.style.color = 'black';
+    }
+    // 点击提交按钮
+    var submitButton = document.getElementById("submit");
+    submitButton.onclick = function () {
+        var picUris = uploadPictures();
+        if (picUris == null) {
+            console.log("失败");
+            return;
+        }
+        var title = document.getElementById("title").value;
+        var content = document.getElementById("content").value;
+        var category = document.getElementById("category").value;
+        var price = document.getElementById("price").value;
+        var stock = document.getElementById("stock").value;
+        var xhr = new XMLHttpRequest();
+        xhr.open("post", `${domain}/commodity/update`);
+        xhr.withCredentials = true;
+        xhr.send(JSON.stringify({
+            id: commodityId,
+            title: title,
+            content: content,
+            category: category,
+            pic: picUris,
+            price: price,
+            stock: stock
+        }));
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                var res = JSON.parse(xhr.responseText);
+                if (res.status == 1) {
+                    alert("修改成功");
+                    // TODO
+                    location.href = "manageCommodity.html"
+                } else {
+                    alert(res.errMsg);
+                }
+            }
+        }
+    }
+
+    // 上传图片们
+    function uploadPictures() {
+        var templates = document.getElementById("files").files;
+        if (templates.length > 5) {
+            alert("图片上传数量不能大于5！");
+            return null;
+        }
+        var uri = "";
+        for (let i = 0; i < templates.length; i++) {
+            var formData = new FormData();
+            formData.append("file", templates[i]);
+            var xhr = new XMLHttpRequest();
+            xhr.open("post", `${domain}/file/upload`, false);
+            xhr.withCredentials = true;
+            xhr.send(formData);
+            if (xhr.status === 200) {
+                var res = JSON.parse(xhr.responseText);
+                if (res.status == 1) {
+                    if (uri != "") uri += ",";
+                    uri += res.uri;
+                }
+            } else {
+                console.log(xhr.responseText);
+                return null;
+            }
+        }
+        console.log(uri);
+        return uri;
+    }
+
+    // 选择图片后预览
+    var fileChange = document.getElementById("files");
+    fileChange.onchange = function () {
+        var files = fileChange.files;
+        var html = "";
+        for (let i = 0; i < files.length; i++) {
+            var url = window.URL.createObjectURL(files[i]);
+            html += `<img src=${url} style="width:100px;height:100px;overflow: hidden;"><br>`;
+        }
+        document.getElementById("preview").innerHTML = html;
+    }
+    return false;
 }

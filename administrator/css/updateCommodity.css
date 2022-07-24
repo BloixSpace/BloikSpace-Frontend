@@ -116,37 +116,87 @@ a{
     color: hsl(223, 86%, 72%);
 }
 
-.container{
+#container {
     width: 1000px;
-    height: 800px;
-    background-color:antiquewhite;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    /* background-color:hsl(223, 79%, 89%); */
+    margin: 40px auto;
+    text-align: center;
+    border: 2px solid hsl(225, 80%, 43%);
+    border-radius: 10px;
+}
+
+.pic {
+    margin: 20px;
+}
+
+.text1,
+.text2 {
+    text-align: center;
+    color: hsl(225, 80%, 43%);
+    font-weight: bold;
     margin: 20px auto;
 }
 
-.title {
-    width: 500px;
-    height: 80px;
-    color: hsl(225, 80%, 43%);
-    margin: 10px auto;
-    line-height: 80px;
-    text-align: center;
+.text1 {
     font-size: xx-large;
-    font-weight: bolder;
-    background-color: #fff;
 }
 
-.text1{
+.text2 {
+    font-size: large;
+}
+
+#files {
+    width: 220px;
+    font-size: large;
+    font-weight: bold;
+    color: hsl(225, 80%, 43%);
+    margin: 10px auto;
+}
+
+#commodityDetail {
+    color: hsl(225, 80%, 43%);
+    font-size: large;
+    font-weight: bold;
+}
+
+#title,
+#content,
+#category,
+#price,
+#stock {
+    padding-left: 10px;
+    color: hsl(225, 80%, 43%);
+    margin: 10px auto;
+    height: 40px;
+    outline-style: none;
+    border-radius: 5px;
+    border: 2px solid hsl(225, 80%, 43%);
+    font-size: large;
     width: 600px;
-    height: 80px;
-    background-color: #fff;
-    text-align: center;
-    color: hsl(225, 80%, 43%);
-    font-size: xx-large;
-    font-weight: bolder;
-    margin: 10px auto;
-    line-height: 80px;
 }
 
+input::placeholder {
+    color: hsl(223, 86%, 72%);
+}
+
+#submit {
+    margin-top: 20px;
+    display: inline-block;
+    padding-left: 10px;
+    padding-right: 10px;
+    height: 40px;
+    background-color: hsl(225, 80%, 43%);
+    color: #fff;
+    font-size: larger;
+    border-radius: 5px;
+    border: 2px solid hsl(223, 86%, 72%);
+}
+
+#submit:hover {
+    background-color: hsl(223, 86%, 72%);
+}
 
 @keyframes cameraImg {
     0% {box-shadow: 0 0 20px bisque;}

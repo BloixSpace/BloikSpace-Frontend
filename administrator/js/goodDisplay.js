@@ -226,7 +226,7 @@ window.onload = function () {
             if (classlist.search("commodity_data") !== -1) {
                 var id = e.target.parentNode.parentNode.getAttribute("id")
                 console.log(id)
-                location.href = (`../admin/updateCommodity.html?id=${id}`)
+                location.href = (`updateCommodity.html?id=${id}`)
             }
         }, false);
 

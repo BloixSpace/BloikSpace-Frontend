@@ -275,3 +275,99 @@ a{
     transition: all 0.5s;
     transform: rotate(720deg) scale(1.1);
 }
+
+/* 遮罩&弹出层 */
+.shade{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.4);
+    display: none;
+}
+
+.shade::after{
+    content: "";
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    backdrop-filter: blur(3px);
+    z-index: 10;
+}
+
+.pop{
+    position: absolute;
+    left: 56%;
+    top: 50%;
+    background-color: #fff;
+    transform: translate(-50%, -50%);
+    width: 900px;
+    height: 600px;
+    text-align: center;
+    z-index: 11;
+    font-size: large;
+    color: hsl(225, 80%, 43%);
+    font-weight: bold;
+    border: 2px solid hsl(225, 80%, 43%);
+    border-radius: 10px;
+}
+
+.title {
+    width: 500px;
+    height: 80px;
+    color: hsl(225, 80%, 43%);
+    margin: 0 auto;
+    line-height: 80px;
+    text-align: center;
+    font-size: xx-large;
+    font-weight: bolder;
+}
+
+#commodityTitle {
+    font-size: xx-large;
+    font-weight: bolder;
+    color: hsl(225, 80%, 43%);
+    padding: 10px auto;
+    margin: 20px auto;
+}
+
+.confirm {
+    background-color: hsl(225, 80%, 43%);
+    color: #fff;
+    font-size: large;
+    padding: 2px 6px;
+    border-radius: 5px;
+    border: 2px solid hsl(223, 86%, 72%);
+    cursor: pointer;
+    margin: 10px;
+}
+
+.confirm:hover {
+    background-color: hsl(223, 86%, 72%);
+}
+
+#nickname,
+#phone,
+#address,
+#remark {
+    background-color: hsl(223, 79%, 89%);
+    border-radius: 5px;
+    outline-style: none;
+    color: hsl(225, 79%, 26%);
+    font-size: larger;
+    width: 800px;
+    margin: 10px auto;
+    padding: 10px;
+    border: 2px solid hsl(225, 80%, 43%);
+}
+
+#orderTime,
+#isShip,
+#shipTime,
+#isReceipt,
+#receiptTime {
+    margin: 10px auto;
+    padding: 10px;
+    color: hsl(225, 80%, 43%);
+    font-size: large;
+    font-weight: bold;
+}

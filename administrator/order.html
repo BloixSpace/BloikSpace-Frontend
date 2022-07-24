@@ -8,6 +8,33 @@
     <link rel="stylesheet" href="css/order.css">
 </head>
 <body>
+    <!-- 遮罩层 -->
+    <div class="shade" id="shade">
+        <!-- 弹出层 -->
+        <div class="pop">
+            <p class="title">订单详情</p>
+            <!-- 商品图片 -->
+            <div id="commodityPic">
+                <img src="" />
+            </div>
+    
+            <div id="commodityTitle">
+                抱歉，系统未查询到相关商品信息
+            </div>
+    
+            姓名：<input type="text" id="nickname" /><br>
+            电话：<input type="text" id="phone" /><br>
+            地址：<input type="text" id="address"><br>
+            备注：<input type="text" id="remark"><br>
+            <p id="orderTime"></p>
+            <p id="isShip"></p>
+            <p id="shipTime"></p>
+            <p id="isReceipt"></p>
+            <p id="receiptTime"></p>
+            <button id="updateOrder" class="confirm">更新订单信息</button>
+            <button id="deleteOrder" class="confirm">申请取消订单</button>
+        </div>
+    </div>
     <!-- 左侧导航栏和上层导航栏 -->
     <div class="leftBox">
         <a class="leftImg" id="camera"></a>

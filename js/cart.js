@@ -22,17 +22,21 @@ window.onload = function () {
         }
     }
     var domain = "https://forum.wyy.ink"
+
+    window.localStorage.setItem("cartSelect", "[]");
+    window.localStorage.setItem("allPrice", "0");
+
     //分页
     var defaultPager = {
         currentPage: 1,
-        limit: 20,
+        limit: 7,
         divNumber: 5,
         order: "time",
         pageNumber: 0
     }
     createPager({
         currentPage: 1,
-        limit: 20,
+        limit: 7,
         divNumber: 5,
         order: "time",
         pageNumber: 0
@@ -64,13 +68,24 @@ window.onload = function () {
     function adddata(arg) {
         var dataHtml = ""
         var totalPrice = 0;
+        var local = window.localStorage;
+        var numOfSelect = 0;
+        array = JSON.parse(local.getItem("cartSelect"));
         for (let item of arg.commodities) {
-            totalPrice += item.price*item.buy_num;
             dataHtml += `<div class="cart" id="cart_data">`;
             if (item.buy_num > item.stock) {
                 dataHtml += `<div class="commodity_title">无效（购买量大于库存量）</div>`
             }
-            dataHtml += `<span class="picBox">
+            let flag = "";
+            for (let i = 0; i < array.length; i++) {
+                if (array[i] == item.id) {
+                    flag = "checked";
+                    break;
+                }
+            }
+            if (flag != "") numOfSelect++;
+            dataHtml += `<input type="checkbox" price=${item.price} id=${item.id} ${flag} class="cartSelect"></input>
+            <span class="picBox">
             <img class="pic" src=${domain+item.pic.split(",")[0]}></span>
             <div class="contentBox">
             <div class="commodity_title"><span>${item.title}</span>
@@ -83,7 +98,12 @@ window.onload = function () {
             </div>
         </div>`
         }
-        document.getElementById("totalPrice").innerHTML = `¥${totalPrice.toFixed(2)}`;
+        if (numOfSelect == arg.commodities.length) {
+            document.getElementById("selectAll").innerHTML = "取消全选";
+        } else {
+            document.getElementById("selectAll").innerHTML = "全选此页";
+        }
+        document.getElementById("totalPrice").innerHTML = `¥${local.getItem("allPrice")}`;
         document.getElementById("totalPrice").style.fontSize = "23px"
         document.getElementById("cartBox").innerHTML = dataHtml
     }
@@ -202,8 +222,42 @@ window.onload = function () {
                         }
                     }
                 }
+            } else if (btnClass.search("cartSelect") !== -1) {
+                let cartId = e.target.id;
+                let isCheck = e.target.checked;
+                clickSelect(cartId, isCheck, e.target.getAttribute("price"));
             }
         },false)
+
+        var all = document.getElementById('selectAll');
+        var inputs = document.getElementById('cartBox').getElementsByTagName('input');
+        all.onclick = function () {
+            console.log(inputs);
+            if (all.innerHTML == "全选此页") {
+                for (var i = 0; i < inputs.length; i++) {
+                    inputs[i].checked = true;
+                    clickSelect(inputs[i].id, true, inputs[i].getAttribute("price"));
+                }
+                all.innerHTML = "取消全选";
+            } else {
+                for (var i = 0; i < inputs.length; i++) {
+                    inputs[i].checked = false;
+                    clickSelect(inputs[i].id, false, inputs[i].getAttribute("price"));
+                }
+                all.innerHTML = "全选此页";
+            }
+        }
+
+        var unselectAll = document.getElementById("unselectAll");
+        unselectAll.onclick = function () {
+            window.localStorage.setItem("cartSelect", "[]");
+            window.localStorage.setItem("allPrice", "0");
+            document.getElementById("totalPrice").innerHTML = `¥0`;
+            for (var i = 0; i < inputs.length; i++) {
+                inputs[i].checked = false;
+                clickSelect(inputs[i].id, false, 0);
+            }
+        }
 
         var empty = document.getElementById('empty');
         empty.onclick = function () {
@@ -259,6 +313,51 @@ window.onload = function () {
     }
     return false;
 }
+
+// 选择被点击
+function clickSelect(userId, isCheck, price) {
+    let local = window.localStorage;
+    var array = JSON.parse(local.getItem("cartSelect"));
+    if (array == null) array = [];
+    let flag = true;
+    for (let i = 0; i < array.length; i++) {
+        if (array[i] == userId) {
+            if (!isCheck) {
+                var allPrice = local.getItem('allPrice');
+                allPrice = parseFloat(allPrice) - parseFloat(price);
+                local.setItem("allPrice", allPrice);
+                document.getElementById("totalPrice").innerHTML = `¥${allPrice}`;
+                array.splice(i, 1);
+            }
+            flag = false;
+            break;
+        }
+    }
+    
+    if (flag && isCheck) {
+        array.push(parseInt(userId));
+        var allPrice = local.getItem('allPrice');
+        allPrice = parseFloat(allPrice) + parseFloat(price);
+        local.setItem("allPrice", allPrice);
+        document.getElementById("totalPrice").innerHTML = `¥${allPrice}`;
+    }
+    local.setItem("cartSelect", JSON.stringify(array));
+    let inputs = document.getElementById('cartBox').getElementsByTagName('input');
+    flag = true;
+    for (let i = 0; i < inputs.length; i++) {
+        if (!inputs[i].checked) {
+            flag = false;
+            break;
+        }
+    }
+    if (flag) {
+        document.getElementById("selectAll").innerHTML = "取消全选";
+    } else {
+        document.getElementById("selectAll").innerHTML = "全选此页";
+    }
+}
+
+
 //点击我的订单跳转订单界面
 var order = document.getElementById('order');
 order.onclick = function () {
@@ -304,6 +403,11 @@ logout.onclick = function () {
 }
 var settle = document.getElementById('settle');
 settle.onclick = function () {
+    let array = JSON.parse(window.localStorage.getItem("cartSelect"));
+    if (array.length == 0) {
+        alert("未选择任何商品");
+        return;
+    }
     location.href = "settle.html";
     return false;
 }

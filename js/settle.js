@@ -31,10 +31,13 @@ window.onload = function () {
     xhr0.withCredentials = true;
     xhr0.setRequestHeader('Content-Type', 'application/json');
     xhr0.send();
+    var telNumber;
     xhr0.onreadystatechange = function () {
         if (xhr0.readyState === 4 && xhr0.status === 200) {
             var res0 = JSON.parse(xhr0.responseText);
             if (res0.status == '1') {
+                telNumber = res0.phone;
+                if (telNumber != undefined) document.getElementById("tel").value = telNumber;
                 cameraUri = 'https://forum.wyy.ink' + res0.avatar_uri;
                 console.log(cameraUri);
                 userName = '你好,' + res0.username;
@@ -47,6 +50,7 @@ window.onload = function () {
             // }
         }
     }
+
     return false;
 }
 //结算购物车
@@ -69,20 +73,34 @@ tel.onblur = function(){
     return false;
 }
 settleBtn.onclick = function () {
+    if (!num.test(tel.value)) {
+        alert("请输入手机号");
+        return;
+    }
+    if (address.value == "") {
+        alert("请输入地址");
+        return;
+    }
     var xhr = new XMLHttpRequest();
     xhr.open("post", `${domain}/cart/settle`);
     xhr.withCredentials = true;
     xhr.setRequestHeader('Content-Type', 'application/json');
+    let array = JSON.parse(window.localStorage.getItem("cartSelect"));
     xhr.send(JSON.stringify({
         phone: tel.value,
         address: address.value,
         remark: remark.value,
-        nickname: nickname.value
+        nickname: nickname.value,
+        id: array
     }));
     xhr.onreadystatechange = function () {
         if (xhr.readyState === 4 && xhr.status === 200) {
             var res = JSON.parse(xhr.responseText);
             if (res.status == '1') {
+                if (res.errMsg != "" && res.errMsg != null) {
+                    alert(res.errMsg);
+                    return;
+                }
                 alert('下单成功！');
                 location.href = "goodsDisplay.html"
             }

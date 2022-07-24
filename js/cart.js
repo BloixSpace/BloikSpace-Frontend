@@ -148,7 +148,6 @@ window.onload = function () {
 
         document.getElementById("cartBox").addEventListener("click", function (e) {
             var c = e.target.getAttribute('class')
-            console.log(c);
             if (c.search("delete") !== -1) {
                 let delete_id = e.target.id
                 Delete(delete_id)
@@ -167,14 +166,40 @@ window.onload = function () {
                 var xhr = new XMLHttpRequest();
                 xhr.open("post",`${domain}/cart/update`);
                 xhr.withCredentials = true;
+                xhr.setRequestHeader('Content-Type', 'application/json');
                 xhr.send(JSON.stringify({
                     id:btnid,
                     buy_num:buyNumber++
                 }))
-                if(xhr.readyState === 4 && xhr.status === 200){
-                    var res = JSON.parse(xhr.responseText);
-                    if(res.status == 1){
-                        window.onload();
+                xhr.onreadystatechange = function(){
+                    if(xhr.readyState === 4 && xhr.status === 200){
+                        var res = JSON.parse(xhr.responseText);
+                        if(res.status == "1"){
+                            console.log(1234);
+                            window.onload();
+                        }
+                    }
+                }
+            }
+            else if(btnClass.search('minus')!== -1){
+                let btnid = e.target.id;
+                let buyNumber = e.target.parentNode.id;
+                e.target.nextElementSibling.innerText = buyNumber--;
+                var xhr = new XMLHttpRequest();
+                xhr.open("post",`${domain}/cart/update`);
+                xhr.withCredentials = true;
+                xhr.setRequestHeader('Content-Type', 'application/json');
+                xhr.send(JSON.stringify({
+                    id:btnid,
+                    buy_num:buyNumber--
+                }))
+                xhr.onreadystatechange = function(){
+                    if(xhr.readyState === 4 && xhr.status === 200){
+                        var res = JSON.parse(xhr.responseText);
+                        if(res.status == "1"){
+                            console.log(1234);
+                            window.onload();
+                        }
                     }
                 }
             }
@@ -205,7 +230,8 @@ window.onload = function () {
     function Delete(delete_id) {
         var xhr = new XMLHttpRequest()
         xhr.open("post", `${domain}/cart/delete`)
-        xhr.withCredentials = true
+        xhr.withCredentials = true;
+
         xhr.send(JSON.stringify({
             id: delete_id
         }))

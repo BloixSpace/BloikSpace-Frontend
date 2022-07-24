@@ -122,8 +122,11 @@ window.onload = function () {
     function adddata(arg) {
         var dataHtml = ""
         for (let item of arg.stars) {
+            var picUri = item.pic
+            // 多个图片用,隔开
+            picUri = picUri.split(",")[0]
             dataHtml += `<div class="commodity_data" id=${item.commodity_id}>
-            <span class="imgBox"><img src=${domain+item.pic} style="width: 200px;height:200px;z-index:1;"></span>
+            <span class="imgBox"><img src=${domain+picUri} style="width: 200px;height:200px;z-index:1;"></span>
             <span class="contentBox">
             <div class="itemTitle">${item.title}</div>
             <div class="itemPrice">售价${item.price}元</div>

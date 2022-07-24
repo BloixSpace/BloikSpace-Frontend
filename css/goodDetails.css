@@ -147,10 +147,12 @@ li {
     border-radius: 20px;
     overflow: hidden;
     width: 500px;
-    height: 700px;
+    height: 650px;
     background-color: #fff;
     display: inline-block;
-    margin: 23px;
+    margin-top: 23px;
+    margin-left: 80px;
+    margin-right: 20px;
 }
 
 .mainPic {
@@ -192,14 +194,14 @@ li {
     border-radius: 10px;
     vertical-align: top;
     overflow: hidden;
-    width: 700px;
+    width: 600px;
     background-color: #fff;
     display: inline-block;
-    margin: 23px;
+    margin: 40px 23px 23px 23px;
 }
 
 .goodName {
-    width: 700px;
+    width: 600px;
     padding-top: 30px;
     padding-bottom: 30px;
     color: #fff;
@@ -210,10 +212,10 @@ li {
 }
 
 .goodInform {
-    width: 700px;
-    padding-top: 30px;
-    padding-bottom: 30px;
+    width: 560px;
+    padding: 30px 20px 30px 20px;
     color: hsl(225, 80%, 43%);
+    line-height: 40px;
     text-align: center;
     font-size: x-large;
     font-weight:bolder;
@@ -222,7 +224,7 @@ li {
 
 .box {
     overflow: hidden;
-    width: 700px;
+    width: 600px;
     padding-top: 20px;
     padding-bottom: 20px;
     color: hsl(225, 80%, 43%);
@@ -231,7 +233,7 @@ li {
 }
 
 .buyBtnBox {
-    width: 700px;
+    width: 600px;
     height: 100px;
     line-height: 100px;
     text-align: center;
@@ -313,14 +315,14 @@ li {
 }
 
 .comment {
-    padding-top: 10px;
-    padding-bottom: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
     background-color: hsl(223, 79%, 89%);
     width: 1000px;
     border: 2px solid hsl(225, 80%, 43%);
     border-radius: 5px;
     text-align: center;
-    margin: 10px auto;
+    margin: 20px auto;
 }
 
 .title {
@@ -388,7 +390,7 @@ li {
 .comment_time {
     text-align: right;
     margin: 10px auto;
-    padding: 20px;
+    padding: 10px;
     font-size: larger;
     color: hsl(225, 79%, 26%);
 }

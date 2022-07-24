@@ -124,17 +124,39 @@ window.onload = function () {
         if (local.level != 3) {
             userId = local.userId;
         }
-        xhr.open("get", `${domain}/commodity/list?page=${pager.currentPage}&page_size=${pager.limit}&order=${pager.order}&key=${pager.key}&user_id=${userId}${desc}`)
+        var category = "";
+        if (pager.category != null) category = "&category=" + pager.category;
+        xhr.open("get", `${domain}/commodity/list?page=${pager.currentPage}&page_size=${pager.limit}&order=${pager.order}&key=${pager.key}&user_id=${userId}${desc}${category}`)
         xhr.withCredentials = true
         xhr.send()
         xhr.onreadystatechange = function () {
             if (xhr.readyState === 4 && xhr.status === 200) {
                 var res = JSON.parse(xhr.responseText)
                 pager.pageNumber = res.page_num
+                loadCategory(pager);
                 adddata(res)
                 show(pager)
             }
         }
+    }
+
+    function loadCategory(pager) {
+        var xhr = new XMLHttpRequest();
+        xhr.open("get", `${domain}/commodity/getCategoryList`);
+        xhr.send();
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                var res = JSON.parse(xhr.responseText);
+                var html = `<option value="allSelect">所有</option>`;
+                for (let i = 0; i < res.length; i++) {
+                    let selected = "";
+                    if (pager.category == res[i]) selected = "selected";
+                    html += `<option value="${res[i]}" ${selected}>${res[i]}</option>`
+                }
+                document.getElementById("categoryForm").innerHTML = html;
+                document.getElementById("categoryFormInAdd").innerHTML = `<option value="addNew">添加新的</option>` + html;
+            }
+        };
     }
 
     function adddata(res) {
@@ -258,6 +280,40 @@ window.onload = function () {
             request(pager);
             return false;
         }
+
+        var category = document.getElementById("categoryForm");
+        category.onchange = function() {
+            let nowCategory = null;
+            for (let i = 0; i < category.length; i++) {
+                if (category[i].selected) {
+                    nowCategory = category[i].value;
+                }
+            }
+            if (nowCategory == "allSelect") {
+                pager.category = null;
+                request(pager);
+            } else {
+                pager.category = nowCategory;
+                request(pager);
+            }
+        }
+
+        var categoryInAdd = document.getElementById("categoryFormInAdd");
+        categoryInAdd.onchange = function() {
+            let nowCategory = null;
+            for (let i = 0; i < categoryInAdd.length; i++) {
+                if (categoryInAdd[i].selected) {
+                    nowCategory = categoryInAdd[i].value;
+                }
+            }
+            if (nowCategory == "addNew") {
+                document.getElementById("category").style.display = "block";
+                document.getElementById("category").value = nowCategory;
+            } else {
+                document.getElementById("category").style.display = "none";
+            }
+        }
+
     }
 
     function topage(page, pager) {
@@ -271,5 +327,86 @@ window.onload = function () {
         pager.currentPage = page
         request(pager)
     }
+
+    // 点击提交按钮
+    var submitButton = document.getElementById("submit");
+    submitButton.onclick = function () {
+        var picUris = uploadPictures();
+        if (picUris == null) {
+            console.log("失败");
+            return;
+        }
+        var title = document.getElementById("title").value;
+        var content = document.getElementById("content").value;
+        var category = document.getElementById("category").value;
+        var price = document.getElementById("price").value;
+        var stock = document.getElementById("stock").value;
+        var xhr = new XMLHttpRequest();
+        xhr.open("post", `${domain}/commodity/add`);
+        xhr.withCredentials = true;
+        xhr.send(JSON.stringify({
+            title: title,
+            content: content,
+            category: category,
+            pic: picUris,
+            price: price,
+            stock: stock
+        }));
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                var res = JSON.parse(xhr.responseText);
+                if (res.status == 1) {
+                    alert("添加成功，商品id：" + res.id);
+                    // TODO
+                    window.location.href = "updateCommodity.html?id=" + res.id;
+                } else {
+                    alert(res.errMsg);
+                }
+            }
+        }
+    }
+
+    // 上传图片们
+    function uploadPictures() {
+        var templates = document.getElementById("files").files;
+        if (templates.length > 5) {
+            alert("图片上传数量不能大于5！");
+            return null;
+        }
+        var uri = "";
+        for (let i = 0; i < templates.length; i++) {
+            var formData = new FormData();
+            formData.append("file", templates[i]);
+            var xhr = new XMLHttpRequest();
+            xhr.open("post", `${domain}/file/upload`, false);
+            xhr.withCredentials = true;
+            xhr.send(formData);
+            if (xhr.status === 200) {
+                var res = JSON.parse(xhr.responseText);
+                if (res.status == 1) {
+                    if (uri != "") uri += ",";
+                    uri += res.uri;
+                }
+            } else {
+                console.log(xhr.responseText);
+                return null;
+            }
+        }
+        console.log(uri);
+        return uri;
+    }
+
+    // 选择图片后预览
+    var fileChange = document.getElementById("files");
+    fileChange.onchange = function () {
+        var files = fileChange.files;
+        var html = "";
+        for (let i = 0; i < files.length; i++) {
+            var url = window.URL.createObjectURL(files[i]);
+            html += `<img src=${url} style="width:150px;height:150px;overflow: hidden;" class="pic">`;
+        }
+        document.getElementById("preview").innerHTML = html;
+    }
+
     return false;
 }

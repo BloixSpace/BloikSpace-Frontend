@@ -161,6 +161,18 @@ a{
     padding: 0 10px;
 }
 
+#categoryForm {
+    display: inline-block;
+    border: 2px solid #fff;
+    border-radius: 5px;
+    font-size: larger;
+    height: 40px;
+    color: #fff;
+    background-color: hsl(225, 80%, 43%);
+    outline-style: none;
+    padding: 0 10px;
+}
+
 .searchBtn {
     display: inline-block;
     width: 100px;

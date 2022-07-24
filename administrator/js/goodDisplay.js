@@ -403,7 +403,7 @@ window.onload = function () {
         var html = "";
         for (let i = 0; i < files.length; i++) {
             var url = window.URL.createObjectURL(files[i]);
-            html += `<img src=${url} style="width:150px;height:150px;overflow: hidden;" class="pic">`;
+            html += `<img src=${url} style="width:120px;height:120px;overflow: hidden;" class="pic">`;
         }
         document.getElementById("preview").innerHTML = html;
     }

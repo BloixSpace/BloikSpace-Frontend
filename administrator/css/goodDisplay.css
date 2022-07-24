@@ -355,18 +355,17 @@ a{
     background-color: #fff;
     transform: translate(-50%, -50%);
     width: 1000px;
-    height: 600px;
     text-align: center;
     z-index: 1000;
     font-size: large;
-    padding-top: 20px;
+    padding-top: 10px;
     padding-bottom: 20px;
     margin: 20px auto;
     border: 2px solid hsl(225, 80%, 43%);
     border-radius: 10px;
 }
 .pic {
-    margin: 20px;
+    margin: 10px;
 }
 
 .text1,
@@ -374,7 +373,7 @@ a{
     text-align: center;
     color: hsl(225, 80%, 43%);
     font-weight: bold;
-    margin: 20px auto;
+    margin: 10px auto;
 }
 
 .text1 {
@@ -401,9 +400,9 @@ a{
 
 #title,
 #content,
-#category,
 #price,
 #stock {
+    padding-left: 10px;
     margin: 10px auto;
     height: 40px;
     outline-style: none;
@@ -411,6 +410,17 @@ a{
     border: 2px solid hsl(225, 80%, 43%);
     font-size: large;
     width: 600px;
+}
+
+#category {
+    padding-left: 10px;
+    margin: 10px auto;
+    height: 40px;
+    outline-style: none;
+    border-radius: 5px;
+    border: 2px solid hsl(225, 80%, 43%);
+    font-size: large;
+    width: 450px;
 }
 
 input::placeholder {

@@ -1,0 +1,219 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    list-style: none;
+}
+
+.top {
+    height: 50px;
+    background-color: hsl(225, 80%, 43%);
+}
+
+.topBox {
+    display: inline-block;
+    height: 50px;
+    width: 500px;
+    background-color: hsl(225, 80%, 43%);
+    margin: 0 50px;
+}
+
+.topItem {
+    line-height: 50px;
+    color: aliceblue;
+    margin: 0 20px;
+    text-decoration: none;
+}
+
+.login {
+    line-height: 50px;
+    color: aliceblue;
+    margin: 0 20px;
+    text-decoration: none;
+    float: right;
+}
+
+.camera {
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    background-image: url(../img/file.jpg);
+    background-size: cover;
+    margin: 5px 20px;
+    text-decoration: none;
+    float: right;
+}
+
+.camera:hover {
+    transform: scale(1.2, 1.2);
+    z-index: 100;
+}
+
+.selfCenter {
+    line-height: 50px;
+    color: aliceblue;
+    padding: 0 20px;
+    text-decoration: none;
+    position: relative;
+    float: right;
+}
+
+.selfCenter:hover {
+    background-color: #fff;
+    color: hsl(223, 86%, 72%);
+    text-decoration: none;
+}
+
+.hidden {
+    width: 105px;
+    height: 250px;
+    background-color: #fff;
+    color: hsl(223, 86%, 72%);
+    display: none;
+    position: absolute;
+    right: 0;
+    z-index: 10;
+}
+
+/* 当鼠标悬停在个人中心上时hidden的样式为 */
+.selfCenter:hover>.hidden {
+    display: block;
+    z-index: 100;
+}
+
+.hideInform {
+    text-align: center;
+}
+
+.hideInform:hover {
+    background-color: hsl(225, 80%, 43%);
+    color: #fff;
+}
+
+/* 动态渲染消息 */
+.container {
+    width: 1200px;
+    margin: 20px auto;
+    border: 2px solid hsl(225, 80%, 43%);
+    border-radius: 10px;
+    padding-bottom: 20px;
+}
+
+.title {
+    width: 500px;
+    height: 80px;
+    color: hsl(225, 80%, 43%);
+    margin: 20px auto;
+    line-height: 80px;
+    text-align: center;
+    font-size: xx-large;
+    font-weight: bolder;
+}
+
+.operate {
+    text-align: center;
+    font-size: larger;
+    height: 50px;
+    line-height: 50px;
+}
+
+.confirm {
+    background-color: hsl(223, 86%, 72%);
+    color: #fff;
+    font-size: large;
+    padding: 2px 6px;
+    border-radius: 5px;
+    border: 2px solid hsl(225, 80%, 43%);
+    cursor: pointer;
+    margin: 10px;
+}
+
+.confirm:hover {
+    background-color: hsl(225, 80%, 43%);
+}
+
+.anchor {
+    text-decoration: none;
+    color: hsl(225, 80%, 43%);
+    margin: 0 20px;
+}
+
+.time,
+.ifread {
+    font-size: medium;
+    color: hsl(225, 80%, 43%);
+}
+
+.content {
+    color: hsl(225, 79%, 26%);
+    font-size: larger;
+}
+
+.notice_data {
+    width: 800px;
+    padding: 10px;
+    background-color: hsl(223, 79%, 89%);
+    margin: 20px auto;
+    line-height: 50px;
+    border: 2px solid hsl(225, 80%, 43%);
+    border-radius: 10px;
+}
+
+.read_notice,
+.order_detail,
+.delete_notice {
+    background-color: hsl(225, 80%, 43%);
+    color: #fff;
+    font-size: larger;
+    padding: 2px 6px;
+    border-radius: 5px;
+    border: 2px solid #fff;
+    cursor: pointer;
+    float: right;
+    margin: 10px;
+}
+
+.read_notice:hover,
+.delete_notice:hover {
+    background-color: hsl(223, 86%, 72%);
+}
+
+.class {
+    color: hsl(225, 80%, 43%);
+    font-size: larger;
+    font-weight: bolder;
+}
+
+/* 分页 */
+#pager {
+    text-align: center;
+    line-height: 80px;
+    font-size: larger;
+    width: 800px;
+    height: 80px;
+    margin: 0 auto;
+    cursor: pointer;
+}
+
+.numberselected {
+    background-color: hsl(223, 86%, 72%);
+    color: #fff;
+    padding: 0 8px;
+    margin: 0 10px 0 0;
+    border-radius: 4px;
+}
+
+.number {
+    margin: 0 10px 0 0;
+}
+
+.first,
+.prev,
+.omit,
+.next,
+.last,
+.total {
+    padding: 0 10px;
+}

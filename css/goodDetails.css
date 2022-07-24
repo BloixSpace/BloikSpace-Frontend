@@ -135,6 +135,8 @@ li {
 
 /* 商品详情 */
 .centerBox {
+    border-bottom-left-radius: 2%;
+    border-bottom-right-radius: 2%;
     width: 1300px;
     padding-bottom: 20px;
     background-color: hsl(223, 79%, 89%);
@@ -142,6 +144,7 @@ li {
 }
 
 .goodImg {
+    border-radius: 10%;
     overflow: hidden;
     width: 500px;
     height: 700px;

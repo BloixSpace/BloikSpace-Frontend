@@ -76,8 +76,8 @@ window.onload = function () {
             <div class="commodity_title"><span>${item.title}</span>
             <span class="commodity_price">¥${item.price.toFixed(2)}</span>
             </div>
-            <div class="num" id=${item.buy_num}>购买数量：<button class="minus" id=${item.id}> - </button> <span>${item.buy_num}</span> <button class="add" id=${item.id}> + </button>
-            <span class="commodity_price">总价 ¥${item.price*item.buy_num.toFixed(2)}</span></div>
+            <div class="num" id=${item.buy_num}>购买数量：<button class="minus" id=${item.id}> - </button> <span id="buyNum">${item.buy_num}</span> <button class="add" id=${item.id}> + </button>
+            <span class="commodity_price">总价 ¥${(item.price*item.buy_num).toFixed(2)}</span></div>
             <div class="commodity_stock">库存：${item.stock}</div>
             <button class="delete" id="${item.id}">删除该商品</button>
             </div>
@@ -232,8 +232,9 @@ window.onload = function () {
         xhr.open("post", `${domain}/cart/delete`)
         xhr.withCredentials = true;
 
+        var array = [parseInt(delete_id)];
         xhr.send(JSON.stringify({
-            id: delete_id
+            id: array
         }))
         xhr.onreadystatechange = function () {
             if (xhr.readyState === 4 && xhr.status === 200) {

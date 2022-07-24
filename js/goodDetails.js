@@ -280,9 +280,9 @@ document.getElementById("centerBox").addEventListener("click", function (e) {
     if (c == null) return;
     var cc = document.getElementById('amount')
     console.log(cc.value)
-    if (c.search("add") !== -1) {
+    if (c == "add") {
         if (cc.value < stock) cc.value++;
-    } else if (c.search("minus") !== -1) {
+    } else if (c == "minus") {
         if (cc.value != "0") cc.value--;
     }
 }, false)

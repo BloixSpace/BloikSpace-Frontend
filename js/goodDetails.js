@@ -31,10 +31,6 @@ newpswd.onclick = function () {
     return false;
 }
 
-
-
-
-
 //检查登录状态，更新头像及用户名
 var cameraUri, userName;
 window.onload = function () {
@@ -58,12 +54,12 @@ window.onload = function () {
             }
         }
     }
+    var stock = 0;
     var params = new URLSearchParams(window.location.search);
-    var commodity_id = params.get("id");
-    console.log(commodity_id);
-    var collectNum = queryCollect(commodity_id);
-    console.log(collectNum);
-    
+    var id = params.get("id");
+    console.log(id);
+    dynamic();
+
     function queryCollect(id) {
         var xhr = new XMLHttpRequest();
         xhr.open("get",`${domain}/star/num?commodity_id=${id}`,false);
@@ -79,6 +75,115 @@ window.onload = function () {
             }
         }
     }
+
+    var params = new URLSearchParams(window.location.search);
+    var id = params.get("id");
+    var xhr = new XMLHttpRequest();
+    xhr.open("get",`${domain}/star/list?commodity_id=${id}`);
+    xhr.withCredentials = true;
+    xhr.send();
+    xhr.onreadystatechange = function(){
+        if(xhr.readyState === 4 && xhr.status === 200){
+            var re = JSON.parse(xhr.responseText);
+            if(re.num == '0'){
+                document.getElementById('star').innerHTML = `<img src="img/star.png" class="collectStar">`;
+            }
+            else{
+                document.getElementById('star').innerHTML = `<img src="img/star_full.png" class="collectStar">`;
+            }
+        }
+    }
+
+    document.getElementById("centerBox").addEventListener("click", function (e) {
+        var c = e.target.getAttribute('class');
+        if(c.search("collectStar")!== -1){
+            var star = document.getElementById('star');
+            if(star.innerHTML == `<img src="img/star_full.png" class="collectStar">`){
+                return;
+            }
+            else{
+                star.innerHTML = `<img src="img/star_full.png" class="collectStar">`
+                var params = new URLSearchParams(window.location.search);
+                var id = params.get("id");
+                var xhr = new XMLHttpRequest();
+                xhr.open("post",`${domain}/star/add`);
+                xhr.withCredentials = true;
+                xhr.send(JSON.stringify({
+                    commodity_id:id
+                }))
+                xhr.onreadystatechange = function(){
+                    if(xhr.readyState === 4 && xhr.status === 200){
+                        var res = JSON.parse(xhr.responseText);
+                        if(res.status == 1){
+                            dynamic();
+                            console.log(678);
+                        }
+                    }
+                }
+            }
+        }
+    }, false)
+
+    function dynamic(){
+        var xhr2 = new XMLHttpRequest();
+        xhr2.open("get", `${domain}/commodity/get?id=${id}`);
+        xhr2.withCredentials = true;
+        xhr2.send();
+        xhr2.onreadystatechange = function () {
+            if (xhr2.readyState === 4 && xhr2.status === 200) {
+                var res2 = JSON.parse(xhr2.responseText);
+                var collectNum = queryCollect(id);
+                console.log(res2);
+                var Html = "";
+                var picUri = res2.pic;
+                console.log(picUri);
+                if (picUri) {
+                    picUri = picUri.split(",");
+                }
+                stock = res2.stock;
+                Html += `<div class="goodImg">
+                <div class="mainPic"><img src=${domain+picUri[0]} id="mainPicImg"></div>
+                <div class="minorBox">`
+                for (let i = 0; i < picUri.length; i++) {
+                    Html += `<li><img src=${domain+picUri[i]}></li>`
+                }
+                Html += `</div>
+            </div>
+            <div class="goodDetails" id="goodDetails">
+                <div class="goodName">${res2.title}</div>
+                <div class="goodInform">${res2.content}</div>
+                <div class="box">
+                    <div class="price">￥${res2.price}</div>
+                </div>
+                <div class="box">
+                    <div class="text">库存有${res2.stock}件 我想要</div>
+                    <button class="add" id="add"> + </button>
+                    <input type="text" class="amount" value="0" id="amount">
+                    <button class="minus" id="minus"> - </button>
+                </div>
+                <div class="collect">
+                    <button id="cancel">取消收藏</button>
+                    <span id="star"><img src="img/star.png" class="collectStar"></span>
+                    <span class="collectNum">该商品已被收藏${collectNum}次</span>
+                </div>
+                <div class="buyBtnBox">
+                    <button class="buyBtn" id="join">立即购买</button>
+                    <button class="addToCart" id="join">加入购物车</button>
+                </div>
+            </div>`;
+                document.getElementById("centerBox").innerHTML = Html;
+    
+                var cc = document.getElementById("amount");
+                cc.value = 1;
+                cc.onblur = function () {
+                    if (cc.value > stock) {
+                        cc.value = stock;
+                    }
+                };
+            }
+        }
+    }
+    
 
     // var domain = "https://forum.wyy.ink"
     var defaultPager = {
@@ -109,6 +214,7 @@ window.onload = function () {
     function request(pager) {
         console.log("request执行了")
         var xhr = new XMLHttpRequest()
+        var params = new URLSearchParams(window.location.search);
         var id = params.get("id")
         xhr.open("get", `${domain}/review/getList?page=${pager.currentPage}&page_size=${pager.limit}&order=${pager.order}&commodity_id=${id}&desc=true`)
         xhr.withCredentials = true
@@ -220,6 +326,9 @@ window.onload = function () {
         pager.currentPage = page
         request(pager)
     }
+
+    
+
     return false;
 }
 //点击二级菜单的退出登录实现登出，登出接口
@@ -243,90 +352,29 @@ logout.onclick = function () {
 }
 
 
-var params = new URLSearchParams(window.location.search);
-var id = params.get("id");
-console.log(id);
-var collectNum = queryCollect(id);
-console.log(collectNum);
+// var params = new URLSearchParams(window.location.search);
+// var id = params.get("id");
+// console.log(id);
+// var collectNum = queryCollect(id);
+// console.log(collectNum);
 
-function queryCollect(id) {
-    var xhr = new XMLHttpRequest();
-    xhr.open("get",`${domain}/star/num?commodity_id=${id}`,false);
-    xhr.withCredentials = true;
-    xhr.setRequestHeader('Content-Type', 'application/json');
-    xhr.send();
-    if(xhr.status === 200){
-        var res = JSON.parse(xhr.responseText);
-        if(res.status == 1){
-            console.log(res.num);
-            var collect = res.num
-            return collect;
-        }
-    }
-}
-
-function dynamic(){
-    var xhr2 = new XMLHttpRequest();
-    xhr2.open("get", `${domain}/commodity/get?id=${id}`);
-    xhr2.withCredentials = true;
-    xhr2.send();
-    xhr2.onreadystatechange = function () {
-        if (xhr2.readyState === 4 && xhr2.status === 200) {
-            var res2 = JSON.parse(xhr2.responseText);
-            var collectNum = queryCollect(id);
-            console.log(res2);
-            var Html = "";
-            var picUri = res2.pic;
-            console.log(picUri);
-            if (picUri) {
-                picUri = picUri.split(",");
-            }
-            stock = res2.stock;
-            Html += `<div class="goodImg">
-            <div class="mainPic"><img src=${domain+picUri[0]} id="mainPicImg"></div>
-            <div class="minorBox">`
-            for (let i = 0; i < picUri.length; i++) {
-                Html += `<li><img src=${domain+picUri[i]}></li>`
-            }
-            Html += `</div>
-        </div>
-        <div class="goodDetails" id="goodDetails">
-            <div class="goodName">${res2.title}</div>
-            <div class="goodInform">${res2.content}</div>
-            <div class="box">
-                <div class="price">￥${res2.price}</div>
-            </div>
-            <div class="box">
-                <div class="text">库存有${res2.stock}件 我想要</div>
-                <button class="add" id="add"> + </button>
-                <input type="text" class="amount" value="0" id="amount">
-                <button class="minus" id="minus"> - </button>
-            </div>
-            <div class="collect">
-                <span id="star"><img src="img/star.png" class="collectStar"></span><span class="collectNum">该商品已被收藏${collectNum}次</span>
-            </div>
-            <div class="buyBtnBox">
-                <button class="buyBtn" id="join">立即购买</button>
-                <button class="addToCart" id="join">加入购物车</button>
-            </div>
-        </div>`;
-            document.getElementById("centerBox").innerHTML = Html;
-
-            var cc = document.getElementById("amount");
-            cc.value = 1;
-            cc.onblur = function () {
-                if (cc.value > stock) {
-                    cc.value = stock;
-                }
-            };
-        }
-    }
-}
-
-var stock = 0;
-dynamic();
-// var add = document.getElementById('add')
-// var minus = document.getElementById('minus')
+// function queryCollect(id) {
+//     var xhr = new XMLHttpRequest();
+//     xhr.open("get",`${domain}/star/num?commodity_id=${id}`);
+//     xhr.withCredentials = true;
+//     xhr.setRequestHeader('Content-Type', 'application/json');
+//     xhr.send();
+//     xhr.onreadystatechange = function(){
+//         if(xhr.readyState === 4 && xhr.status === 200){
+//             var res = JSON.parse(xhr.responseText);
+//             if(res.status == 1){
+//                 console.log(res.num);
+//                 var collect = res.num
+//                 return collect;
+//             }
+//         }
+//     }
+// }
 
 document.getElementById("centerBox").addEventListener("click", function (e) {
     var c = e.target.getAttribute('class')
@@ -384,31 +432,6 @@ document.getElementById("centerBox").addEventListener("click", function (e) {
                 }
                 location.href = "cart.html"
                 console.log(res);
-            }
-        }
-    }
-}, false)
-
-//点赞收藏
-document.getElementById("centerBox").addEventListener("click", function (e) {
-    var c = e.target.getAttribute('class');
-    if(c.search("collectStar")!== -1){
-        var star = document.getElementById('star');
-        star.innerHTML = `<img src="img/star_full.png" class="collectStar">`
-        var params = new URLSearchParams(window.location.search);
-        var id = params.get("id");
-        var xhr = new XMLHttpRequest();
-        xhr.open("post",`${domain}/star/add`);
-        xhr.withCredentials = true;
-        xhr.send(JSON.stringify({
-            commodity_id:id
-        }))
-        xhr.onreadystatechange = function(){
-            if(xhr.readyState === 4 && xhr.status === 200){
-                var res = JSON.parse(xhr.responseText);
-                if(res.status == 1){
-                    dynamic();
-                }
             }
         }
     }

@@ -382,6 +382,12 @@ notice.onclick = function () {
     location.href = "notice.html";
     return false;
 }
+//点击我的收藏到收藏界面
+var collect = document.getElementById('collect');
+collect.onclick = function () {
+    location.href = "myCollect.html";
+    return false;
+}
 //点击二级菜单的退出登录实现登出，登出接口
 var logout = document.getElementById('logout');
 logout.onclick = function () {

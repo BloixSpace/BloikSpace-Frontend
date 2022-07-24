@@ -79,7 +79,7 @@ a{
     height: 60px;
     vertical-align: top;
     background-color: hsl(223, 79%, 89%);
-    box-shadow: hsl(225, 80%, 43%) 2px 4px 20px;
+    box-shadow: hsl(225, 80%, 43%) 2px 4px 40px;
     line-height: 50px;
 }
 
@@ -117,33 +117,32 @@ a{
 }
 
 .container{
-    width: 1000px;
-    height: 800px;
-    background-color:antiquewhite;
+    overflow: hidden;
+    width: 1360px;
+    height: 765px;
+    background-image: url(../../img/0.jpg);
     margin: 20px auto;
 }
 
 .title {
     width: 500px;
     height: 80px;
-    color: hsl(225, 80%, 43%);
-    margin: 10px auto;
+    color:#fff;
     line-height: 80px;
     text-align: center;
     font-size: xx-large;
     font-weight: bolder;
-    background-color: #fff;
+    margin: 80px 400px 20px;
 }
 
 .text1{
-    width: 600px;
+    width: 800px;
     height: 80px;
-    background-color: #fff;
     text-align: center;
-    color: hsl(225, 80%, 43%);
+    color: #fff;
     font-size: xx-large;
     font-weight: bolder;
-    margin: 10px auto;
+    margin: 20px auto;
     line-height: 80px;
 }
 

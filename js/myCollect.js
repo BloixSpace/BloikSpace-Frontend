@@ -34,6 +34,12 @@ window.onload = function () {
         location.href = "notice.html";
         return false;
     }
+    //点击我的收藏到收藏界面
+    var collect = document.getElementById('collect');
+    collect.onclick = function () {
+        location.href = "myCollect.html";
+        return false;
+    }
     //点击我的订单跳转订单界面
     var order = document.getElementById('order');
     order.onclick = function () {
@@ -78,15 +84,13 @@ window.onload = function () {
         limit: 20,
         divNumber: 7,
         order: "time",
-        unread: false,
         pageNumber: 0
     }
     createPager({
         currentPage: 1,
         limit: 20,
         divNumber: 7,
-        order: "time",
-        unread: null,
+        order: "commodity_id",
         pageNumber: 0
     })
 
@@ -101,11 +105,7 @@ window.onload = function () {
         console.log(`${domain}/star/list?page=${pager.currentPage}&page_size=${pager.limit}&order=${pager.order}`)
         var xhr2 = new XMLHttpRequest()
         console.log(pager.limit)
-        var unread = '';
-        if (pager.unread !== null) {
-            unread = pager.unread ? "true" : "false"
-        }
-        xhr2.open("get", `${domain}/notice/getList?page=${pager.currentPage}&page_size=${pager.limit}&order=${pager.order}&unread=${unread}`)
+        xhr2.open("get", `${domain}/star/list?page=${pager.currentPage}&page_size=${pager.limit}&order=${pager.order}`)
         xhr2.withCredentials = true
         xhr2.send()
         xhr2.onreadystatechange = function () {
@@ -121,43 +121,17 @@ window.onload = function () {
     // 动态渲染
     function adddata(arg) {
         var dataHtml = ""
-        for (let item of arg.notices) {
-            switch (item.class) {
-                case "order add":
-                    item.class = "消息类别：订单添加"
-                    break
-                case "order delete":
-                    item.class = "消息类别：订单删除"
-                    break
-                case "order update":
-                    item.class = "消息类别：订单更改"
-                    break
-                case "commodity stock":
-                    item.class = "消息类别：商品补货"
-                    break
-                case "order receipt":
-                    item.class = "消息类别：订单签收"
-                    break
-                case "order ship":
-                    item.class = "消息类别：订单发货"
-                    break
-            }
-            var unreadstr = ""
-            if (item.unread) {
-                unreadstr = `<button class="read_notice" id=${item.id}>标为已读</button>`
-            }
-            var detail = "";
-            if (item.class != "消息类别：订单删除") {
-                detail = `<button class="order_detail" id=${item.order_id}>订单详情</button>`
-            }
-            dataHtml += `<div class="notice_data">
-            <div class="class">${item.class}</div>
-            <div class="content">${item.content}</div>
-            <span class="time">${item.time}</span>
-            <span class="ifread">${item.unread == true ? "状态：未读" : "状态：已读"}</span>
-            <button class="delete_notice" id=${item.id}>删除此通知</button>
-            ${unreadstr}
-            ${detail}
+        for (let item of arg.stars) {
+            dataHtml += `<div class="commodity_data" id=${item.commodity_id}>
+            <span class="imgBox"><img src=${domain+item.pic} style="width: 200px;height:200px;z-index:1;"></span>
+            <span class="contentBox">
+            <div class="itemTitle">${item.title}</div>
+            <div class="itemCategory">商家id为${item.seller}</div>
+            <div class="itemPrice">售价${item.price}元</div>
+            <div class="itemStock">销量${item.sales}件</div>
+            <div class="itemStock">库存 ${item.stock >= 100 ? "100+件" : "剩余"+item.stock+"件"}</div>
+            <button id=${item.commodity_id} class="detail">查看商品详情</button>
+            </span>
             </div>`
         }
         document.getElementById("data").innerHTML = dataHtml
@@ -223,70 +197,14 @@ window.onload = function () {
         document.getElementById("data").addEventListener("click", function (e) {
             var classlist = e.target.getAttribute('class')
             console.log(classlist);
-            if (classlist.search("read_notice") !== -1) {
-                let noticeId = e.target.id
-                requestRead(noticeId)
-                setTimeout(() => {
-                    request(pager)
-                }, 200);
-            } else if (classlist.search("delete_notice") !== -1) {
-                let noticeId = e.target.id
-                requestDelete(noticeId)
-                setTimeout(() => {
-                    request(pager)
-                }, 200);
-            } else if (classlist.search("order_detail") !== -1) {
-                let orderId = e.target.id;
-                location.href = "orderDetail.html?id=" + orderId;
-            }
+            if (classlist.search("detail") !== -1) {
+                let commodityId = e.target.id
+                location.href = `${domain}?id=${commodityId}`;
+            } 
         }, false)
-        var read = document.getElementById('read');
-        read.onclick = function () {
-            pager.unread = false;
-            request(pager);
-            return false;
-        }
-        var unread = document.getElementById('unread');
-        unread.onclick = function () {
-            pager.unread = true;
-            request(pager);
-            return false;
-        }
+        
     }
-    //已读未读
-    function requestRead(noticeId) {
-        var xhr3 = new XMLHttpRequest()
-        xhr3.open("post", `${domain}/notice/read`)
-        xhr3.withCredentials = true
-        xhr3.send(JSON.stringify({
-            id: noticeId
-        }))
-        xhr3.onreadystatechange = function () {
-            if (xhr3.readyState === 4 && xhr3.status === 200) {
-                var res3 = JSON.parse(xhr3.responseText)
-                if (res3.status == 0) {
-                    alert(res3.errMsg)
-                }
-            }
-        }
-    }
-    //删除通知
-    function requestDelete(noticeId) {
-        var xhr4 = new XMLHttpRequest()
-        xhr4.open("post", `${domain}/notice/delete`)
-        xhr4.withCredentials = true
-        xhr4.send(JSON.stringify({
-            id: noticeId
-        }))
-        xhr4.onreadystatechange = function () {
-            if (xhr4.readyState === 4 && xhr4.status === 200) {
-                var res4 = JSON.parse(xhr4.responseText)
-                if (res4.status == 0) {
-                    alert(res4.errMsg)
-                }
-            }
-        }
-    }
+    
 
     function topage(page, pager) {
         console.log("topage执行了")
@@ -299,72 +217,6 @@ window.onload = function () {
         pager.currentPage = page
         request(pager)
     }
-    //筛选已读未读，绑定事件
-    // var read = document.getElementById('read');
-    // read.onclick = function(){
-    //     createPager1({
-    //         currentPage: 1,
-    //         limit: 20,
-    //         divNumber: 7,
-    //         order: "time",
-    //         unread: false,
-    //         pageNumber: 0
-    //     })
-    //     function createPager1(pager) {
-    //         var pager = Object.assign(defaultPager, pager)
-    //         request1(pager)
-    //         bindEvent(pager)
-    //     }
-    // }
-    // function request1(pager) {
-    //     console.log("request1执行了")
-    //     console.log(`${domain}/notice/getList?page=${pager.currentPage}&page_size=${pager.limit}&order=${pager.order}&unread=false`)
-    //     var xhr5 = new XMLHttpRequest()
-    //     console.log(pager.limit)
-    //     xhr5.open("get", `${domain}/notice/getList?page=${pager.currentPage}&page_size=${pager.limit}&order=${pager.order}&unread=false`)
-    //     xhr5.withCredentials = true
-    //     xhr5.send()
-    //     xhr5.onreadystatechange = function () {
-    //         if (xhr5.readyState === 4 && xhr5.status === 200) {
-    //             var res5 = JSON.parse(xhr5.responseText)
-    //             pager.pageNumber = res5.page_num
-    //             adddata(res5)
-    //             show(pager)
-    //         }
-    //     }
-    // }
-    // var unread = document.getElementById('unread');
-    // unread.onclick = function(){
-    //     createPager0({
-    //         currentPage: 1,
-    //         limit: 20,
-    //         divNumber: 7,
-    //         order: "time",
-    //         unread: false,
-    //         pageNumber: 0
-    //     })
-    //     function createPager0(pager) {
-    //         var pager = Object.assign(defaultPager, pager)
-    //         request0(pager)
-    //         bindEvent(pager)
-    //     }
-    // }
-    // function request0(pager) {
-    //     console.log("request0执行了")
-    //     console.log(`${domain}/notice/getList?page=${pager.currentPage}&page_size=${pager.limit}&order=${pager.order}&unread=true`)
-    //     var xhr6 = new XMLHttpRequest()
-    //     console.log(pager.limit)
-    //     xhr6.open("get", `${domain}/notice/getList?page=${pager.currentPage}&page_size=${pager.limit}&order=${pager.order}&unread=true`)
-    //     xhr6.withCredentials = true
-    //     xhr6.send()
-    //     xhr6.onreadystatechange = function () {
-    //         if (xhr6.readyState === 4 && xhr6.status === 200) {
-    //             var res6 = JSON.parse(xhr6.responseText)
-    //             pager.pageNumber = res6.page_num
-    //             adddata(res6)
-    //             show(pager)
-    //         }
-    //     }
-    // }
+    
     return false;
 }

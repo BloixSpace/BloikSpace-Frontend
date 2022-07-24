@@ -186,6 +186,7 @@ li {
 }
 
 .goodDetails {
+    border-radius: 10%;
     vertical-align: top;
     overflow: hidden;
     width: 700px;

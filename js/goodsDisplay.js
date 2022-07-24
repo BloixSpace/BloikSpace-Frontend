@@ -84,7 +84,7 @@ window.onload = function () {
             // 多个图片用,隔开
             picUri = picUri.split(",")[0]
             dataHtml += `<div class="commodity_data" id=${item.id}>
-            <span class="imgBox"><img src=${domain+picUri} style="width: 100px;height:100px;" class="displayImg"></span>
+            <span class="imgBox"><img src=${domain+picUri} style="width: 200px;height:200px;" class="displayImg"></span>
             <span class="contentBox">
             <div class="itemTitle">${item.title}</div>
             <div class="itemCategory">类别：${item.category}</div>

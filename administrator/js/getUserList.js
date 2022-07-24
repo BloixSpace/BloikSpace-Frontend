@@ -394,14 +394,16 @@ document.getElementById('shade').addEventListener("click", function (e) {
             signature:signature.value,
             level:levell
         }));
-        if(xhr.readyState === 4 && xhr.status === 200){
-            var res = JSON.parse(xhr.responseText);
-            console.log(res);
-            if(res.status == 0){
-                alert(res.errMsg);
-            }
-            else{
-                window.onload();
+        xhr.onreadystatechange = function() {
+            if(xhr.readyState === 4 && xhr.status === 200){
+                var res = JSON.parse(xhr.responseText);
+                console.log(res);
+                if(res.status == 0){
+                    alert(res.errMsg);
+                }
+                else{
+                    location.href = "getUserList.html";
+                }
             }
         }
     }

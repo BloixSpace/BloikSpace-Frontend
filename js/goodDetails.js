@@ -75,29 +75,52 @@ window.onload = function () {
         }
     }
 
-    
-    var xhr = new XMLHttpRequest();
-    xhr.open("get",`${domain}/star/list?commodity_id=${id}`);
-    xhr.withCredentials = true;
-    xhr.send();
-    xhr.onreadystatechange = function(){
-        if(xhr.readyState === 4 && xhr.status === 200){
-            var re = JSON.parse(xhr.responseText);
-            if(re.num == '0'){
-                document.getElementById('star').innerHTML = `<img src="img/star.png" class="collectStar">`;
-            }
-            else{
-                document.getElementById('star').innerHTML = `<img src="img/star_full.png" class="collectStar">`;
+    function loadStar(){    
+        var xhr = new XMLHttpRequest();
+        xhr.open("get",`${domain}/star/list?commodity_id=${id}`);
+        xhr.withCredentials = true;
+        xhr.send();
+        xhr.onreadystatechange = function(){
+            if(xhr.readyState === 4 && xhr.status === 200){
+                var re = JSON.parse(xhr.responseText);
+                if(re.num == '0'){
+                    document.getElementById('star').innerHTML = `<img src="img/star.png" class="collectStar">`;
+                }
+                else{
+                    document.getElementById('star').innerHTML = `<img src="img/star_full.png" class="collectStar">`;
+                }
             }
         }
+        var collectNumx = document.getElementById("collectNum");
+        if (collectNumx == null) return;
+        var collectNum = queryCollect(id);
+        document.getElementById("collectNum").innerHTML = collectNum;
     }
+    loadStar();
 
     document.getElementById("centerBox").addEventListener("click", function (e) {
         var c = e.target.getAttribute('class');
         if(c.search("collectStar")!== -1){
             var star = document.getElementById('star');
             if(star.innerHTML == `<img src="img/star_full.png" class="collectStar">`){
-                return;
+                star.innerHTML = `<img src="img/star.png" class="collectStar">`
+                var params = new URLSearchParams(window.location.search);
+                var id = params.get("id");
+                var xhr = new XMLHttpRequest();
+                xhr.open("post",`${domain}/star/delete`);
+                xhr.withCredentials = true;
+                xhr.send(JSON.stringify({
+                    commodity_id:id
+                }))
+                xhr.onreadystatechange = function(){
+                    if(xhr.readyState === 4 && xhr.status === 200){
+                        var res = JSON.parse(xhr.responseText);
+                        if(res.status == 1){
+                            loadStar();
+                            console.log(678);
+                        }
+                    }
+                }
             }
             else{
                 star.innerHTML = `<img src="img/star_full.png" class="collectStar">`
@@ -113,39 +136,39 @@ window.onload = function () {
                     if(xhr.readyState === 4 && xhr.status === 200){
                         var res = JSON.parse(xhr.responseText);
                         if(res.status == 1){
-                            dynamic();
+                            loadStar();
                             console.log(678);
                         }
                     }
                 }
             }
         }
-        else if(c.search("cancel")!== -1){
-            var star = document.getElementById('star');
-            if(star.innerHTML == `<img src="img/star.png" class="collectStar">`){
-                return;
-            }
-            else{
-                star.innerHTML = `<img src="img/star.png" class="collectStar">`
-                var params = new URLSearchParams(window.location.search);
-                var id = params.get("id");
-                var xhr = new XMLHttpRequest();
-                xhr.open("post",`${domain}/star/delete`);
-                xhr.withCredentials = true;
-                xhr.send(JSON.stringify({
-                    commodity_id:id
-                }))
-                xhr.onreadystatechange = function(){
-                    if(xhr.readyState === 4 && xhr.status === 200){
-                        var res = JSON.parse(xhr.responseText);
-                        if(res.status == 1){
-                            dynamic();
-                            console.log(678);
-                        }
-                    }
-                }
-            }
-        }
+        // else if(c.search("cancel")!== -1){
+        //     var star = document.getElementById('star');
+        //     if(star.innerHTML == `<img src="img/star.png" class="collectStar">`){
+        //         return;
+        //     }
+        //     else{
+        //         star.innerHTML = `<img src="img/star.png" class="collectStar">`
+        //         var params = new URLSearchParams(window.location.search);
+        //         var id = params.get("id");
+        //         var xhr = new XMLHttpRequest();
+        //         xhr.open("post",`${domain}/star/delete`);
+        //         xhr.withCredentials = true;
+        //         xhr.send(JSON.stringify({
+        //             commodity_id:id
+        //         }))
+        //         xhr.onreadystatechange = function(){
+        //             if(xhr.readyState === 4 && xhr.status === 200){
+        //                 var res = JSON.parse(xhr.responseText);
+        //                 if(res.status == 1){
+        //                     loadStar();
+        //                     console.log(678);
+        //                 }
+        //             }
+        //         }
+        //     }
+        // }
     }, false)
 
     function dynamic(){
@@ -186,9 +209,8 @@ window.onload = function () {
                     <button class="minus" id="minus"> - </button>
                 </div>
                 <div class="collect">
-                    <button class="cancel">取消收藏</button>
                     <span id="star"><img src="img/star.png" class="collectStar"></span>
-                    <span class="collectNum">该商品已被收藏${collectNum}次</span>
+                    <span class="collectNum" id="collectNum">${collectNum}</span>
                 </div>
                 <div class="buyBtnBox">
                     <button class="buyBtn" id="join">立即购买</button>
@@ -197,6 +219,7 @@ window.onload = function () {
             </div>`;
                 document.getElementById("centerBox").innerHTML = Html;
     
+                loadStar();
                 var cc = document.getElementById("amount");
                 cc.value = 1;
                 cc.onblur = function () {
@@ -416,6 +439,7 @@ document.getElementById("centerBox").addEventListener("click", function (e) {
 document.getElementById("centerBox").addEventListener("click", function (e) {
     var c = e.target.getAttribute('src')
     if (c == null) return;
+    if (c.search("img/") !== -1) return;
     document.getElementById("mainPicImg").setAttribute("src", c);
 }, false)
 

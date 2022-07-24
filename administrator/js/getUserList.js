@@ -373,7 +373,7 @@ window.onload = function () {
 
 document.getElementById('shade').addEventListener("click", function (e) {
     var ID = e.target.getAttribute('id');
-    if (ID.search("modifi") !== -1) {
+    if (ID.search("modify") !== -1) {
         var username = document.getElementById('name');
         var role = document.getElementsByName('level');
         var pswd = document.getElementById('pswd');

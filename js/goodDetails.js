@@ -30,7 +30,7 @@ newpswd.onclick = function () {
     location.href = ("changePswd.html");
     return false;
 }
-
+var stock = 0;
 //检查登录状态，更新头像及用户名
 var cameraUri, userName;
 window.onload = function () {
@@ -54,7 +54,6 @@ window.onload = function () {
             }
         }
     }
-    var stock = 0;
     var params = new URLSearchParams(window.location.search);
     var id = params.get("id");
     console.log(id);
@@ -76,8 +75,7 @@ window.onload = function () {
         }
     }
 
-    var params = new URLSearchParams(window.location.search);
-    var id = params.get("id");
+    
     var xhr = new XMLHttpRequest();
     xhr.open("get",`${domain}/star/list?commodity_id=${id}`);
     xhr.withCredentials = true;
@@ -107,6 +105,32 @@ window.onload = function () {
                 var id = params.get("id");
                 var xhr = new XMLHttpRequest();
                 xhr.open("post",`${domain}/star/add`);
+                xhr.withCredentials = true;
+                xhr.send(JSON.stringify({
+                    commodity_id:id
+                }))
+                xhr.onreadystatechange = function(){
+                    if(xhr.readyState === 4 && xhr.status === 200){
+                        var res = JSON.parse(xhr.responseText);
+                        if(res.status == 1){
+                            dynamic();
+                            console.log(678);
+                        }
+                    }
+                }
+            }
+        }
+        else if(c.search("cancel")!== -1){
+            var star = document.getElementById('star');
+            if(star.innerHTML == `<img src="img/star.png" class="collectStar">`){
+                return;
+            }
+            else{
+                star.innerHTML = `<img src="img/star.png" class="collectStar">`
+                var params = new URLSearchParams(window.location.search);
+                var id = params.get("id");
+                var xhr = new XMLHttpRequest();
+                xhr.open("post",`${domain}/star/delete`);
                 xhr.withCredentials = true;
                 xhr.send(JSON.stringify({
                     commodity_id:id
@@ -162,7 +186,7 @@ window.onload = function () {
                     <button class="minus" id="minus"> - </button>
                 </div>
                 <div class="collect">
-                    <button id="cancel">取消收藏</button>
+                    <button class="cancel">取消收藏</button>
                     <span id="star"><img src="img/star.png" class="collectStar"></span>
                     <span class="collectNum">该商品已被收藏${collectNum}次</span>
                 </div>
@@ -405,6 +429,8 @@ search.onclick = function () {
 }
 
 document.getElementById("centerBox").addEventListener("click", function (e) {
+    var params = new URLSearchParams(window.location.search);
+    var id = params.get("id");
     var clas = e.target.getAttribute('class')
     if (clas == null) return;
     if (clas.search("buyBtn") !== -1) {
@@ -426,12 +452,19 @@ document.getElementById("centerBox").addEventListener("click", function (e) {
         xhr.onreadystatechange = function () {
             if (xhr.readyState === 4 && xhr.status === 200) {
                 var res = JSON.parse(xhr.responseText);
+                var shade = document.getElementById('shade');
+                var pop = document.getElementById('pop');
+                shade.style.display = 'block';
                 if (res.status != 1) {
-                    alert(res.errMsg);
+                    pop.innerText = res.errMsg;
                     return;
                 }
-                location.href = "cart.html"
-                console.log(res);
+                else{
+                    pop.innerText = "恭喜您，加购成功！\n当前页面将在5秒后关闭";
+                    setTimeout(function(){
+                        shade.style.display = 'none';
+                    },5000)
+                }
             }
         }
     }

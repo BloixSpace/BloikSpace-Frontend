@@ -101,8 +101,10 @@ settleBtn.onclick = function () {
                     alert(res.errMsg);
                     return;
                 }
-                alert('下单成功！');
-                location.href = "goodsDisplay.html"
+                else{
+                    alert('下单成功！');
+                    location.href = "goodsDisplay.html";
+                }
             }
         }
     }

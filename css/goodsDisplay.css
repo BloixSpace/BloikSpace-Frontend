@@ -348,8 +348,8 @@ li {
     top: 50%;
     background-color: #fff;
     transform: translate(-50%, -50%);
-    width: 650px;
-    height: 300px;
+    width: 600px;
+    height: 280px;
     text-align: center;
     z-index: 11;
     color: hsl(225, 80%, 43%);

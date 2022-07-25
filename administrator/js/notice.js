@@ -296,7 +296,13 @@ window.onload = function () {
             if (xhr3.readyState === 4 && xhr3.status === 200) {
                 var res3 = JSON.parse(xhr3.responseText)
                 if (res3.status == 0) {
-                    alert(res3.errMsg)
+                    var shade = document.getElementById('shade');
+                    shade.style.display = 'block';
+                    var alertContent = document.getElementById('alertContent');
+                    alertContent.innerText = res3.errMsg;
+                    setTimeout(function(){
+                    shade.style.display = 'none';
+                    },2000)
                 }
             }
         }
@@ -313,7 +319,13 @@ window.onload = function () {
             if (xhr4.readyState === 4 && xhr4.status === 200) {
                 var res4 = JSON.parse(xhr4.responseText)
                 if (res4.status == 0) {
-                    alert(res4.errMsg)
+                    var shade = document.getElementById('shade');
+                    shade.style.display = 'block';
+                    var alertContent = document.getElementById('alertContent');
+                    alertContent.innerText = res4.errMsg;
+                    setTimeout(function(){
+                    shade.style.display = 'none';
+                    },2000)
                 }
             }
         }

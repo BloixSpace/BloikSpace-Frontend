@@ -49,7 +49,13 @@ window.onload = function(){
                  document.getElementById('camera').innerHTML = `<img src="${cameraUri}" class="cameraImg"></img>`;
                  document.getElementById('log').innerText = userName;
              } else {
-                 alert("很抱歉，登录失败！登录状态为：" + res0.status + "\n失败原因是：" + res0.errMsg);
+                var shade = document.getElementById('shade');
+                shade.style.display = 'block';
+                var alertContent = document.getElementById('alertContent');
+                alertContent.innerText = "很抱歉，登录失败！登录状态为：" + res0.status + "\n失败原因是：" + res0.errMsg;
+                setTimeout(function(){
+                   shade.style.display = 'none';
+                },2000)
                  location.href = "../login.html";
              }
          }
@@ -65,7 +71,13 @@ window.onload = function(){
         if (xhr.readyState === 4 && xhr.status === 200) {
             var res = JSON.parse(xhr.responseText);
             if (res.status != 1) {
-                alert(res.errMsg);
+                var shade = document.getElementById('shade');
+                shade.style.display = 'block';
+                var alertContent = document.getElementById('alertContent');
+                alertContent.innerText = res.errMsg;
+                setTimeout(function(){
+                   shade.style.display = 'none';
+                },2000)
                 return;
             }
             document.getElementById("title").value = res.title;
@@ -140,11 +152,23 @@ window.onload = function(){
             if (xhr.readyState === 4 && xhr.status === 200) {
                 var res = JSON.parse(xhr.responseText);
                 if (res.status == 1) {
-                    alert("修改成功");
+                    var shade = document.getElementById('shade');
+                    shade.style.display = 'block';
+                    var alertContent = document.getElementById('alertContent');
+                    alertContent.innerText = "修改成功！";
+                    setTimeout(function(){
+                    shade.style.display = 'none';
+                    },2000)
                     // TODO
                     location.href = "goodDisplay.html"
                 } else {
-                    alert(res.errMsg);
+                    var shade = document.getElementById('shade');
+                    shade.style.display = 'block';
+                    var alertContent = document.getElementById('alertContent');
+                    alertContent.innerText = res.errMsg;
+                    setTimeout(function(){
+                    shade.style.display = 'none';
+                    },2000)
                 }
             }
         }
@@ -154,7 +178,13 @@ window.onload = function(){
     function uploadPictures() {
         var templates = document.getElementById("files").files;
         if (templates.length > 5) {
-            alert("图片上传数量不能大于5！");
+            var shade = document.getElementById('shade');
+            shade.style.display = 'block';
+            var alertContent = document.getElementById('alertContent');
+            alertContent.innerText = "图片上传数量不能大于5！";
+            setTimeout(function(){
+                shade.style.display = 'none';
+            },2000)
             return null;
         }
         var uri = "";

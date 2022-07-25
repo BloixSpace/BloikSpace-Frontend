@@ -48,7 +48,13 @@ window.onload = function(){
                  document.getElementById('camera').innerHTML = `<img src="${cameraUri}" class="cameraImg"></img>`;
                  document.getElementById('log').innerText = userName;
              } else {
-                 alert("很抱歉，登录失败！登录状态为：" + res0.status + "\n失败原因是：" + res0.errMsg);
+                 var shade = document.getElementById('shade');
+                 shade.style.display = 'block';
+                 var alertContent = document.getElementById('alertContent');
+                 alertContent.innerText = "很抱歉，登录失败！登录状态为：" + res0.status + "\n失败原因是：" + res0.errMsg;
+                 setTimeout(function(){
+                    shade.style.display = 'none';
+                 },2000)
                  location.href = "../login.html";
              }
          }
@@ -124,10 +130,16 @@ btn.onclick = function () {
             res = JSON.parse(xhr.responseText); //json转js对象，res1是对象
             console.log(res.errMsg);
             if (res.status == '0') {
-                alert(res.errMsg);
+                var shade = document.getElementById('shade');
+                shade.style.display = 'block';
+                var alertContent = document.getElementById('alertContent');
+                alertContent.innerText = res.errMsg;
+                setTimeout(function(){
+                   shade.style.display = 'none';
+                },2000)
                 window.onload();
             } else {
-                // location.href = ("home.html");
+                location.href = ("home.html");
             }
         }
     }

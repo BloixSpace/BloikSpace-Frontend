@@ -8,6 +8,20 @@
     <link rel="stylesheet" href="css/home.css">
 </head>
 <body>
+    <!-- 遮罩层 -->
+    <div class="shade" id="shade">
+        <!-- 弹出层 -->
+        <div class="pop">
+            <p class="text">修改主页广告</p>
+            <div id="preview">
+                <!-- 图片预览 -->
+            </div>
+            <p class="Text">上传图片（请上传五张）</p>
+                <input type="file" id="files" accept="image/gif,image/jpeg,image/jpg,image/png,image/svg"
+                    multiple="multiple"><br>
+            <button id="submit">确认修改</button><button id="cancel">关闭当前页面</button>
+        </div>
+    </div>
     <!-- 左侧导航栏和上层导航栏 -->
     <div class="leftBox">
         <a class="leftImg" id="camera"></a>
@@ -23,7 +37,7 @@
         </div>
         <a class="leftNav" href="order.html">管理订单</a>
         <a class="leftNav" href="notice.html">管理通知</a>
-
+        <a class="leftNav" id="home">管理主页广告</a>
     </div><div class="rightBox">
         <!-- 顶部导航栏 -->
         <div class="top" id="top">

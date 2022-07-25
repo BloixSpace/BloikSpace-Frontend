@@ -10,6 +10,15 @@ manage2.onclick = function(){
     hidden2.style.display = (hidden2.style.display == 'none'? 'block':'none');
     return false;
 }
+var cancel = document.getElementById('cancel');
+cancel.onclick = function(){
+    document.getElementById('shade').style.display = 'none';
+    return false;
+}
+var manageHome = document.getElementById('home');
+manageHome.onclick = function(){
+    document.getElementById('shade').style.display = 'block';
+}
 //点击二级菜单的退出登录实现登出，登出接口
 var logout = document.getElementById('logout');
 logout.onclick = function () {
@@ -52,5 +61,73 @@ window.onload = function(){
              }
          }
      }
+     // 点击提交按钮
+    var submitButton = document.getElementById("submit");
+    submitButton.onclick = function () {
+        var picUris = uploadPictures();
+        if (picUris == null) {
+            console.log("失败");
+            return;
+        }
+        var xhr = new XMLHttpRequest();
+        xhr.open("post", `${domain}/commodity/update`);
+        xhr.withCredentials = true;
+        xhr.send(JSON.stringify({
+            pic: picUris
+        }));
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                var res = JSON.parse(xhr.responseText);
+                if (res.status == 1) {
+                    var shade = document.getElementById('shade');
+                    shade.style.display = 'none';
+                } else {
+                    alert(res.errMsg);
+                }
+            }
+        }
+    }
+
+    // 上传图片们
+    function uploadPictures() {
+        var templates = document.getElementById("files").files;
+        if (templates.length > 5) {
+            alert("图片上传数量不能大于5！");
+            return null;
+        }
+        var uri = "";
+        for (let i = 0; i < templates.length; i++) {
+            var formData = new FormData();
+            formData.append("file", templates[i]);
+            var xhr = new XMLHttpRequest();
+            xhr.open("post", `${domain}/file/upload`, false);
+            xhr.withCredentials = true;
+            xhr.send(formData);
+            if (xhr.status === 200) {
+                var res = JSON.parse(xhr.responseText);
+                if (res.status == 1) {
+                    if (uri != "") uri += ",";
+                    uri += res.uri;
+                }
+            } else {
+                console.log(xhr.responseText);
+                return null;
+            }
+        }
+        console.log(uri);
+        return uri;
+    }
+
+    // 选择图片后预览
+    var fileChange = document.getElementById("files");
+    fileChange.onchange = function () {
+        var files = fileChange.files;
+        var html = "";
+        for (let i = 0; i < files.length; i++) {
+            var url = window.URL.createObjectURL(files[i]);
+            html += `<img src=${url} style="width:100px;height:100px;overflow: hidden;" class="img">`;
+        }
+        document.getElementById("preview").innerHTML = html;
+    }
      return false;
 }

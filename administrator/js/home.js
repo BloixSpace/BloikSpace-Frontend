@@ -1,3 +1,4 @@
+var domain = 'https://forum.wyy.ink';
 var manage1 = document.getElementById('manage1');
 var hidden1 = document.getElementById('hidden1');
 manage1.onclick = function(){

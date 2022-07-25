@@ -22,7 +22,7 @@ var search = document.getElementById('searchBtn');
 search.onclick = function () {
     var keyWord = document.getElementById('keyWord').value;
     console.log(keyWord);
-    var url = "manageCommodity.html?key=" + document.getElementById('keyWord').value;
+    var url = "goodDisplay.html?key=" + document.getElementById('keyWord').value;
     location.href = (`${url}`);
     return false;
 }

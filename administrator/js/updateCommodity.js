@@ -142,7 +142,7 @@ window.onload = function(){
                 if (res.status == 1) {
                     alert("修改成功");
                     // TODO
-                    location.href = "manageCommodity.html"
+                    location.href = "goodDisplay.html"
                 } else {
                     alert(res.errMsg);
                 }

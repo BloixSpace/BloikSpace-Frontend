@@ -311,7 +311,7 @@ function deleteOrder() {
                 return
             } else {
                 alert("删除成功")
-                window.location.replace("queryOrderList.html")
+                window.location.replace("order.html")
             }
         }
     }

@@ -84,7 +84,7 @@ window.onload = function () {
                 }
             }
             if (flag != "") numOfSelect++;
-            dataHtml += `<input type="checkbox" price=${item.price} id=${item.id} ${flag} class="cartSelect"></input>
+            dataHtml += `<input type="checkbox" price=${item.price*item.buy_num} id=${item.id} ${flag} class="cartSelect"></input>
             <span class="picBox">
             <img class="pic" src=${domain+item.pic.split(",")[0]}></span>
             <div class="contentBox">

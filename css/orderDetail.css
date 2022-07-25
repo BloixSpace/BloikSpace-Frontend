@@ -184,7 +184,7 @@ li {
 
 .pop{
     position: absolute;
-    left: 56%;
+    left: 50%;
     top: 50%;
     background-color: #fff;
     transform: translate(-50%, -50%);

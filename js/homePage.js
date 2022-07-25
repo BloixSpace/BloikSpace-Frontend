@@ -52,9 +52,9 @@ window.onload = function () {
                 shade.style.display = 'block';
                 var alertContent = document.getElementById('alertContent');
                 alertContent.innerText = "很抱歉，登录失败！登录状态为：" + res0.status + "\n失败原因是：" + res0.errMsg;
-                setTimeout(function(){
-                   shade.style.display = 'none';
-                },2000)
+                // setTimeout(function(){
+                //    shade.style.display = 'none';
+                // },2000)
                 setTimeout(function(){
                     location.href="login.html";
                 },2000)

@@ -327,10 +327,12 @@ a {
     background-color: hsl(225, 80%, 43%);
     margin: 40px 0 20px 38px;
     border-radius: 10px;
+    transition: all 0.2s;
 }
 
 .goods:hover {
     transform: scale(1.1, 1.1);
+    transition: all 0.2s;
 }
 
 .enter {

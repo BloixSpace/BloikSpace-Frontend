@@ -50,7 +50,13 @@ window.onload = function () {
                 document.getElementById('camera').innerHTML = `<img src="${cameraUri}" style="width: 40px;height:40px;border-radius: 20px;"></img>`;
                 document.getElementById('log').innerText = userName;
             } else {
-                alert("很抱歉，登录失败！登录状态为：" + res0.status + "\n失败原因是：" + res0.errMsg);
+                var shade = document.getElementById('shade');
+                shade.style.display = 'block';
+                var alertContent = document.getElementById('alertContent');
+                alertContent.innerText = "很抱歉，登录失败！登录状态为：" + res0.status + "\n失败原因是：" + res0.errMsg;
+                setTimeout(function(){
+                   shade.style.display = 'none';
+                },2000)
                 location.href = "login.html";
             }
         }
@@ -99,7 +105,13 @@ document.getElementById("file").onchange = function () {
                 res1 = JSON.parse(xhr1.responseText); //json转js对象，res1是对象
                 console.log(res1.errMsg);
                 if (res1.status == '-1') {
-                    alert(res1.errMsg);
+                    var shade = document.getElementById('shade');
+                    shade.style.display = 'block';
+                    var alertContent = document.getElementById('alertContent');
+                    alertContent.innerText = res1.errMsg;
+                    setTimeout(function(){
+                    shade.style.display = 'none';
+                    },2000)
                     location.href = ("login.html");
                 } else {
                     location.href = ("homePage.html");

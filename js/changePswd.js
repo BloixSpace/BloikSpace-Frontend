@@ -17,7 +17,13 @@ window.onload = function () {
                 document.getElementById('camera').innerHTML = `<img src="${cameraUri}" style="width: 40px;height:40px;border-radius: 20px;"></img>`;
                 document.getElementById('log').innerText = userName;
             } else {
-                alert("很抱歉，登录失败！登录状态为：" + res0.status + "\n失败原因是：" + res0.errMsg);
+                var shade = document.getElementById('shade');
+                shade.style.display = 'block';
+                var alertContent = document.getElementById('alertContent');
+                alertContent.innerText = "很抱歉，登录失败！登录状态为：" + res0.status + "\n失败原因是：" + res0.errMsg;
+                setTimeout(function(){
+                   shade.style.display = 'none';
+                },2000)
                 location.href = "login.html";
             }
         }
@@ -75,10 +81,22 @@ submit.onclick = function () {
             window.localStorage.password = newPswd.value;
             //报错页面
             if (storage.status == '0') {
-                alert(storage.errMsg);
+                var shade = document.getElementById('shade');
+                shade.style.display = 'block';
+                var alertContent = document.getElementById('alertContent');
+                alertContent.innerText = storage.errMsg;
+                setTimeout(function(){
+                   shade.style.display = 'none';
+                },2000)
             }
             if (storage.status == '1') {
-                alert('您已重置密码，请重新登录')
+                var shade = document.getElementById('shade');
+                shade.style.display = 'block';
+                var alertContent = document.getElementById('alertContent');
+                alertContent.innerText = "您已重置密码，请重新登录";
+                setTimeout(function(){
+                   shade.style.display = 'none';
+                },2000)
                 location.href = ("login.html");
             }
         }

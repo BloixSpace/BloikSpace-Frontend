@@ -50,10 +50,16 @@ window.onload = function () {
                 document.getElementById('camera').innerHTML = `<img src="${cameraUri}" style="width: 40px;height:40px;border-radius: 20px;"></img>`;
                 document.getElementById('log').innerText = userName;
             }
-            // else{
-            //     alert("很抱歉，登录失败！登录状态为："+res0.status+"\n失败原因是："+res0.errMsg);
-            //     location.href="login.html";
-            // }
+            else{
+                var shade = document.getElementById('shade');
+                shade.style.display = 'block';
+                var alertContent = document.getElementById('alertContent');
+                alertContent.innerText = "很抱歉，登录失败！登录状态为：" + res0.status + "\n失败原因是：" + res0.errMsg;
+                setTimeout(function(){
+                   shade.style.display = 'none';
+                },2000)
+                location.href="login.html";
+            }
         }
     }
 
@@ -80,11 +86,23 @@ tel.onblur = function(){
 }
 settleBtn.onclick = function () {
     if (!num.test(tel.value)) {
-        alert("请输入手机号");
+        var shade = document.getElementById('shade');
+        shade.style.display = 'block';
+        var alertContent = document.getElementById('alertContent');
+        alertContent.innerText = "请输入手机号！";
+        setTimeout(function(){
+            shade.style.display = 'none';
+        },2000)
         return;
     }
     if (address.value == "") {
-        alert("请输入地址");
+        var shade = document.getElementById('shade');
+        shade.style.display = 'block';
+        var alertContent = document.getElementById('alertContent');
+        alertContent.innerText = "请输入地址！";
+        setTimeout(function(){
+            shade.style.display = 'none';
+        },2000)
         return;
     }
     var xhr = new XMLHttpRequest();
@@ -104,11 +122,23 @@ settleBtn.onclick = function () {
             var res = JSON.parse(xhr.responseText);
             if (res.status == '1') {
                 if (res.errMsg != "" && res.errMsg != null) {
-                    alert(res.errMsg);
+                    var shade = document.getElementById('shade');
+                    shade.style.display = 'block';
+                    var alertContent = document.getElementById('alertContent');
+                    alertContent.innerText = res.errMsg;
+                    setTimeout(function(){
+                    shade.style.display = 'none';
+                    },2000)
                     return;
                 }
                 else{
-                    alert('下单成功！');
+                    var shade = document.getElementById('shade');
+                    shade.style.display = 'block';
+                    var alertContent = document.getElementById('alertContent');
+                    alertContent.innerText = "下单成功";
+                    setTimeout(function(){
+                    shade.style.display = 'none';
+                    },2000)
                     location.href = "goodsDisplay.html";
                 }
             }

@@ -17,7 +17,13 @@ window.onload = function () {
                 document.getElementById('camera').innerHTML = `<img src="${cameraUri}" style="width: 40px;height:40px;border-radius: 20px;"></img>`;
                 document.getElementById('log').innerText = userName;
             } else {
-                alert("很抱歉，登录失败！登录状态为：" + res0.status + "\n失败原因是：" + res0.errMsg);
+                var shade = document.getElementById('shade');
+                shade.style.display = 'block';
+                var alertContent = document.getElementById('alertContent');
+                alertContent.innerText = "很抱歉，登录失败！登录状态为：" + res0.status + "\n失败原因是：" + res0.errMsg;
+                setTimeout(function(){
+                   shade.style.display = 'none';
+                },2000)
                 location.href = "login.html";
             }
         }
@@ -271,7 +277,13 @@ window.onload = function () {
             if (xhr3.readyState === 4 && xhr3.status === 200) {
                 var res3 = JSON.parse(xhr3.responseText)
                 if (res3.status == 0) {
-                    alert(res3.errMsg)
+                    var shade = document.getElementById('shade');
+                    shade.style.display = 'block';
+                    var alertContent = document.getElementById('alertContent');
+                    alertContent.innerText = res3.errMsg;
+                    setTimeout(function(){
+                    shade.style.display = 'none';
+                    },2000)
                 }
             }
         }
@@ -288,7 +300,13 @@ window.onload = function () {
             if (xhr4.readyState === 4 && xhr4.status === 200) {
                 var res4 = JSON.parse(xhr4.responseText)
                 if (res4.status == 0) {
-                    alert(res4.errMsg)
+                    var shade = document.getElementById('shade');
+                    shade.style.display = 'block';
+                    var alertContent = document.getElementById('alertContent');
+                    alertContent.innerText = res4.errMsg;
+                    setTimeout(function(){
+                    shade.style.display = 'none';
+                    },2000)
                 }
             }
         }
@@ -305,72 +323,5 @@ window.onload = function () {
         pager.currentPage = page
         request(pager)
     }
-    //筛选已读未读，绑定事件
-    // var read = document.getElementById('read');
-    // read.onclick = function(){
-    //     createPager1({
-    //         currentPage: 1,
-    //         limit: 20,
-    //         divNumber: 7,
-    //         order: "time",
-    //         unread: false,
-    //         pageNumber: 0
-    //     })
-    //     function createPager1(pager) {
-    //         var pager = Object.assign(defaultPager, pager)
-    //         request1(pager)
-    //         bindEvent(pager)
-    //     }
-    // }
-    // function request1(pager) {
-    //     console.log("request1执行了")
-    //     console.log(`${domain}/notice/getList?page=${pager.currentPage}&page_size=${pager.limit}&order=${pager.order}&unread=false`)
-    //     var xhr5 = new XMLHttpRequest()
-    //     console.log(pager.limit)
-    //     xhr5.open("get", `${domain}/notice/getList?page=${pager.currentPage}&page_size=${pager.limit}&order=${pager.order}&unread=false`)
-    //     xhr5.withCredentials = true
-    //     xhr5.send()
-    //     xhr5.onreadystatechange = function () {
-    //         if (xhr5.readyState === 4 && xhr5.status === 200) {
-    //             var res5 = JSON.parse(xhr5.responseText)
-    //             pager.pageNumber = res5.page_num
-    //             adddata(res5)
-    //             show(pager)
-    //         }
-    //     }
-    // }
-    // var unread = document.getElementById('unread');
-    // unread.onclick = function(){
-    //     createPager0({
-    //         currentPage: 1,
-    //         limit: 20,
-    //         divNumber: 7,
-    //         order: "time",
-    //         unread: false,
-    //         pageNumber: 0
-    //     })
-    //     function createPager0(pager) {
-    //         var pager = Object.assign(defaultPager, pager)
-    //         request0(pager)
-    //         bindEvent(pager)
-    //     }
-    // }
-    // function request0(pager) {
-    //     console.log("request0执行了")
-    //     console.log(`${domain}/notice/getList?page=${pager.currentPage}&page_size=${pager.limit}&order=${pager.order}&unread=true`)
-    //     var xhr6 = new XMLHttpRequest()
-    //     console.log(pager.limit)
-    //     xhr6.open("get", `${domain}/notice/getList?page=${pager.currentPage}&page_size=${pager.limit}&order=${pager.order}&unread=true`)
-    //     xhr6.withCredentials = true
-    //     xhr6.send()
-    //     xhr6.onreadystatechange = function () {
-    //         if (xhr6.readyState === 4 && xhr6.status === 200) {
-    //             var res6 = JSON.parse(xhr6.responseText)
-    //             pager.pageNumber = res6.page_num
-    //             adddata(res6)
-    //             show(pager)
-    //         }
-    //     }
-    // }
     return false;
 }

@@ -1,3 +1,4 @@
+var domain = "https://forum.wyy.ink"
 window.onload = function () {
     //检查登录状态，更新头像及用户名
     var cameraUri, userName;
@@ -16,12 +17,18 @@ window.onload = function () {
                 document.getElementById('camera').innerHTML = `<img src="${cameraUri}" style="width: 40px;height:40px;border-radius: 20px;"></img>`;
                 document.getElementById('log').innerText = userName;
             } else {
-                alert("很抱歉，登录失败！登录状态为：" + res0.status + "\n失败原因是：" + res0.errMsg);
+                var shade = document.getElementById('shade');
+                shade.style.display = 'block';
+                var alertContent = document.getElementById('alertContent');
+                alertContent.innerText = "很抱歉，登录失败！登录状态为：" + res0.status + "\n失败原因是：" + res0.errMsg;
+                setTimeout(function(){
+                   shade.style.display = 'none';
+                },2000)
                 location.href = "login.html";
             }
         }
     }
-    var domain = "https://forum.wyy.ink"
+    
 
     window.localStorage.setItem("cartSelect", "[]");
     window.localStorage.setItem("allPrice", "0");
@@ -269,9 +276,21 @@ window.onload = function () {
                 if (xhr.readyState === 4 && xhr.status === 200) {
                     var res = JSON.parse(xhr.responseText)
                     if (res.status == 0) {
-                        alert(res.errMsg)
+                        var shade = document.getElementById('shade');
+                        shade.style.display = 'block';
+                        var alertContent = document.getElementById('alertContent');
+                        alertContent.innerText = res.errMsg;
+                        setTimeout(function(){
+                        shade.style.display = 'none';
+                        },2000)
                     } else if (res.status == 1) {
-                        alert("确认清空？")
+                        var shade = document.getElementById('shade');
+                        shade.style.display = 'block';
+                        var alertContent = document.getElementById('alertContent');
+                        alertContent.innerText = "您即将清空购物车";
+                        setTimeout(function(){
+                        shade.style.display = 'none';
+                        },2000)
                         request(pager);
                     }
                 }
@@ -294,7 +313,13 @@ window.onload = function () {
             if (xhr.readyState === 4 && xhr.status === 200) {
                 var res = JSON.parse(xhr.responseText)
                 if (res.status == 0) {
-                    alert(res.errMsg)
+                    var shade = document.getElementById('shade');
+                    shade.style.display = 'block';
+                    var alertContent = document.getElementById('alertContent');
+                    alertContent.innerText = res.errMsg;
+                    setTimeout(function(){
+                    shade.style.display = 'none';
+                    },2000)
                 }
             }
         }
@@ -411,7 +436,13 @@ var settle = document.getElementById('settle');
 settle.onclick = function () {
     let array = JSON.parse(window.localStorage.getItem("cartSelect"));
     if (array.length == 0) {
-        alert("未选择任何商品");
+        var shade = document.getElementById('shade');
+        shade.style.display = 'block';
+        var alertContent = document.getElementById('alertContent');
+        alertContent.innerText = "未选择任何商品";
+        setTimeout(function(){
+            shade.style.display = 'none';
+        },2000)
         return;
     }
     location.href = "settle.html";

@@ -84,7 +84,13 @@ window.onload = function () {
                     var storage1 = JSON.parse(xhr1.responseText);
                     console.log(storage1.status);
                     if (storage.status == '0' || storage1.status == '0') {
-                        alert(storage.errMsg + '\n\n' + storage1.errMsg);
+                        var shade = document.getElementById('shade');
+                        shade.style.display = 'block';
+                        var alertContent = document.getElementById('alertContent');
+                        alertContent.innerText = storage.errMsg+'\n\n'+storage1.errMsg;
+                        setTimeout(function(){
+                        shade.style.display = 'none';
+                        },2000)
                     } else {
                         window.localStorage.signature = signature.value;
                         window.localStorage.role = rolevalue;

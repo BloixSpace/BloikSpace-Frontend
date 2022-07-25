@@ -73,7 +73,13 @@ function loadCommodity() {
         if (xhr.readyState === 4 && xhr.status === 200) {
             var res = JSON.parse(xhr.responseText);
             if (res.status != 1) {
-                alert("失败");
+                var shade = document.getElementById('shade');
+                shade.style.display = 'block';
+                var alertContent = document.getElementById('alertContent');
+                alertContent.innerText = "失败";
+                setTimeout(function(){
+                   shade.style.display = 'none';
+                },2000)
                 location.href = "goodDetails.html?id=" + commodityId;
             }
             document.getElementById("title").innerHTML = `${res.title} <span style="font-size:15px;color:black;"> x ${buyNum}</span>`;
@@ -124,7 +130,13 @@ settleBtn.onclick = function () {
         if (xhr.readyState === 4 && xhr.status === 200) {
             var res = JSON.parse(xhr.responseText);
             if (res.status == '1') {
-                alert('下单成功！');
+                var shade = document.getElementById('shade');
+                shade.style.display = 'block';
+                var alertContent = document.getElementById('alertContent');
+                alertContent.innerText = "下单成功！";
+                setTimeout(function(){
+                   shade.style.display = 'none';
+                },2000)
                 location.href = "queryOrderList.html"
             }
         }

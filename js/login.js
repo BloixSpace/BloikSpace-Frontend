@@ -62,6 +62,13 @@ window.onload = function () {
                         location.href = "administrator/home.html";
                     }
                     else{
+                        var shade = document.getElementById('shade');
+                        shade.style.display = 'block';
+                        var alertContent = document.getElementById('alertContent');
+                        alertContent.innerText = "恭喜您，登录成功！";
+                        setTimeout(function(){
+                        shade.style.display = 'none';
+                        },2000)
                         location.href = "homePage.html";
                     }
                 }

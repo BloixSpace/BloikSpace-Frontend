@@ -75,7 +75,13 @@ window.onload = function () {
                 document.getElementById('camera').innerHTML = `<img src="${cameraUri}" style="width: 40px;height:40px;border-radius: 20px;"></img>`;
                 document.getElementById('log').innerText = userName;
             } else {
-                alert("很抱歉，登录失败！登录状态为：" + res0.status + "\n失败原因是：" + res0.errMsg);
+                var shade = document.getElementById('shade');
+                shade.style.display = 'block';
+                var alertContent = document.getElementById('alertContent');
+                alertContent.innerText = "很抱歉，登录失败！登录状态为：" + res0.status + "\n失败原因是：" + res0.errMsg;
+                setTimeout(function(){
+                   shade.style.display = 'none';
+                },2000)
                 location.href = "login.html";
             }
         }
@@ -241,7 +247,13 @@ window.onload = function () {
             if (xhr3.readyState === 4 && xhr3.status === 200) {
                 var res3 = JSON.parse(xhr3.responseText)
                 if (res3.status == 0) {
-                    alert(res3.errMsg)
+                    var shade = document.getElementById('shade');
+                    shade.style.display = 'block';
+                    var alertContent = document.getElementById('alertContent');
+                    alertContent.innerText = res3.errMsg;
+                    setTimeout(function(){
+                    shade.style.display = 'none';
+                    },2000)
                 }
             }
         }
@@ -258,43 +270,6 @@ window.onload = function () {
         pager.currentPage = page
         request(pager)
     }
-    // //筛选已发货未发货
-    // var ship = document.getElementById('ship');
-    // ship.onclick = function(){
-    //     pager.isShip = true;
-    //     createPager({
-    //         currentPage: 1,
-    //         limit: 20,
-    //         divNumber: 7,
-    //         order: "order_time",
-    //         unread: false,
-    //         pageNumber: 0,
-    //         isShip: true
-    //     })
-    //     return false;
-    // }
-    // var unship = document.getElementById('unship');
-    // unship.onclick = function(){
-    //     pager.isShip = false;
-    //     createPager({
-    //         currentPage: 1,
-    //         limit: 20,
-    //         divNumber: 7,
-    //         order: "order_time",
-    //         unread: false,
-    //         pageNumber: 0,
-    //         isShip: false
-    //     })
-    //     return false;
-    // }
-    // //点击取消重置
-    // var cancel =document.getElementById('cancel');
-    // cancel.onclick = function(){
-    //     location.reload();
-    //     return false;
-    // }
-
-
 
     return false;
 }

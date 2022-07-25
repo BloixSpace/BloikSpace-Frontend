@@ -47,7 +47,13 @@ window.onload = function () {
                 document.getElementById('camera').innerHTML = `<img src="${cameraUri}" style="width: 40px;height:40px;border-radius: 20px;"></img>`;
                 document.getElementById('log').innerText = userName;
             } else {
-                alert("很抱歉，登录失败！登录状态为：" + res0.status + "\n失败原因是：" + res0.errMsg);
+                var shade = document.getElementById('shade');
+                shade.style.display = 'block';
+                var alertContent = document.getElementById('alertContent');
+                alertContent.innerText = "很抱歉，登录失败！登录状态为：" + res0.status + "\n失败原因是：" + res0.errMsg;
+                setTimeout(function(){
+                   shade.style.display = 'none';
+                },2000)
                 location.href = "login.html";
             }
         }
@@ -129,10 +135,22 @@ window.onload = function () {
             if (xhr2.readyState === 4 && xhr2.status === 200) {
                 var res2 = JSON.parse(xhr2.responseText);
                 if (res2.status == 0) {
-                    alert(res2.errMsg)
+                    var shade = document.getElementById('shade');
+                    shade.style.display = 'block';
+                    var alertContent = document.getElementById('alertContent');
+                    alertContent.innerText = res2.errMsg;
+                    setTimeout(function(){
+                    shade.style.display = 'none';
+                    },2000)
                     return
                 } else {
-                    alert("订单信息更新成功")
+                    var shade = document.getElementById('shade');
+                    shade.style.display = 'block';
+                    var alertContent = document.getElementById('alertContent');
+                    alertContent.innerText = "订单更新成功";
+                    setTimeout(function(){
+                    shade.style.display = 'none';
+                    },2000)
                     request()
                 }
             }
@@ -151,10 +169,22 @@ window.onload = function () {
             if (xhr3.readyState === 4 && xhr3.status === 200) {
                 var res3 = JSON.parse(xhr3.responseText);
                 if (res3.status == 0) {
-                    alert(res3.errMsg)
+                    var shade = document.getElementById('shade');
+                    shade.style.display = 'block';
+                    var alertContent = document.getElementById('alertContent');
+                    alertContent.innerText = res3.errMsg;
+                    setTimeout(function(){
+                    shade.style.display = 'none';
+                    },2000)
                     return
                 } else {
-                    alert("删除成功")
+                    var shade = document.getElementById('shade');
+                    shade.style.display = 'block';
+                    var alertContent = document.getElementById('alertContent');
+                    alertContent.innerText = "删除成功！";
+                    setTimeout(function(){
+                    shade.style.display = 'none';
+                    },2000)
                     window.location.replace("queryOrderList.html")
                 }
             }
@@ -173,7 +203,13 @@ window.onload = function () {
             if (xhr4.readyState === 4 && xhr4.status === 200) {
                 var res4 = JSON.parse(xhr4.responseText);
                 if (res4.status == 0) {
-                    alert(res4.errMsg)
+                    var shade = document.getElementById('shade');
+                    shade.style.display = 'block';
+                    var alertContent = document.getElementById('alertContent');
+                    alertContent.innerText = res4.errMsg;
+                    setTimeout(function(){
+                    shade.style.display = 'none';
+                    },2000)
                     return
                 } else {
                     location.reload()
@@ -193,7 +229,13 @@ window.onload = function () {
             if (xhr5.readyState === 4 && xhr5.status === 200) {
                 var res5 = JSON.parse(xhr5.responseText)
                 if (res5.status == 0) {
-                    alert(res5.errMsg)
+                    var shade = document.getElementById('shade');
+                    shade.style.display = 'block';
+                    var alertContent = document.getElementById('alertContent');
+                    alertContent.innerText = res5.errMsg;
+                    setTimeout(function(){
+                    shade.style.display = 'none';
+                    },2000)
                     return
                 }
                 if (res5.receipt_time == undefined && res5.is_ship) {

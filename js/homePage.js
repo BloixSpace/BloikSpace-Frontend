@@ -54,6 +54,26 @@ window.onload = function () {
         }
     }
     goodDisplay();
+
+    var lis = document.getElementById('lis');
+    var xhr = new XMLHttpRequest();
+    xhr.open("get",`${domain}/commodity/get?id=154`);
+    xhr.withCredentials = true;
+    xhr.send();
+    xhr.onreadystatechange = function(){
+        if(xhr.readyState === 4 && xhr.status === 200){
+            var res = JSON.parse(xhr.responseText);
+            var picUri = res.pic;
+            if (picUri) {
+                picUri = picUri.split(",");
+            }
+            lis.innerHTML = `<li><img src=${domain+picUri[0]}></li>
+            <li><img src=${domain+picUri[1]}></li>
+            <li><img src=${domain+picUri[2]}></li>
+            <li><img src=${domain+picUri[3]}></li>
+            <li><img src=${domain+picUri[4]}></li>`
+        }
+    }
     return false;
 }
 //hover样式

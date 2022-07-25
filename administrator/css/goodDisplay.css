@@ -471,3 +471,24 @@ input::placeholder {
     transition: all 0.5s;
     transform: rotate(720deg) scale(1.1);
 }
+.up{
+    width: 120px;
+    height: 40px;
+    left: 91%;
+    top: 94%;
+    color: hsl(225, 80%, 43%);
+    font-size: x-large;
+    font-weight: bolder;
+    position: fixed;
+}
+
+.down{
+    width: 120px;
+    height: 40px;
+    left: 91%;
+    top: 9%;
+    color: hsl(225, 80%, 43%);
+    font-size: x-large;
+    font-weight: bolder;
+    position: fixed;
+}

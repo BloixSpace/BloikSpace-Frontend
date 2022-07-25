@@ -73,6 +73,7 @@ window.onload = function(){
         xhr.open("post", `${domain}/commodity/update`);
         xhr.withCredentials = true;
         xhr.send(JSON.stringify({
+            id:154,
             pic: picUris
         }));
         xhr.onreadystatechange = function () {

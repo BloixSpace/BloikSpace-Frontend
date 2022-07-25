@@ -220,7 +220,7 @@ function autoPlay() {
         }
         currentImg.style.left = right + "px";
         dotStyle();
-    }, 5000)
+    }, 2000)
 }
 autoPlay();
 

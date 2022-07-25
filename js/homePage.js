@@ -169,6 +169,8 @@ leftBtn.onclick = function () {
     currentImg.style.left = left + "px";
     //更新圆点颜色
     dotStyle();
+    clearInterval(timer);
+    autoPlay();
 }
 
 //右按钮
@@ -193,6 +195,8 @@ rightBtn.onclick = function () {
     currentImg.style.left = right + "px";
     //更新圆点颜色
     dotStyle();
+    clearInterval(timer);
+    autoPlay();
 }
 
 // 自动轮播
@@ -228,6 +232,8 @@ for (var i = 0; i < lisLen; i++) {
             currentImg.style.left = (parseInt(currentImg.style.left) + dis * 800) + "px";
             index = i; //显示当前位置的圆点
             dotStyle();
+            clearInterval(timer);
+            autoPlay();
         }
     })(i);
 }

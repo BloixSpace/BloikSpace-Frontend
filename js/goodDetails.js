@@ -490,10 +490,10 @@ document.getElementById("centerBox").addEventListener("click", function (e) {
                     return;
                 }
                 else{
-                    pop.innerText = "恭喜您，加购成功！\n当前页面将在5秒后关闭";
+                    pop.innerText = "商品已添加到购物车";
                     setTimeout(function(){
                         shade.style.display = 'none';
-                    },5000)
+                    },2000)
                 }
             }
         }

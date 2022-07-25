@@ -56,7 +56,9 @@ window.onload = function(){
                 setTimeout(function(){
                    shade.style.display = 'none';
                 },2000)
-                 location.href = "../login.html";
+                setTimeout(function(){
+                    location.href = "../login.html";
+                },2000)
              }
          }
      }
@@ -159,8 +161,9 @@ window.onload = function(){
                     setTimeout(function(){
                     shade.style.display = 'none';
                     },2000)
-                    // TODO
-                    location.href = "goodDisplay.html"
+                    setTimeout(function(){
+                        location.href = "goodDisplay.html"
+                    },2000)
                 } else {
                     var shade = document.getElementById('shade');
                     shade.style.display = 'block';

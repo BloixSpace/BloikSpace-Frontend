@@ -69,7 +69,9 @@ window.onload = function () {
                         setTimeout(function(){
                         shade.style.display = 'none';
                         },2000)
-                        location.href = "homePage.html";
+                        setTimeout(function(){
+                            location.href = "homePage.html";
+                        },2000)
                     }
                 }
             }

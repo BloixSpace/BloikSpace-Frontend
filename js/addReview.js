@@ -25,7 +25,9 @@ window.onload = function () {
                 setTimeout(function(){
                    shade.style.display = 'none';
                 },2000)
-                location.href = "login.html";
+                setTimeout(function(){
+                    location.href = "login.html";
+                },2000)
             }
         }
     }
@@ -55,7 +57,10 @@ window.onload = function () {
                     setTimeout(function(){
                     shade.style.display = 'none';
                     },2000)
-                    location.href = "orderDetail.html?id=" + orderId;
+                    setTimeout(function(){
+                        location.href = "orderDetail.html?id=" + orderId;
+                    },2000)
+                    
                 } else {
                     var shade = document.getElementById('shade');
                     shade.style.display = 'block';

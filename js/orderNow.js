@@ -80,7 +80,10 @@ function loadCommodity() {
                 setTimeout(function(){
                    shade.style.display = 'none';
                 },2000)
-                location.href = "goodDetails.html?id=" + commodityId;
+                setTimeout(function(){
+                    location.href = "goodDetails.html?id=" + commodityId;
+                },2000)
+                
             }
             document.getElementById("title").innerHTML = `${res.title} <span style="font-size:15px;color:black;"> x ${buyNum}</span>`;
             document.getElementById("price").innerHTML = `<span class="price">¥${(res.price * buyNum).toFixed(2)}</span>`
@@ -137,7 +140,9 @@ settleBtn.onclick = function () {
                 setTimeout(function(){
                    shade.style.display = 'none';
                 },2000)
-                location.href = "queryOrderList.html"
+                setTimeout(function(){
+                    location.href = "queryOrderList.html"
+                },2000)
             }
         }
     }
